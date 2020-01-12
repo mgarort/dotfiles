@@ -128,7 +128,6 @@ if [[ $HOSTNAME == hyperion ]]; then
     # ADDITIONAL COMMANDS BY ME
     #export PS1='$(pwd) $'
     #export PS1="\e[01;32m $PS1 \e[m"
-    hpc_cpu='mg770@login-cpu.hpc.cam.ac.uk'
     alias ls='ls --color'
     alias ml='source ~/housekeeping/virtualenv/ml/bin/activate'
     alias ml2='source ~/housekeeping/virtualenv/ml2/bin/activate'
