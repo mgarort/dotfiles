@@ -96,9 +96,14 @@ set visualbell
 " emulate Visual Studio Code colorscheme
 colorscheme codedark
 " highlight searches and change highlight color (the latter needs to be done
-" after setting the colorscheme)
+" with the command ColorScheme, so that Vim does it after loading the
+" colorscheme and doesn't overwrite it)
 set hlsearch
-:hi Search cterm=NONE ctermfg=white ctermbg=red
+au ColorScheme * hi Search cterm=NONE ctermfg=white ctermbg=red
+" remap :noh to <C-n> in normal model. :noh stops highlighting until next
+" search
+nmap <C-n> :noh<CR>
+ 
 " This was supposedly to run python code directly from Vim, but I don't need
 " that because I get to do it better with vim-PyShell
 " nnoremap <buffer> <F9> :exec 'w !python' shellescape(@%, 1)<cr>
