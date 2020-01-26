@@ -100,6 +100,7 @@ colorscheme codedark
 " colorscheme and doesn't overwrite it)
 set hlsearch
 au ColorScheme * hi Search cterm=NONE ctermfg=white ctermbg=red
+au ColorScheme * hi IncSearch cterm=NONE ctermfg=white ctermbg=green
 " remap :noh to <C-n> in normal model. :noh stops highlighting until next
 " search
 nmap <C-n> :noh<CR>
