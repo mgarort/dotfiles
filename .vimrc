@@ -95,6 +95,10 @@ imap <C-b> <C-\><C-o>:call RunTmuxPythonCell(0)<CR>
 set visualbell
 " emulate Visual Studio Code colorscheme
 colorscheme codedark
+" highlight searches and change highlight color (the latter needs to be done
+" after setting the colorscheme)
+set hlsearch
+:hi Search cterm=NONE ctermfg=white ctermbg=red
 " This was supposedly to run python code directly from Vim, but I don't need
 " that because I get to do it better with vim-PyShell
 " nnoremap <buffer> <F9> :exec 'w !python' shellescape(@%, 1)<cr>
