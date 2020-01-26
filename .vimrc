@@ -100,7 +100,10 @@ colorscheme codedark
 " colorscheme and doesn't overwrite it)
 set hlsearch
 au ColorScheme * hi Search cterm=NONE ctermfg=white ctermbg=red
-au ColorScheme * hi IncSearch cterm=NONE ctermfg=white ctermbg=green
+" IncSearch changes the color for the current match in search and replace with
+" confirmation. That way you can distinguish the one you're currently looking
+" at from all the others
+au ColorScheme * hi IncSearch cterm=NONE ctermfg=white ctermbg=green 
 " remap :noh to <C-n> in normal model. :noh stops highlighting until next
 " search
 nmap <C-n> :noh<CR>
