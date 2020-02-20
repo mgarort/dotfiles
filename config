@@ -207,3 +207,7 @@ bindsym $mod+Shift+Control+r exec systemctl reboot
 bindsym $mod+Shift+Control+l exec i3lock -c 000000
 # This will start outputting visual output to the external monitor
 bindsym $mod+Shift+x exec xrandr --auto
+
+
+# Keyboard configuration
+exec setxkbmap -layout us -variant intl
