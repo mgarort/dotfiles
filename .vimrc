@@ -146,3 +146,6 @@ augroup NO_CURSOR_MOVE_ON_FOCUS
   au FocusLost * let g:oldmouse=&mouse | set mouse=
   au FocusGained * if exists('g:oldmouse') | let &mouse=g:oldmouse | unlet g:oldmouse | endif
 augroup END
+
+" Look for tags file (from ctags) in upper directories recursively
+set tags=./tags;/
