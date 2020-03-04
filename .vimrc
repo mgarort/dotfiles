@@ -149,3 +149,6 @@ augroup END
 
 " Look for tags file (from ctags) in upper directories recursively
 set tags=./tags;/
+
+" Allow to open other buffers when current file is unsaved
+set hidden
