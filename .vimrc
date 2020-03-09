@@ -149,3 +149,8 @@ set tags=./tags;/
 
 " Allow to open other buffers when current file is unsaved
 set hidden
+
+" Make file completion in command mode (e.g. when opening a file in a buffer
+" with :e) more similar to Bash completion
+set wildmenu
+set wildmode=longest,list
