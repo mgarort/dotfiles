@@ -1,0 +1,30 @@
+! My urxvt configuration. To be located on ~/.Xdefaults
+
+*background:     #2a2b2e
+*foreground:     #DDDDDD
+
+
+! black
+*color0:        #000000
+*color8:        #555544
+! red
+*color1:        #AE4747
+*color9:        #EE6363
+!green
+*color2:        #6b862f
+*color10:       #89b83f
+!brown/yellow
+*color3:        #BAA520
+*color11:       #FFC135
+*color4:        #5485a4
+*color12:       #729fcf
+*color5:        #85608b
+*color13:       #ad7fa8
+*color6:        #5f9ea0
+*color14:       #a1cdcd
+*color7:        #bbbb99
+*color15:       #eeeebb
+
+! Once glasses are fine, fonts should be 14.5
+URxvt*font: xft:Monospace:pixelsize=18
+URxvt*boldFont: xft:Monospace:pixelsize=18
