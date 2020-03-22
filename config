@@ -156,7 +156,10 @@ bar {
 
 # MY OWN COMMANDS
 # Set natural scrolling
-exec_always --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
+# In order to configure natural scrolling, you need to first install libinput, and second set the name of the touchpad (in quotes after the --set-prop option)
+# to that of your computer's. For instance, in hyperion it is "SynPS/2 Synaptics Touchpad", and in corona it is "MSFT0001:0030BC Touchpad"
+ exec_always --no-startup-id xinput --set-prop "MSFT0001:00 04F3:30BC Touchpad" "libinput Natural Scrolling Enabled" 1
+# exec_always --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
 # bindsym $mod+Shift+minus split toggle; exec urxvt -hold -e "i3-msg split toggle"
 # bindsym $mod+Shift+minus split toggle; i3-msg "exec -hold urxvt"; split toggle # None of these work
 #bindsym $mod+r split toggle; exec i3-sensible-terminal -- bash -c "echo bar & read line"
@@ -183,14 +186,17 @@ bindsym $mod+n exec nautilus
 # Pulse Audio controls
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-#bindsym XF86AudioRaiseVolume exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
-#bindsym XF86AudioLowerVolume exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
-bindsym $mod+F6 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
-bindsym $mod+F5 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
+bindsym XF86AudioRaiseVolume exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
+bindsym XF86AudioLowerVolume exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
+#bindsym $mod+F6 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
+#bindsym $mod+F5 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
 
 # Brightness control
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+# These need the script brightness (in the mydotfiles repo) to be copied to /bin/brightness. Since /bin/brightness needs sudo access to work, you have to allow that command to be executed as sudo without entering a password. This can be done by modifying the /etc/sudoers file. To modify this file safely, use the command visudo in the following way:    
+# sudo EDITOR=vim visudo
+# Then, add the following line at the end:
+# user host = (root) NOPASSWD: /bin/brightness  , for example
+# mgarort hyperion = (root) NOPASSWD: /bin/brightness
 bindsym $mod+F8 exec sudo /bin/brightness -10
 bindsym $mod+F9 exec sudo /bin/brightness 10
 

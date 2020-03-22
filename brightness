@@ -1,0 +1,17 @@
+#!/bin/bash
+
+MAX_INTEL_BRIGHTNESS=$( cat /sys/class/backlight/intel_backlight/max_brightness )
+
+percentage_change=$1 # User input
+brightness_change=$( echo "$percentage_change * $MAX_INTEL_BRIGHTNESS / 100 " | bc )
+current_brightness=$( cat /sys/class/backlight/intel_backlight/brightness )
+final_brightness=$( echo "$current_brightness + $brightness_change" | bc)
+
+if [[ $final_brightness -le 15 ]]; then
+    echo 15 | tee /sys/class/backlight/intel_backlight/brightness
+elif [[ $final_brightness -ge $MAX_INTEL_BRIGHTNESS ]]; then
+    echo $MAX_INTEL_BRIGHTNESS | tee /sys/class/backlight/intel_backlight/brightness
+else
+    echo $final_brightness | tee /sys/class/backlight/intel_backlight/brightness
+fi
+

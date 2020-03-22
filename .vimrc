@@ -63,7 +63,10 @@ filetype plugin indent on    " required
 " so that vim-cellmode sends code from the cell to the right pane
 let g:cellmode_tmux_panenumber=1
 " map keys to copying in system clipboard, so that you can search stuff for
-" instance on Firefox
+" instance on Firefox. Note that in order for Vim to be able to copy to system
+" clipboard, it must be compiled with the +clipboard. I usually use the binary
+" vim-gtk, which can be installed with
+" sudo apt install vim-gtk
 vmap <C-Y> "+y
 map <C-P> "+p
 " map the CtrlP (fuzzy filepath searching plugin) to <C-L>/<C-l> instead of the
