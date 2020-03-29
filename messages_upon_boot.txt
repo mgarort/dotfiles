@@ -1,0 +1,61 @@
+Loading /home/mgarort/.emacs.d/core/core-load-paths.el (source)...done
+Loading /home/mgarort/.spacemacs...done
+Setting the font...
+PNG warning: Interlace handling should be turned on when using png_read_image
+Open the quickhelp.
+Loading /home/mgarort/.emacs.d/layers/+completion/helm/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+completion/auto-completion/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+emacs/better-defaults/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+lang/emacs-lisp/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+source-control/git/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+lang/markdown/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+emacs/org/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+distributions/spacemacs/layers.el (source)...
+Loading /home/mgarort/.emacs.d/layers/+distributions/spacemacs-base/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-completion/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-layouts/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-editing/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-editing-visual/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-evil/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-language/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-misc/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-ui/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-ui-visual/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-org/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+distributions/spacemacs/layers.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+distributions/spacemacs-bootstrap/packages.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+distributions/spacemacs-bootstrap/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-ui-visual/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-evil/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-editing/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-layouts/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-completion/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+distributions/spacemacs-base/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+completion/helm/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+completion/auto-completion/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+emacs/better-defaults/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+lang/emacs-lisp/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+source-control/git/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+lang/markdown/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+emacs/org/funcs.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+distributions/spacemacs-bootstrap/config.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-ui-visual/config.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-layouts/config.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+spacemacs/spacemacs-completion/config.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+distributions/spacemacs-base/config.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+completion/auto-completion/config.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+emacs/better-defaults/config.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+lang/emacs-lisp/config.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+source-control/git/config.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+lang/markdown/config.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+emacs/org/config.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/auto-layer.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+distributions/spacemacs-base/keybindings.el (source)...done
+Loading /home/mgarort/.emacs.d/layers/+emacs/better-defaults/keybindings.el (source)...done
+Loading /home/mgarort/.emacs.d/.cache/spacemacs-buffer.el (source)...done
+Spacemacs is ready.
+Loading /home/mgarort/.emacs.d/.cache/recentf...done
+Open the quickhelp.
+Skipping check for new version (reason: dotfile)
+mwheel-scroll: End of buffer [2 times]
+mwheel-scroll: Beginning of buffer [2 times]
