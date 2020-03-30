@@ -164,6 +164,12 @@ bar {
 # bindsym $mod+Shift+minus split toggle; i3-msg "exec -hold urxvt"; split toggle # None of these work
 #bindsym $mod+r split toggle; exec i3-sensible-terminal -- bash -c "echo bar & read line"
 
+# Disable middle click
+# In Ubuntu, you have this really annoying behaviour by which a middle click will close a tab in web brosers such as Firefox. You can disable this with xinput. In particular, the number 1 of the Touchpad represents the left click, the number 2 represents the middle click, the number 3 represents the right click and the number 0 represents nothing. If I do
+# xinput get-button-map 10         where 10 is the id of the touchpad, I obtain
+# 1 2 3 4 5 6 7          therefore, I need to change this to 1 0 3 4 5 6 7
+exec_always --no-startup-id xinput set-button-map 1 0 3 4 5 6 7
+
 
 # Resizing windows by 8 in i3 using keyboard only
 bindsym $mod+Shift+y resize shrink width 8 px or 8 ppt 
