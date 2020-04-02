@@ -41,6 +41,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'tomasiser/vim-code-dark'
+Plugin 'xuhdev/vim-latex-live-preview'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -157,3 +158,7 @@ set hidden
 " with :e) more similar to Bash completion
 set wildmenu
 set wildmode=longest,list
+
+" Set updatetime variable so that live views of tex pdfs get updated
+" automatically (used by xuhdev/vim-latex-live-preview)
+set updatetime=1000
