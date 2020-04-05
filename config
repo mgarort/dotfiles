@@ -26,7 +26,8 @@ floating_modifier $mod
 
 # start a terminal from the current directory. Requires installing the command xcwd from https://github.com/schischi/xcwd
 bindsym $mod+Return exec "urxvt -cd `xcwd`"
-#bindsym $mod+Return exec urxvt
+# bindsym $mod+Return exec gnome-terminal --working-directory `xcwd`
+#bindsym $mod+Return exec xfce4-terminal
 
 # Change the direction in which windows are spawned
 bindsym $mod+t split toggle 
@@ -75,7 +76,7 @@ bindsym $mod+v split vertical  # This doesn't work
 bindsym $mod+z fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking   I have never used the stacked layout so I'll keep this keybinding for Anki notes (since s is next to a in the keyboard)
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -180,23 +181,37 @@ bindsym $mod+Shift+o resize grow width 8 px or 8 ppt
 
 # Start a few applications
 bindsym $mod+r  exec urxvt -e ranger 
+# bindsym $mod+r exec gnome-terminal -e ranger
+#bindsym $mod+r exec xfce4-terminal -e ranger
 bindsym $mod+f exec firefox 
 bindsym $mod+m exec rhythmbox
 bindsym $mod+i exec urxvt -e htop
+#bindsym $mod+i exec gnome-terminal -e htop
+#bindsym $mod+i exec xfce4-terminal -e htop
 # bindsym $mod+c exec urxvt -e env DG_CURRENT_DESKTOP=GNOME gnome-control-center # Settings, this doesn't work
 bindsym $mod+Shift+w exec nm-connection-editor  # Wifi, but only to edit the wifi connections, not to connect
 bindsym $mod+c exec google-chrome
 bindsym $mod+a exec anki
+# To create an anki note, use $mod+s, which is next to $mod+a (for anki). This opens the note template, which could be stored anywhere
+bindsym $mod+s exec "urxvt -e vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex"
+# bindsym $mod+s exec "gnome-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
+#bindsym $mod+s exec "xfce4-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
 bindsym $mod+n exec nautilus
 
 
 # Pulse Audio controls
+# The next 2 ones were always commented
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
-bindsym XF86AudioLowerVolume exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
+# The next 2 ones worked in Hyperion
+#bindsym XF86AudioRaiseVolume exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
+#bindsym XF86AudioLowerVolume exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
+# The next 2 ones were always commented
 #bindsym $mod+F6 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
 #bindsym $mod+F5 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
+# The next 2 ones worked in Corona
+bindsym $mod+F5 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
+bindsym $mod+F6 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
 
 # Brightness control
 # These need the script brightness (in the mydotfiles repo) to be copied to /bin/brightness. Since /bin/brightness needs sudo access to work, you have to allow that command to be executed as sudo without entering a password. This can be done by modifying the /etc/sudoers file. To modify this file safely, use the command visudo in the following way:    
