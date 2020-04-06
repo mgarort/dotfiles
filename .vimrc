@@ -161,4 +161,4 @@ set wildmode=longest,list
 
 " Set updatetime variable so that live views of tex pdfs get updated
 " automatically (used by xuhdev/vim-latex-live-preview)
-set updatetime=1000
+set updatetime=500
