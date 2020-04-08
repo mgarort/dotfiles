@@ -25,6 +25,4 @@
 *color7:        #bbbb99
 *color15:       #eeeebb
 
-! Once glasses are fine, fonts should be 14.5
 URxvt*font: xft:Monospace:pixelsize=18
-URxvt*boldFont: xft:Monospace:pixelsize=18
