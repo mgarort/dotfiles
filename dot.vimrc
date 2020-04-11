@@ -2,7 +2,7 @@
 
 " VUNDLE CONFIGURATION
 
-set nocompatible              " be iMproved, required
+set nocompatible              " be iMproved, required 
 filetype off                  " required
 
 
@@ -38,9 +38,6 @@ Plugin 'benmills/vimux'
 Plugin 'greghor/vim-pyShell'
 Plugin 'julienr/vim-cellmode'
 Plugin 'tpope/vim-surround'
-" I'm gonna check whether ctrlp is really useful or not. But I'm gonna bind it
-" to <C-l>
-Plugin 'kien/ctrlp.vim' 
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'tomasiser/vim-code-dark'
@@ -98,7 +95,7 @@ let g:vimwiki_autowriteall = 0
 " Recompile HTML upon writing buffer to disk
 autocmd FileType vimwiki autocmd BufWritePost <buffer> silent Vimwiki2HTML
 " Load the html of the current file in firefox (h for html)
-function OpenThisHTML()
+function! OpenThisHTML()
     let path_to_html_folder = expand(g:vimwiki_list[0]['path_html'])
     let html_file = expand('%:t:r') . ".html"
     " The quotes around make sure that firefox receives the full path instead
@@ -126,10 +123,6 @@ let g:cellmode_tmux_panenumber=1
 " sudo apt install vim-gtk
 vmap <C-Y> "+y
 map <C-P> "+p
-
-" map the CtrlP (fuzzy filepath searching plugin) to <C-l> instead of the
-" usual <C-p> so that there's no collision with the copying to clipboard
-let g:ctrlp_map = '<C-l>'
 
 " vim-cellmode mappings
 " start ipython shell with <C-s>. Note that for this to work, you need to add stty -ixon to .bashrc
@@ -206,4 +199,15 @@ set wildmode=longest,list
 " Set updatetime variable so that live views of tex pdfs get updated
 " automatically (used by xuhdev/vim-latex-live-preview)
 set updatetime=500
+
+" Status line
+set statusline=
+set statusline +=[%n]\ \ \%*  "buffer number
+set statusline+=%<%F          "full filepath
+set statusline+=\ %m          "modified flag
+set statusline+=%=            "left/right separator
+set statusline+=%l/%L         "cursor line/total lines
+set statusline+=\ %P          "percent through file
+set laststatus=2              " Show statusline for all windows.
+
 
