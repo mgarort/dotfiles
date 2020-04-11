@@ -210,4 +210,17 @@ set statusline+=%l/%L         "cursor line/total lines
 set statusline+=\ %P          "percent through file
 set laststatus=2              " Show statusline for all windows.
 
+" My very simple script and keybinding to iterate over colorschemes upon
+" pressing F12
+let g:my_colorschemes=['codedark', 'morning']
+let g:current_colorscheme_idx = 0
+
+function! IterateColorscheme()
+    let g:current_colorscheme_idx = ( g:current_colorscheme_idx + 1 ) % 2
+    let current_colorscheme = g:my_colorschemes[g:current_colorscheme_idx]
+    execute "colorscheme" current_colorscheme
+endfunction
+
+nmap <F12> :call IterateColorscheme()<CR>
+imap <F12> <Esc>:call IterateColorscheme()<CR>i
 
