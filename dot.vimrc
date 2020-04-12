@@ -62,6 +62,9 @@ filetype plugin indent on    " required
 
 " MY OWN STUFF 
 
+" emulate Visual Studio Code colorscheme
+colorscheme codedark
+"
 " Here starts my vimwiki configuration
 " vimwiki configuration (may clash with Vundle configuration)
 set nocompatible
@@ -94,6 +97,8 @@ let g:vimwiki_list_ignore_newline = 0
 let g:vimwiki_autowriteall = 0
 " Recompile HTML upon writing buffer to disk
 autocmd FileType vimwiki autocmd BufWritePost <buffer> silent Vimwiki2HTML
+" Make blackwhite the default colorscheme for vimwiki
+autocmd FileType vimwiki colorscheme blackwhite
 " Load the html of the current file in firefox (h for html)
 function! OpenThisHTML()
     let path_to_html_folder = expand(g:vimwiki_list[0]['path_html'])
@@ -101,7 +106,9 @@ function! OpenThisHTML()
     " The quotes around make sure that firefox receives the full path instead
     " of just the path up to the first parenthesis
     let full_path = "'" . path_to_html_folder . "/" . html_file . "'" 
-    execute "!firefox" full_path
+    "The & at the end guarantees that firefox is executed in the background,
+    "so Vim goes back to editing instead of hanging while Firefox is open
+    execute "!firefox" full_path "&"  
 endfunction
 " nmap <C-h> :!firefox '%:p:h'/../vimwiki_html/'%:t:r'.html<CR><CR>
 " imap <C-h> <Esc>:!firefox '%:p:h'/../vimwiki_html/'%:t:r'.html<CR><CR>
@@ -136,8 +143,6 @@ imap <C-b> <C-\><C-o>:call RunTmuxPythonCell(0)<CR>
 " avoid an annoying beeping sound. Instead, the ``beeping" will be a white
 " flash
 set visualbell
-" emulate Visual Studio Code colorscheme
-colorscheme codedark
 " highlight searches and change highlight color (the latter needs to be done
 " with the command ColorScheme, so that Vim does it after loading the
 " colorscheme and doesn't overwrite it)
