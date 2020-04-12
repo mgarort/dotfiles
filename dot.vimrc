@@ -212,12 +212,13 @@ set laststatus=2              " Show statusline for all windows.
 
 " My very simple script and keybinding to iterate over colorschemes upon
 " pressing F12
-let g:my_colorschemes=['codedark', 'morning']
+let g:iterable_colorschemes=['codedark', 'morning', 'blackwhite']
 let g:current_colorscheme_idx = 0
 
 function! IterateColorscheme()
-    let g:current_colorscheme_idx = ( g:current_colorscheme_idx + 1 ) % 2
-    let current_colorscheme = g:my_colorschemes[g:current_colorscheme_idx]
+    let n_colorschemes = len(g:iterable_colorschemes)
+    let g:current_colorscheme_idx = ( g:current_colorscheme_idx + 1 ) % n_colorschemes
+    let current_colorscheme = g:iterable_colorschemes[g:current_colorscheme_idx]
     execute "colorscheme" current_colorscheme
 endfunction
 
