@@ -20,8 +20,8 @@ let s:palette.gray08 = [233, '#0d0d0d'] "3rd to 6th level headers
 let s:palette.gray07 = [233, '#0d0d0d'] "Not obvious
 let s:palette.gray06 = [233, '#0d0d0d'] "Horizontal bars (---------)
 let s:palette.gray05 = [233, '#0d0d0d'] "Text, = signs in headers and commands
-let s:palette.gray04 = [254, '#0d0d0d'] "Not obvious
-let s:palette.gray03 = [254, '#0d0d0d'] "Text in statusline
+let s:palette.gray04 = [233, '#0d0d0d'] "Not obvious
+let s:palette.gray03 = [233, '#0d0d0d'] "Underscores in Latex maths environment
 let s:palette.gray02 = [233, '#0d0d0d'] "Not obvious
 let s:palette.gray01 = [233, '#0d0d0d'] "CursorLine, which is an option to highlight the line where the cursor is, and is set with :set cursorline
 let  s:palette.black = [233, '#000000']
@@ -203,15 +203,3 @@ highlight! link TabLineFill StatusLineNC
 highlight! link TabLineSel StatusLine
 
 
-" Vim isn't able to change the cursor color by itself: this is something that
-" belongs to urxvt. So a little bit of wizardry is needed
-if &term =~ "xterm\\|rxvt"
-  " use an orange cursor in insert mode
-  let &t_SI = "\<Esc>]12;gray\x7"
-  " use a red cursor otherwise
-  let &t_EI = "\<Esc>]12;gray\x7"
-  silent !echo -ne "\033]12;gray\007"
-  " reset cursor when vim exits
-  autocmd VimLeave * silent !echo -ne "\033]112\007"
-  " use \003]12;gray\007 for gnome-terminal
-endif

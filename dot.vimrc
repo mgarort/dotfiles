@@ -230,3 +230,16 @@ endfunction
 nmap <F12> :call IterateColorscheme()<CR>
 imap <F12> <Esc>:call IterateColorscheme()<CR>i
 
+
+" Vim isn't able to change the cursor color by itself in a colorscheme: 
+" this is something that belongs to urxvt. So a little bit of wizardry is needed
+if &term =~ "xterm\\|rxvt"
+  " use an orange cursor in insert mode
+  let &t_SI = "\<Esc>]12;orange\x7"
+  " use a gray cursor otherwise
+  let &t_EI = "\<Esc>]12;gray\x7"
+  silent !echo -ne "\033]12;gray\007"
+  " reset cursor when vim exits
+  autocmd VimLeave * silent !echo -ne "\033]112\007"
+  " use \003]12;gray\007 for gnome-terminal
+endif
