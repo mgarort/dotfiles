@@ -8,7 +8,7 @@ let g:colors_name = "blackwhite"
 
 let s:palette = {}
 
-let s:palette.white = [254, '#f7f7f7']             
+let s:palette.white =  [255, '#f7f7f7']
 let s:palette.gray15 = [253, '#e4e4e4'] "Left vertical bar (for line numbers)
 let s:palette.gray14 = [250, '#bcbcbc'] "Not obvious, and also ToDos
 let s:palette.gray13 = [243, '#767676'] "Line numbers and background of statusline

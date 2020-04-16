@@ -76,10 +76,10 @@ nmap <leader>. <Plug>VimwikiPrevLink
 " Conflict with the tab in source code: https://github.com/vimwiki/vimwiki/issues/357
 let g:vimwiki_table_mappings = 0
 " This is so that my vimwiki is hosted in the repos folder
-let g:vimwiki_list = [{'path': '~/repos/vimwiki', 
-            \ 'path_html':'~/vimwiki_html', 
+let g:vimwiki_list = [{'path': '~/repos/wiki', 
+            \ 'path_html':'~/wiki_html', 
             \ 'syntax':'default', 
-            \ 'template_path':'~/repos/vimwiki',
+            \ 'template_path':'~/repos/wiki',
             \ 'ext':'.wiki',
             \ 'template_default': 'default',
             \ 'template_ext': '.tpl'}]
