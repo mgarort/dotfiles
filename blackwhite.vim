@@ -33,6 +33,8 @@ let s:palette.darkblue = [27, '#005fff']
 let s:palette.green = [65, '#5f875f']
 let s:palette.red = [88, '#870000']
 let s:palette.magenta = [125, '#af005f']
+let s:palette.darkred = [124, '#af0000']
+let s:palette.darkgreen = [22, '#005f00']
 
 if has("nvim")
     let g:terminal_color_0 = s:palette.gray01[1]
@@ -124,8 +126,8 @@ call s:hi('CursorLine', [], s:palette.gray01, 'none')
 call s:hi('CursorLineNr', s:palette.gray06, s:palette.gray15, 'none')
 
 call s:hi('Visual', s:palette.white, s:palette.gray06, '')
-call s:hi('Search', s:palette.gray15, s:palette.gray03, 'none')
-call s:hi('IncSearch', s:palette.white, s:palette.gray11, 'bold')
+call s:hi('Search', s:palette.gray15, s:palette.darkred, 'none')
+call s:hi('IncSearch', s:palette.white, s:palette.darkgreen, 'bold')
 
 call s:hi('SpellBad', s:palette.red, s:palette.white, 'undercurl')
 call s:hi('SpellCap', s:palette.red, s:palette.white, 'undercurl')
