@@ -1,4 +1,5 @@
-" My .vimrc file. To locate in ~/.vimrc
+" My .vimrc file. To locate in ~/.vimrc and to be used with the HUGE version
+" of Vim
 
 " VUNDLE CONFIGURATION
 
@@ -155,6 +156,13 @@ au ColorScheme * hi IncSearch cterm=NONE ctermfg=white ctermbg=DarkGreen
 " remap :noh to <C-n> in normal model. :noh stops highlighting until next
 " search
 nmap <C-n> :noh<CR>
+" This (supposedly) will make that highlight stays on after a search, but not after a
+" string substitution
+augroup search_be_gone
+  autocmd!
+  autocmd CmdlineEnter : let s:prev_hlsearch = v:hlsearch
+  autocmd CmdlineLeave : if v:hlsearch && !s:prev_hlsearch | call feedkeys(":nohlsearch\<cr>") | endif
+augroup END
  
 " Make sure that tabs are expanded to spaces. If you do this all the time
 " consistently, you'll avoid errors of mixing tabs and spaces in the same

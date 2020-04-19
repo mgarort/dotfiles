@@ -1,0 +1,5 @@
+# My readline configuration. To be placed on ~/.inputrc
+# To make the editing mode Vi-like instead of Emacs-lik
+set editing-mode vi
+# To show in the prompt whether the mode is insert or command
+set show-mode-in-prompt on
