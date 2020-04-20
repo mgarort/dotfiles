@@ -44,6 +44,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'tomasiser/vim-code-dark'
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'vimwiki/vimwiki'
+Plugin 'preservim/nerdtree'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -119,6 +120,10 @@ imap <C-h> <Esc>:call OpenThisHTML()<CR><CR>
 " instead of only at the first level.
 setlocal formatoptions=ctnqro
 setlocal comments+=n:*,n:#
+" Given a note title surrounded by 6 equal signs in the wiki index, this
+" creates a link, follows it and copies the title
+nmap <space><CR> k:/======<CR>:noh<CR>7lvt=h<CR>^f<space>t]vT[y<CR>ggO=<space><Esc>pa<space>=<Esc>j
+
 " Here ends my vimwiki configuration
 
 " so that vim-cellmode sends code from the cell to the right pane
@@ -251,3 +256,34 @@ if &term =~ "xterm\\|rxvt"
   autocmd VimLeave * silent !echo -ne "\033]112\007"
   " use \003]12;gray\007 for gnome-terminal
 endif
+
+" NERDTree keybindings
+nmap <F10> :NERDTree<CR>
+imap <F10> <Esc>:NERDTree<CR>i
+" When a file is selected, NERDTree quits instead of haning around and taking
+" screen space
+let g:NERDTreeQuitOnOpen = 1
+" If NERDTree is the last and only buffer, then Vim quits
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Netrw keybindings similar to NERDTree
+" This hides the annoying netrw banner
+let g:netrw_banner = 0
+" This makes the listing style tree-like
+let g:netrw_liststyle = 3
+" This opens the file in the main (previous) Vim window rather than in the
+" netrw window
+let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
+" This makes the netrw window size only a quarter of the screen's width
+let g:netrw_winsize = 25
+" The following makes Netrw be a constant addition to the left margin
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
+"
+
+" The following keybinding allows you to see the list of buffers and also
+" choose one with the same keystrokes. Note that l stands for `ls`
+nnoremap ,l :ls<cr>:b<space>
