@@ -170,7 +170,7 @@ bar {
 # xinput get-button-map 10         where 10 is the id of the touchpad, I obtain
 # 1 2 3 4 5 6 7          therefore, I need to change this to 1 0 3 4 5 6 7 to disable the middle button
 #                               and I need to change this to 1 1 3 4 5 6 7 to make the middle button part of the left button
-exec_always --no-startup-id xinput set-button-map 10 1 1 3 4 5 6 7
+exec_always --no-startup-id xinput set-button-map 10 1 0 3 4 5 6 7
 
 
 # Resizing windows by 8 in i3 using keyboard only
