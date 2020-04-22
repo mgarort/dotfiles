@@ -72,10 +72,6 @@ colorscheme codedark
 set nocompatible
 filetype plugin on
 syntax on
-"vimwiki configuration so it doesn't conflict with UltiSnips <tab>
-nmap <leader><space> <Plug>VimwikiNextLink
-nmap <leader>. <Plug>VimwikiPrevLink
-" Conflict with the tab in source code: https://github.com/vimwiki/vimwiki/issues/357
 let g:vimwiki_table_mappings = 0
 " This is so that my vimwiki is hosted in the repos folder
 let g:vimwiki_list = [{'path': '~/repos/wiki', 
@@ -135,7 +131,20 @@ map <Esc>Oc <C-Right>
 map! <Esc>Oc <C-Right>
 nmap <C-Left> :VimwikiDiaryPrevDay<CR>
 nmap <C-Right> :VimwikiDiaryNextDay<CR>
-
+" Make function to change Anki (Latex) to Vimwiki. Note that the e flag mutes
+" error signs when the pattern is not found
+function! Wikify()
+    %s/\[latex\]//ge
+    %s/\[\/latex\]//ge
+    %s/\\verb//ge
+    %s/|/`/ge
+    %s/\\item{/- /ge
+    %s/\\\\//ge
+    %s/``/"/ge
+    %s/\\begin{itemize}//ge
+    %s/\\end{itemize}//ge
+    %s/\\item/- /ge
+endfunction
 " Here ends my vimwiki configuration
 
 " so that vim-cellmode sends code from the cell to the right pane
@@ -253,7 +262,7 @@ function! IterateColorscheme()
 endfunction
 
 nmap <F12> :call IterateColorscheme()<CR>
-imap <F12> <Esc>:call IterateColorscheme()<CR>i
+imap <F12> <Esc>:call IterateColorscheme()<CR>li
 
 
 " Vim isn't able to change the cursor color by itself in a colorscheme: 
@@ -307,16 +316,3 @@ nnoremap ,h :b#<CR>
 
 " The following quickly opens my .vimrc
 nmap <space>v :e $MYVIMRC<CR>
-
-
-" Make function to change Anki (Latex) to Vimwiki. Note that the e flag mutes
-" error signs when the pattern is not found
-function! Wikify()
-    %s/\[latex\]//ge
-    %s/\[\/latex\]//ge
-    %s/\\verb//ge
-    %s/|/`/ge
-    %s/\\item{/- /ge
-    %s/\\\\//ge
-    %s/``/"/ge
-endfunction
