@@ -104,13 +104,14 @@ autocmd FileType vimwiki colorscheme blackwhite
 " Load the html of the current file in firefox (h for html)
 function! OpenThisHTML()
     let path_to_html_folder = expand(g:vimwiki_list[0]['path_html'])
-    let html_file = expand('%:t:r') . ".html"
+    let full_path_to_wiki_file = expand('%:p')
+    let note_name = split(full_path_to_wiki_file, "wiki")[1]
     " The quotes around make sure that firefox receives the full path instead
     " of just the path up to the first parenthesis
-    let full_path = "'" . path_to_html_folder . "/" . html_file . "'" 
+    let full_path_to_html_file = "'" . path_to_html_folder . note_name . "html'"
     "The & at the end guarantees that firefox is executed in the background,
     "so Vim goes back to editing instead of hanging while Firefox is open
-    execute "!firefox" full_path "&"  
+    execute "!firefox" full_path_to_html_file "&"  
 endfunction
 " nmap <C-h> :!firefox '%:p:h'/../vimwiki_html/'%:t:r'.html<CR><CR>
 " imap <C-h> <Esc>:!firefox '%:p:h'/../vimwiki_html/'%:t:r'.html<CR><CR>
@@ -122,7 +123,18 @@ setlocal formatoptions=ctnqro
 setlocal comments+=n:*,n:#
 " Given a note title surrounded by 6 equal signs in the wiki index, this
 " creates a link, follows it and copies the title
-nmap <space><CR> k:/======<CR>:noh<CR>7lvt=h<CR>^f<space>t]vT[y<CR>ggO=<space><Esc>pa<space>=<Esc>j
+nmap <space><CR> k:/======<CR>:noh<CR>7lvt=h<CR>^f<space>t]vT[y<CR>ggO=<space><Esc>pa<space>=<CR><CR><Esc>
+" Keybindings for going to previous and next day's diary entries. First you
+" have to freed <C-Left> and <C-Right> from Putty, which for some reason holds
+" them hostage. You can find which sequence corresponds to <C-Left> (for
+" instance), in this case by pressing the following combination in insert
+" mode: <C-v><C-Left>. Note that <Esc> is represented by ^[ when you do this.
+map <Esc>Od <C-Left>
+map! <Esc>Od <C-Left>
+map <Esc>Oc <C-Right>
+map! <Esc>Oc <C-Right>
+nmap <C-Left> :VimwikiDiaryPrevDay<CR>
+nmap <C-Right> :VimwikiDiaryNextDay<CR>
 
 " Here ends my vimwiki configuration
 
@@ -141,7 +153,7 @@ map <C-P> "+p
 " start ipython shell with <C-s>. Note that for this to work, you need to add stty -ixon to .bashrc
 nmap <C-s> :call StartPyShell()<CR>
 " run current cell, and leave cursor in current cell
-imap <C-g> <Esc>:call RunTmuxPythonCell(1)<CR>  
+imap <C-g> <Esc>:call RunTmuxPythonCell(1)<CR>
 " run current cell, and take cursor outside of current cell. Note that <C-b>
 " won't work in a default tmux installation, since <C-b> is the default prefix
 imap <C-b> <C-\><C-o>:call RunTmuxPythonCell(0)<CR>
@@ -168,7 +180,7 @@ augroup search_be_gone
   autocmd CmdlineEnter : let s:prev_hlsearch = v:hlsearch
   autocmd CmdlineLeave : if v:hlsearch && !s:prev_hlsearch | call feedkeys(":nohlsearch\<cr>") | endif
 augroup END
- 
+
 " Make sure that tabs are expanded to spaces. If you do this all the time
 " consistently, you'll avoid errors of mixing tabs and spaces in the same
 " python file
@@ -188,7 +200,7 @@ set completeopt-=preview  " avoid the annoying preview window, that shows the do
 
 " This mouse behaviour is the closest to what I wanted. It only allows to
 " sccroll and select cursor position with mouse in normal mode
-set mouse=n 
+set mouse=n
 
 set number                     " Show current line number
 set relativenumber             " Show relative line numbers
@@ -284,6 +296,27 @@ let g:netrw_winsize = 25
 "augroup END
 "
 
-" The following keybinding allows you to see the list of buffers and also
-" choose one with the same keystrokes. Note that l stands for `ls`
+" Keybindings for buffers. The first one lists the buffers and waits for input
+" to choose one (l for ls). The second one goes to the next buffer (n for next). The third one goes to
+" the previous buffer (b for before). The fourth one goes to the opposite
+" buffer (h for hash)
 nnoremap ,l :ls<cr>:b<space>
+nnoremap ,n :bn<CR>
+nnoremap ,b :bp<CR>
+nnoremap ,h :b#<CR>
+
+" The following quickly opens my .vimrc
+nmap <space>v :e $MYVIMRC<CR>
+
+
+" Make function to change Anki (Latex) to Vimwiki. Note that the e flag mutes
+" error signs when the pattern is not found
+function! Wikify()
+    %s/\[latex\]//ge
+    %s/\[\/latex\]//ge
+    %s/\\verb//ge
+    %s/|/`/ge
+    %s/\\item{/- /ge
+    %s/\\\\//ge
+    %s/``/"/ge
+endfunction
