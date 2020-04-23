@@ -45,6 +45,8 @@ Plugin 'tomasiser/vim-code-dark'
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'vimwiki/vimwiki'
 Plugin 'preservim/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -144,6 +146,8 @@ function! Wikify()
     %s/\\begin{itemize}//ge
     %s/\\end{itemize}//ge
     %s/\\item/- /ge
+    %s/\\begin{verbatim}/{{{>/ge
+    %s/\\end{verbatim}/}}}/ge
 endfunction
 " Here ends my vimwiki configuration
 
@@ -316,3 +320,20 @@ nnoremap ,h :b#<CR>
 
 " The following quickly opens my .vimrc
 nmap <space>v :e $MYVIMRC<CR>
+
+"python with virtualenv support TODO Check if you see any difference
+py3 << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  exec(open(activate_this).read(), dict(__file__=activate_this))
+EOF
+
+" CtrlP configuration
+let g:ctrlp_map = '<c-l>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" Keep the window margin 3 lines away from the cursor
+set scrolloff=3
