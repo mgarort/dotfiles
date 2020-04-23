@@ -23,12 +23,12 @@ let s:palette.gray05 = [233, '#0d0d0d'] "Text, = signs in headers and commands
 let s:palette.gray04 = [233, '#0d0d0d'] "Not obvious
 let s:palette.gray03 = [233, '#0d0d0d'] "Underscores in Latex maths environment
 let s:palette.gray02 = [233, '#0d0d0d'] "Not obvious
-let s:palette.gray01 = [233, '#0d0d0d'] "CursorLine, which is an option to highlight the line where the cursor is, and is set with :set cursorline
+let s:palette.gray01 = [233, '#0d0d0d'] 
 let  s:palette.black = [233, '#000000']
 
 let s:palette.purple = [98, '#875fd7']
 let s:palette.brown = [130, '#af5f00']
-let s:palette.blue = [67, '#5f87af']
+let s:palette.blue = [67, '#5f87af'] "CursorLine, which is an option to highlight the line where the cursor is, and is set with :set cursorline. CursorLine also determines the color of the current line in NERDTree and in CtrlP. Also Visual, which is visual selection
 let s:palette.darkblue = [27, '#005fff']
 let s:palette.green = [65, '#5f875f']
 let s:palette.red = [88, '#870000']
@@ -122,10 +122,10 @@ endif
 
 call s:hi('LineNr', s:palette.gray13, s:palette.gray15, 'none')
 call s:hi('FoldColumn', s:palette.gray08, s:palette.gray15, 'none')
-call s:hi('CursorLine', [], s:palette.gray01, 'none')
+call s:hi('CursorLine', s:palette.white, s:palette.blue, 'none')
 call s:hi('CursorLineNr', s:palette.gray06, s:palette.gray15, 'none')
 
-call s:hi('Visual', s:palette.white, s:palette.gray06, '')
+call s:hi('Visual', s:palette.white, s:palette.blue, '')
 call s:hi('Search', s:palette.gray15, s:palette.darkred, 'none')
 call s:hi('IncSearch', s:palette.white, s:palette.darkgreen, 'bold')
 
