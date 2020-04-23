@@ -150,6 +150,12 @@ function! Wikify()
     %s/\\begin{verbatim}/{{{>/ge
     %s/\\end{verbatim}/}}}/ge
 endfunction
+" Make fuction to open Vimwiki index (in order to open the index with a simple
+" i3 keybinding)
+function! LaunchVimwiki()
+    execute "cd ". "~/repos/wiki"
+    execute "e " . "index.wiki"
+endfunction
 " Here ends my vimwiki configuration
 
 " so that vim-cellmode sends code from the cell to the right pane
