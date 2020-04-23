@@ -74,6 +74,7 @@ colorscheme codedark
 set nocompatible
 filetype plugin on
 syntax on
+" The following is so that vimwiki doesn't take over Tab in insert mode
 let g:vimwiki_table_mappings = 0
 " This is so that my vimwiki is hosted in the repos folder
 let g:vimwiki_list = [{'path': '~/repos/wiki', 
