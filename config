@@ -197,7 +197,8 @@ bindsym $mod+c exec google-chrome
 bindsym $mod+a exec anki
 # To create an anki note, use $mod+s, which is next to $mod+a (for anki). This opens the note template, which could be stored anywhere
 bindsym $mod+s exec "urxvt -e vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex"
-bindsym $mod+v exec "urxvt -e vim -c 'call LaunchVimwiki()'" # Start Vimwiki
+# To start Vimwiki
+bindsym $mod+v exec "urxvt -e vim -c 'call LaunchVimwiki()'"
 # bindsym $mod+s exec "gnome-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
 #bindsym $mod+s exec "xfce4-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
 bindsym $mod+n exec nautilus
