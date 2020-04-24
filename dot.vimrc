@@ -338,3 +338,8 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " Keep the window margin 3 lines away from the cursor
 set scrolloff=3
+
+" Define Filter command to redirect output of searches with g
+" The usage would be: first, search for pattern with g, with :g/pattern
+" Then, do :Filter, and the previous match will be redirected to a new window
+command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a
