@@ -67,7 +67,9 @@ filetype plugin indent on    " required
 " MY OWN STUFF 
 
 " emulate Visual Studio Code colorscheme
-colorscheme codedark
+" Removed from now because I've switched to using the function
+" AutomaticColorscheme
+"colorscheme codedark
 "
 " Here starts my vimwiki configuration
 " vimwiki configuration (may clash with Vundle configuration)
@@ -99,7 +101,8 @@ let g:vimwiki_autowriteall = 0
 " Recompile HTML upon writing buffer to disk
 autocmd FileType vimwiki autocmd BufWritePost <buffer> silent Vimwiki2HTML
 " Make blackwhite the default colorscheme for vimwiki
-autocmd FileType vimwiki colorscheme blackwhite
+" Removed from now because I'm testing the function AutomaticColorscheme
+" autocmd FileType vimwiki colorscheme blackwhite
 " Load the html of the current file in firefox (h for html)
 function! OpenThisHTML()
     let path_to_html_folder = expand(g:vimwiki_list[0]['path_html'])
@@ -112,8 +115,6 @@ function! OpenThisHTML()
     "so Vim goes back to editing instead of hanging while Firefox is open
     execute "!firefox" full_path_to_html_file "&"  
 endfunction
-" nmap <C-h> :!firefox '%:p:h'/../vimwiki_html/'%:t:r'.html<CR><CR>
-" imap <C-h> <Esc>:!firefox '%:p:h'/../vimwiki_html/'%:t:r'.html<CR><CR>
 nmap <C-h> :call OpenThisHTML()<CR><CR>
 imap <C-h> <Esc>:call OpenThisHTML()<CR><CR>
 " This allows bulletpoints to be continued even at deeper bulletpoint levels,
@@ -121,8 +122,9 @@ imap <C-h> <Esc>:call OpenThisHTML()<CR><CR>
 setlocal formatoptions=ctnqro
 setlocal comments+=n:*,n:#
 " Given a note title surrounded by 6 equal signs in the wiki index, this
-" creates a link, follows it and copies the title
-nmap <space><CR> k:/======<CR>:noh<CR>7lvt=h<CR>^f<space>t]vT[y<CR>ggO=<space><Esc>pa<space>=<CR><CR><Esc>
+" creates a link, follows it and copies the title. Needs to use nmap and not
+" nnoremap because otherwise <CR> doesn't create a link
+nmap <space><CR> k:/======<CR>:noh<CR>7lvt=h:VimwikiFollowLink<CR>^f<space>t]vT[y<CR>ggO=<space><Esc>pa<space>=<CR><CR><Esc>
 " Keybindings for going to previous and next day's diary entries. First you
 " have to freed <C-Left> and <C-Right> from Putty, which for some reason holds
 " them hostage. You can find which sequence corresponds to <C-Left> (for
@@ -156,7 +158,16 @@ function! LaunchVimwiki()
     execute "cd ". "~/repos/wiki"
     execute "e " . "index.wiki"
 endfunction
+" This command is relevant to the Vimwiki configuration because it
+" binds <BS> (backspace) to closing the buffer so that navigation in Vimwiki
+" doesn't leave a trail of open buffers behind. But it will also work for
+" non-Vimwiki files
+nmap <Leader>wb <Plug>VimwikiGoBackLink
+nmap <BS> :bd<CR>
+" Finally, note that <C-i> may be going from link to link
 " Here ends my vimwiki configuration
+
+
 
 " so that vim-cellmode sends code from the cell to the right pane
 let g:cellmode_tmux_panenumber=1
@@ -320,13 +331,17 @@ let g:netrw_winsize = 25
 " to choose one (l for ls). The second one goes to the next buffer (n for next). The third one goes to
 " the previous buffer (b for before). The fourth one goes to the opposite
 " buffer (h for hash)
-nnoremap ,l :ls<cr>:b<space>
+nnoremap ,l :ls<CR>:b<space>
 nnoremap ,n :bn<CR>
 nnoremap ,b :bp<CR>
 nnoremap ,h :b#<CR>
 
 " The following quickly opens my .vimrc
-nmap <space>v :e $MYVIMRC<CR>
+nnoremap <space>v :e $MYVIMRC<CR>
+
+" And the following quickly opens my wiki index
+let index_path = g:vimwiki_list[0]['path'] . 'index.wiki'
+nnoremap <space>i :call LaunchVimwiki()
 
 "python with virtualenv support TODO Check if you see any difference
 py3 << EOF
@@ -349,3 +364,25 @@ set scrolloff=3
 " The usage would be: first, search for pattern with g, with :g/pattern
 " Then, do :Filter, and the previous match will be redirected to a new window
 command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a
+
+" Change colorscheme based on active buffer
+" TODO Instead of comparing with 'wiki' explicitly, create a dictionary where
+" you associate each extension to their desired colorscheme, and loop over
+" the dictionaries to set the colorscheme, one extension at a time
+function! AutomaticColorscheme()
+    colorscheme codedark
+    let extension = expand('%:e')
+    if extension == 'wiki'
+        colorscheme blackwhite
+    endif 
+    set hlsearch
+    hi Search cterm=NONE ctermfg=white ctermbg=DarkRed
+    hi IncSearch cterm=NONE ctermfg=white ctermbg=DarkGreen
+endfunction
+autocmd BufEnter * :call AutomaticColorscheme()
+
+" Map Y to y$ so that C, D and Y behave in the same way
+nnoremap <Shift-y> y$
+
+" Remap : to <space> for easier typing
+nnoremap <space> :
