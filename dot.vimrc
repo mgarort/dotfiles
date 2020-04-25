@@ -105,15 +105,16 @@ autocmd FileType vimwiki autocmd BufWritePost <buffer> silent Vimwiki2HTML
 " autocmd FileType vimwiki colorscheme blackwhite
 " Load the html of the current file in firefox (h for html)
 function! OpenThisHTML()
-    let path_to_html_folder = expand(g:vimwiki_list[0]['path_html'])
+    let path_to_html_folder = expand(g:vimwiki_list[0]['path_html']) . '/'
     let full_path_to_wiki_file = expand('%:p')
-    let note_name = split(full_path_to_wiki_file, "wiki")[1]
+    let full_path_to_wiki_minus_extension = split(full_path_to_wiki_file, '\.')[0]
+    let note_name = split(full_path_to_wiki_minus_extension, '/')[-1]
     " The quotes around make sure that firefox receives the full path instead
     " of just the path up to the first parenthesis
-    let full_path_to_html_file = "'" . path_to_html_folder . note_name . "html'"
+    let full_path_to_html_file = "'" . path_to_html_folder . note_name . ".html'"
     "The & at the end guarantees that firefox is executed in the background,
     "so Vim goes back to editing instead of hanging while Firefox is open
-    execute "!firefox" full_path_to_html_file "&"  
+    execute "!firefox -new-window" full_path_to_html_file "&"  
 endfunction
 nmap <C-h> :call OpenThisHTML()<CR><CR>
 imap <C-h> <Esc>:call OpenThisHTML()<CR><CR>
@@ -124,7 +125,7 @@ setlocal comments+=n:*,n:#
 " Given a note title surrounded by 6 equal signs in the wiki index, this
 " creates a link, follows it and copies the title. Needs to use nmap and not
 " nnoremap because otherwise <CR> doesn't create a link
-nmap <space><CR> k:/======<CR>:noh<CR>7lvt=h:VimwikiFollowLink<CR>^f<space>t]vT[y<CR>ggO=<space><Esc>pa<space>=<CR><CR><Esc>
+nmap <space><CR> k:/======<CR>:noh<CR>7lvt=h<CR>^f<space>t]vT[y<CR>ggO=<space><Esc>pa<space>=<CR><CR><Esc>
 " Keybindings for going to previous and next day's diary entries. First you
 " have to freed <C-Left> and <C-Right> from Putty, which for some reason holds
 " them hostage. You can find which sequence corresponds to <C-Left> (for
@@ -201,6 +202,8 @@ au ColorScheme * hi Search cterm=NONE ctermfg=white ctermbg=DarkRed
 " confirmation. That way you can distinguish the one you're currently looking
 " at from all the others
 au ColorScheme * hi IncSearch cterm=NONE ctermfg=white ctermbg=DarkGreen
+" Noh to avoid highlighting upon sourcing .vimrc
+noh
 " remap :noh to <C-n> in normal model. :noh stops highlighting until next
 " search
 nmap <C-n> :noh<CR>
@@ -386,3 +389,4 @@ nnoremap <Shift-y> y$
 
 " Remap : to <space> for easier typing
 nnoremap <space> :
+
