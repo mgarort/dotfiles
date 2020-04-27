@@ -145,7 +145,8 @@ function! Wikify()
     %s/\\verb//ge
     %s/|/`/ge
     %s/\\item{/- /ge
-    %s/\\\\//ge
+    " %s/\\\\//ge Removed this because in maths environments the \\ sometimes
+    " has meaning and is needed
     %s/``/"/ge
     %s/\\begin{itemize}//ge
     %s/\\end{itemize}//ge
