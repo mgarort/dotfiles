@@ -363,7 +363,7 @@ let g:netrw_winsize = 25
 " to choose one (l for ls). The second one goes to the next buffer (n for next). The third one goes to
 " the previous buffer (b for before). The fourth one goes to the opposite
 " buffer (h for hash)
-nnoremap ,l :ls<CR>:b<space>
+nnoremap ,l :ls<CR>:b
 nnoremap ,n :bn<CR>
 nnoremap ,b :bp<CR>
 nnoremap ,h :b#<CR>
