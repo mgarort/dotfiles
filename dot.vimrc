@@ -126,8 +126,8 @@ setlocal comments+=n:*,n:#
 " creates a link, follows it and copies the title. Needs to use nmap and not
 " nnoremap because otherwise <CR> doesn't create a link
 nmap <space><CR> k:/======<CR>:noh<CR>7lvt=h<CR>^f<space>t]vT[y<CR>ggi=<space><Esc>pa<space>=<CR><CR>
-" Keybindings for going to previous and next day's diary entries. First you
-" have to freed <C-Left> and <C-Right> from Putty, which for some reason holds
+" Keybindings for going to previous and next day's diary entries. 
+" 1) First you have to freed <C-Left> and <C-Right> from Putty, which for some reason holds
 " them hostage. You can find which sequence corresponds to <C-Left> (for
 " instance), in this case by pressing the following combination in insert
 " mode: <C-v><C-Left>. Note that <Esc> is represented by ^[ when you do this.
@@ -135,8 +135,29 @@ map <Esc>Od <C-Left>
 map! <Esc>Od <C-Left>
 map <Esc>Oc <C-Right>
 map! <Esc>Oc <C-Right>
-nmap <C-Left> :VimwikiDiaryPrevDay<CR>
-nmap <C-Right> :VimwikiDiaryNextDay<CR>
+" 2) Second, you don't use VimwikiDiaryPrevDay and VimwikiDiaryNextDay
+" directly, because they leave saved buffers opened lingering around.
+" Therefore, write a function that, if unsaved changes, uses these functions
+" in order to leave the buffers open, and if all saved, uses these functions
+" and then closes the buffer
+function! GoToPreviousDay()
+    let is_modified = &mod
+    VimwikiDiaryPrevDay
+    if is_modified == 0
+        bd#
+    endif
+endfunction
+function! GoToNextDay()
+    let is_modified = &mod
+    VimwikiDiaryNextDay
+    if is_modified == 0
+        bd#
+    endif
+endfunction
+" 3) Map the previous functions
+nmap <C-Left> :call GoToPreviousDay()<CR>
+nmap <C-Right> :call GoToNextDay()<CR>
+
 " Make function to change Anki (Latex) to Vimwiki. Note that the e flag mutes
 " error signs when the pattern is not found
 function! Wikify()
