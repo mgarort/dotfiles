@@ -178,7 +178,8 @@ endfunction
 " Make fuction to open Vimwiki index (in order to open the index with a simple
 " i3 keybinding)
 function! LaunchVimwiki()
-    execute "cd ". "~/repos/wiki"
+    let index_path = g:vimwiki_list[0]['path']
+    execute "cd ". index_path
     execute "e " . "index.wiki"
 endfunction
 " This command is relevant to the Vimwiki configuration because it
@@ -365,8 +366,7 @@ nnoremap ,h :b#<CR>
 nnoremap <space>v :e $MYVIMRC<CR>
 
 " And the following quickly opens my wiki index
-let index_path = g:vimwiki_list[0]['path'] . 'index.wiki'
-nnoremap <space>i :call LaunchVimwiki()
+nnoremap <space>i :call LaunchVimwiki()<CR>
 
 "python with virtualenv support TODO Check if you see any difference
 py3 << EOF
