@@ -390,4 +390,5 @@ nnoremap <Shift-y> y$
 
 " Remap : to <space> for easier typing
 nnoremap <space> :
+vnoremap <space> :
 
