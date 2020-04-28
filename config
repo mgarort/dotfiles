@@ -217,8 +217,8 @@ bindsym $mod+n exec nautilus
 #bindsym $mod+F6 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
 #bindsym $mod+F5 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
 # The next 2 ones worked in Corona
-bindsym $mod+F5 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
-bindsym $mod+F6 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
+bindsym $mod+F1 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
+bindsym $mod+F2 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
 
 # Brightness control
 # These need the script brightness (in the mydotfiles repo) to be copied to /bin/brightness. Since /bin/brightness needs sudo access to work, you have to allow that command to be executed as sudo without entering a password. This can be done by modifying the /etc/sudoers file. To modify this file safely, use the command visudo in the following way:    
@@ -226,8 +226,8 @@ bindsym $mod+F6 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-000
 # Then, add the following line at the end:
 # user host = (root) NOPASSWD: /bin/brightness  , for example
 # mgarort hyperion = (root) NOPASSWD: /bin/brightness
-bindsym $mod+F8 exec sudo /bin/brightness -10
-bindsym $mod+F9 exec sudo /bin/brightness 10
+bindsym $mod+F3 exec sudo /bin/brightness -10
+bindsym $mod+F4 exec sudo /bin/brightness 10
 
 # General system control
 # The next command put the system in a state of deep sleep, too deep, so sound didn't work in headphones after awakening
