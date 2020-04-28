@@ -125,7 +125,7 @@ setlocal comments+=n:*,n:#
 " Given a note title surrounded by 6 equal signs in the wiki index, this
 " creates a link, follows it and copies the title. Needs to use nmap and not
 " nnoremap because otherwise <CR> doesn't create a link
-nmap <space><CR> k:/======<CR>:noh<CR>7lvt=h<CR>^f<space>t]vT[y<CR>ggi=<space><Esc>pa<space>=<CR><CR>
+nmap <space><CR> k:/======<CR>:noh<CR>7lvt=h<CR>:w<CR>^f<space>t]vT[y<CR>ggi=<space><Esc>pa<space>=<CR><CR>
 " Keybindings for going to previous and next day's diary entries. 
 " 1) First you have to freed <C-Left> and <C-Right> from Putty, which for some reason holds
 " them hostage. You can find which sequence corresponds to <C-Left> (for
@@ -188,6 +188,12 @@ endfunction
 " non-Vimwiki files
 nmap <Leader>wb <Plug>VimwikiGoBackLink
 nmap <BS> :bd<CR>
+" Make diary note with template, instead of empty diary note. Note that it is
+" not so easy because if the note is already created then you don't want to
+" insert the template. You only want to insert the template the first time you
+" open the diary entry. Another option would be to do it manually when you
+" first open the diary entry
+"nmap <Leader>w<Leader>w VimwikiMakeDiaryNote<CR>idiary<Tab>
 " Finally, note that <C-i> may be going from link to link
 " Here ends my vimwiki configuration
 
