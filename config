@@ -240,8 +240,10 @@ bindsym $mod+Shift+Control+t exec systemctl poweroff
 #bindsym $mod+Shift+Control+r exec urxvt -e sudo reboot
 bindsym $mod+Shift+Control+r exec systemctl reboot
 bindsym $mod+Shift+Control+l exec i3lock -c 000000
-# This will start outputting visual output to the external monitor
-bindsym $mod+Shift+x exec xrandr --auto
+# This will start sending the image to every output (external monitor, laptop screen...)
+bindsym $mod+F5 exec xrandr --auto
+# This will stop sending the image to the laptop screen
+bindsym $mod+F6 exec xrandr --output eDP-1 --off
 
 
 # Keyboard configuration
