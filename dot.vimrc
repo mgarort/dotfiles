@@ -430,3 +430,7 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
+
+" Make <C-a> go to the beginning of the Vim command line, like in the shell
+" Note that the usual <C-e> to go to the end already works by default
+cnoremap <C-a> <C-b>
