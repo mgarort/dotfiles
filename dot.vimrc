@@ -369,10 +369,10 @@ nnoremap ,b :bp<CR>
 nnoremap ,h :b#<CR>
 
 " The following quickly opens my .vimrc
-nnoremap <space>v :e $MYVIMRC<CR>
+nnoremap <leader>v :e $MYVIMRC<CR>
 
 " And the following quickly opens my wiki index
-nnoremap <space>i :call LaunchVimwiki()<CR>
+nnoremap <leader>i :call LaunchVimwiki()<CR>
 
 "python with virtualenv support TODO Check if you see any difference
 py3 << EOF
