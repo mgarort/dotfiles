@@ -299,8 +299,9 @@ set statusline +=[%n]\ \ \%*  "buffer number
 set statusline+=%<%F          "full filepath
 set statusline+=\ %m          "modified flag
 set statusline+=%=            "left/right separator
+set statusline+=(%c)\ \       "column number
 set statusline+=%l/%L         "cursor line/total lines
-set statusline+=\ %P          "percent through file
+set statusline+=\ \ %P          "percent through file
 set laststatus=2              " Show statusline for all windows.
 
 " My very simple script and keybinding to iterate over colorschemes upon
