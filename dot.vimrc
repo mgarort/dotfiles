@@ -414,7 +414,7 @@ endfunction
 autocmd BufEnter * :call AutomaticColorscheme()
 
 " Map Y to y$ so that C, D and Y behave in the same way
-nnoremap <Shift-y> y$
+nnoremap <S-y> y$
 
 " Remap : to <space> for easier typing
 nnoremap <space> :
@@ -440,3 +440,7 @@ cnoremap <C-a> <C-b>
 " to the beginning and end of the line respectively
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
+
+" Make mapping so that :q actually means :qa when in diff mode (i.e. when
+" using vimdiff
+"cnoremap <expr> q<CR> &diff ? 'qa<CR>' : 'q<CR>'
