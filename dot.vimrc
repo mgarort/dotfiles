@@ -435,3 +435,8 @@ com! DiffSaved call s:DiffWithSaved()
 " Make <C-a> go to the beginning of the Vim command line, like in the shell
 " Note that the usual <C-e> to go to the end already works by default
 cnoremap <C-a> <C-b>
+
+" Make <C-a> and <C-e> in insert mode behave like in the command line, going
+" to the beginning and end of the line respectively
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
