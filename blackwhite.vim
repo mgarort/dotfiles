@@ -143,7 +143,10 @@ call s:hi('MoreMsg', s:palette.gray10, [], '')
 call s:hi('MatchParen', s:palette.magenta, s:palette.white, '')
 
 call s:hi('Cursor', [], s:palette.gray12, '')
-call s:hi('Underlined', s:palette.gray08, [], 'underline')
+" I changed the Underlined group (mostly for links) to dark blue (i.e. how
+" links are viewed in Wikipedia) in order not to clutter the screen. If you
+" want to revert back, simply change 'none' for 'underline'
+call s:hi('Underlined', s:palette.darkblue, [], 'none') 
 call s:hi('SpecialKey', s:palette.gray13, [], '')
 call s:hi('NonText', s:palette.gray13, [], '')
 call s:hi('Directory', s:palette.gray08, [], '')
