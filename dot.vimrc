@@ -107,8 +107,8 @@ autocmd FileType vimwiki autocmd BufWritePost <buffer> silent Vimwiki2HTML
 function! OpenThisHTML()
     let path_to_html_folder = expand(g:vimwiki_list[0]['path_html']) . '/'
     let full_path_to_wiki_file = expand('%:p')
-    let full_path_to_wiki_minus_extension = split(full_path_to_wiki_file, '\.')[0]
-    let note_name = split(full_path_to_wiki_minus_extension, '/')[-1]
+    let note_name_with_wiki_extension = split(full_path_to_wiki_file, '/wiki/')[-1]
+    let note_name = split(note_name_with_wiki_extension, '.wiki')[0]
     " The quotes around make sure that firefox receives the full path instead
     " of just the path up to the first parenthesis
     let full_path_to_html_file = "'" . path_to_html_folder . note_name . ".html'"
