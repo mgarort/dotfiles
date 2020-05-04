@@ -107,8 +107,8 @@ autocmd FileType vimwiki autocmd BufWritePost <buffer> silent Vimwiki2HTML
 function! OpenThisHTML()
     let path_to_html_folder = expand(g:vimwiki_list[0]['path_html']) . '/'
     let full_path_to_wiki_file = expand('%:p')
-    let full_path_to_wiki_minus_extension = split(full_path_to_wiki_file, '\.')[0]
-    let note_name = split(full_path_to_wiki_minus_extension, '/')[-1]
+    let note_name_with_wiki_extension = split(full_path_to_wiki_file, '/wiki/')[-1]
+    let note_name = split(note_name_with_wiki_extension, '\.wiki')[0]
     " The quotes around make sure that firefox receives the full path instead
     " of just the path up to the first parenthesis
     let full_path_to_html_file = "'" . path_to_html_folder . note_name . ".html'"
@@ -118,6 +118,18 @@ function! OpenThisHTML()
 endfunction
 nmap <C-h> :call OpenThisHTML()<CR><CR>
 imap <C-h> <Esc>:call OpenThisHTML()<CR><CR>
+" Process images so that they use less space, and map keybinding to <C-c> (c
+" for compress)
+function! ProcessImages()
+    let path_to_wiki = expand(g:vimwiki_list[0]['path'])
+    let path_to_images = path_to_wiki . '/images/'
+    let path_to_script = path_to_wiki . '/images/compress_images.sh'
+    execute '!cd' path_to_images '; python3 process_images.py'
+endfunction     
+" Apparently <C-i> is mapped by default to a function that goes to the next
+" Vimwiki link, which could be quite useful
+"nmap <Leader>wn <Plug>VimwikiNextLink
+nmap <C-c> :call ProcessImages()<CR>
 " This allows bulletpoints to be continued even at deeper bulletpoint levels,
 " instead of only at the first level.
 setlocal formatoptions=ctnqro
@@ -185,9 +197,17 @@ endfunction
 " This command is relevant to the Vimwiki configuration because it
 " binds <BS> (backspace) to closing the buffer so that navigation in Vimwiki
 " doesn't leave a trail of open buffers behind. But it will also work for
-" non-Vimwiki files
+" non-Vimwiki files. The function CloseThisBuffer() ensures that if there is
+" no open buffer, <BS> will close Vim
+function! CloseThisBuffer()
+    if bufname("%") == ""
+        q
+    else
+        bd
+    endif
+endfunction
 nmap <Leader>wb <Plug>VimwikiGoBackLink
-nmap <BS> :bd<CR>
+nmap <BS> :call CloseThisBuffer()<CR>
 " Make diary note with template, instead of empty diary note. Note that it is
 " not so easy because if the note is already created then you don't want to
 " insert the template. You only want to insert the template the first time you
