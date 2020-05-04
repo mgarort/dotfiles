@@ -82,7 +82,7 @@ let g:vimwiki_table_mappings = 0
 let g:vimwiki_list = [{'path': '~/repos/wiki', 
             \ 'path_html':'~/wiki_html', 
             \ 'syntax':'default', 
-            \ 'template_path':'~/repos/wiki',
+            \ 'template_path':'~/repos/wiki/setup',
             \ 'ext':'.wiki',
             \ 'template_default': 'default',
             \ 'template_ext': '.tpl'}]
@@ -122,9 +122,8 @@ imap <C-h> <Esc>:call OpenThisHTML()<CR><CR>
 " for compress)
 function! ProcessImages()
     let path_to_wiki = expand(g:vimwiki_list[0]['path'])
-    let path_to_images = path_to_wiki . '/images/'
-    let path_to_script = path_to_wiki . '/images/compress_images.sh'
-    execute '!cd' path_to_images '; python3 process_images.py'
+    let path_to_setup_folder = path_to_wiki . '/setup/'
+    execute '!cd' path_to_setup_folder '; python3 process_images.py'
 endfunction     
 " Apparently <C-i> is mapped by default to a function that goes to the next
 " Vimwiki link, which could be quite useful
