@@ -204,6 +204,7 @@ bindsym $mod+i exec "urxvt -e vim -c 'call LaunchVimwiki()'"
 # bindsym $mod+s exec "gnome-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
 #bindsym $mod+s exec "xfce4-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
 bindsym $mod+n exec nautilus
+bindsym $mod+equal exec teams
 
 
 # Pulse Audio controls
