@@ -164,6 +164,7 @@ function! GoToPreviousDay()
         bd#
     endif
 endfunction
+
 function! GoToNextDay()
     let is_modified = &mod
     VimwikiDiaryNextDay
@@ -171,25 +172,18 @@ function! GoToNextDay()
         bd#
     endif
 endfunction
-function! CreatePreviousDay()
-    let is_modified = &mod
-    VimwikiMakeYesterdayDiaryNote
-    if is_modified == 0
-        bd#
-    endif
-endfunction
-function! CreateNextDay()
-    let is_modified = &mod
-    VimwikiMakeTomorrowDiaryNote
-    if is_modified == 0
-        bd#
-    endif
-endfunction
 " 3) Map the previous functions
 nmap <C-Left> :call GoToPreviousDay()<CR>
 nmap <C-Right> :call GoToNextDay()<CR>
-nmap <C-Down> :call GoToPreviousDay()<CR>
-nmap <C-Up> :call GoToNextDay()<CR>
+
+" Also, create a mapping for creating tomorrow's note, in case you need to
+" create it in advance. Note that it makes sense to create it like this,
+" because the <leader> prefix is for opening files. First you need to remap
+" VimwikiTabMakeDiaryNote, which is hogging <leader>w<leader>t
+nmap <leader>w<leader>x <Plug>VimwikiTabMakeDiaryNote
+nmap <leader>w<leader>t <Plug>VimwikiMakeTomorrowDiaryNote
+" Notice that <leader>w<leader>y creates yesterday's note if that wasn't
+" already created
 
 " Make function to change Anki (Latex) to Vimwiki. Note that the e flag mutes
 " error signs when the pattern is not found
