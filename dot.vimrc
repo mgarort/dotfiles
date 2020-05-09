@@ -1,5 +1,6 @@
 " My .vimrc file. To locate in ~/.vimrc and to be used with the HUGE version
-" of Vim
+" of Vim. Remember that you need to install Vundle, before installing the
+" plugins, which you do with:    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 " VUNDLE CONFIGURATION
 
@@ -142,10 +143,15 @@ nmap <space><CR> k:/======<CR>:noh<CR>7lvt=h<CR>:w<CR>^f<space>t]vT[y<CR>ggi=<sp
 " them hostage. You can find which sequence corresponds to <C-Left> (for
 " instance), in this case by pressing the following combination in insert
 " mode: <C-v><C-Left>. Note that <Esc> is represented by ^[ when you do this.
-map <Esc>Od <C-Left>
+map  <Esc>Od <C-Left>
 map! <Esc>Od <C-Left>
-map <Esc>Oc <C-Right>
+map  <Esc>Oc <C-Right>
 map! <Esc>Oc <C-Right>
+map  <Esc>Oa <C-Up> 
+map! <Esc>Oa <C-Up> 
+map  <Esc>Ob <C-Down> 
+map! <Esc>Ob <C-Down> 
+
 " 2) Second, you don't use VimwikiDiaryPrevDay and VimwikiDiaryNextDay
 " directly, because they leave saved buffers opened lingering around.
 " Therefore, write a function that, if unsaved changes, uses these functions
@@ -165,9 +171,25 @@ function! GoToNextDay()
         bd#
     endif
 endfunction
+function! CreatePreviousDay()
+    let is_modified = &mod
+    VimwikiMakeYesterdayDiaryNote
+    if is_modified == 0
+        bd#
+    endif
+endfunction
+function! CreateNextDay()
+    let is_modified = &mod
+    VimwikiMakeTomorrowDiaryNote
+    if is_modified == 0
+        bd#
+    endif
+endfunction
 " 3) Map the previous functions
 nmap <C-Left> :call GoToPreviousDay()<CR>
 nmap <C-Right> :call GoToNextDay()<CR>
+nmap <C-Down> :call GoToPreviousDay()<CR>
+nmap <C-Up> :call GoToNextDay()<CR>
 
 " Make function to change Anki (Latex) to Vimwiki. Note that the e flag mutes
 " error signs when the pattern is not found
@@ -368,10 +390,10 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 " This opens the file in the main (previous) Vim window rather than in the
 " netrw window
-let g:netrw_browse_split = 4
+"let g:netrw_browse_split = 4
 "let g:netrw_altv = 1
 " This makes the netrw window size only a quarter of the screen's width
-let g:netrw_winsize = 25
+"let g:netrw_winsize = 25
 " The following makes Netrw be a constant addition to the left margin
 "augroup ProjectDrawer
 "  autocmd!
@@ -388,8 +410,9 @@ nnoremap ,n :bn<CR>
 nnoremap ,b :bp<CR>
 nnoremap ,h :b#<CR>
 
-" The following quickly opens my .vimrc
+" The following quickly opens my .vimrc and loads it
 nnoremap <leader>v :e $MYVIMRC<CR>
+nnoremap <leader>s :source $MYVIMRC<CR>
 
 " And the following quickly opens my wiki index
 nnoremap <leader>i :call LaunchVimwiki()<CR>
@@ -493,3 +516,26 @@ inoremap <C-e> <End>
 " Make mapping so that :q actually means :qa when in diff mode (i.e. when
 " using vimdiff
 "cnoremap <expr> q<CR> &diff ? 'qa<CR>' : 'q<CR>'
+"
+
+" Make mapping so that Shift-Arrow increase and reduce the window size in normal
+" mode. As with the Vimwiki diary mappings for <C-Arrow>, first you need to
+" freed <S-Arrow> and then map them.
+map [a <S-Up>
+map! [a <S-Up>
+map [b <S-Down>
+map! [b <S-Down>
+map [d <S-Left>
+map! [d <S-Left>
+map [c <S-Right>
+map! [c <S-Right>
+
+nnoremap <S-Up> <C-w>+
+nnoremap <S-Down> <C-w>-
+nnoremap <S-Left> <C-w><
+nnoremap <S-Right> <C-w>>
+
+" Make mapping so that  <C-w>_ and <C-w>| create horizontal and vertical
+" splits respectively
+nnoremap <C-w>_ :Hex<CR><C-w>=
+nnoremap <C-w><Bar> :Vex<CR><C-w>=
