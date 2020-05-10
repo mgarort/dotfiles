@@ -137,7 +137,8 @@ setlocal comments+=n:*,n:#
 " Given a note title surrounded by 6 equal signs in the wiki index, this
 " creates a link, follows it and copies the title. Needs to use nmap and not
 " nnoremap because otherwise <CR> doesn't create a link
-nmap <space><CR> k:/======<CR>:noh<CR>7lvt=h<CR>:w<CR>^f<space>t]vT[y<CR>ggi=<space><Esc>pa<space>=<CR><CR>
+"nmap <space><CR> k:/======<CR>:noh<CR>7lvt=h<CR>:w<CR>^f<space>t]vT[y<CR>ggi=<space><Esc>pa<space>=<CR><CR>
+nmap <space><CR> k:/======<CR>:let @/=""<CR>7lvt=h<CR>:w<CR>^f<space>t]vT[y<CR>ggi=<space><Esc>pa<space>=<CR><CR>
 " Keybindings for going to previous and next day's diary entries. 
 " 1) First you have to freed <C-Left> and <C-Right> from Putty, which for some reason holds
 " them hostage. You can find which sequence corresponds to <C-Left> (for
