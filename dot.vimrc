@@ -534,3 +534,33 @@ nnoremap <S-Right> <C-w>>
 " splits respectively
 nnoremap <C-w>_ :Hex<CR><C-w>=
 nnoremap <C-w><Bar> :Vex<CR><C-w>=
+
+" Useful text objects by romainl (there are more at https://gist.github.com/romainl/c0a8b57a36aec71a986f1120e1931f20)
+" 24 simple text objects
+" ----------------------
+" i_ i. i: i, i; i| i/ i\ i* i+ i- i#
+" a_ a. a: a, a; a| a/ a\ a* a+ a- a#
+for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '-', '#' ]
+	execute 'xnoremap i' . char . ' :<C-u>normal! T' . char . 'vt' . char . '<CR>'
+	execute 'onoremap i' . char . ' :normal vi' . char . '<CR>'
+	execute 'xnoremap a' . char . ' :<C-u>normal! F' . char . 'vf' . char . '<CR>'
+	execute 'onoremap a' . char . ' :normal va' . char . '<CR>'
+endfor
+" line text objects
+" -----------------
+" il al
+xnoremap il g_o^
+onoremap il :<C-u>normal vil<CR>
+xnoremap al $o0
+onoremap al :<C-u>normal val<CR>
+" number text object (integer and float)
+" --------------------------------------
+" in
+function! VisualNumber()
+	call search('\d\([^0-9\.]\|$\)', 'cW')
+	normal v
+	call search('\(^\|[^0-9\.]\d\)', 'becW')
+endfunction
+" Added my own l at the end to avoid whitespace on the left being selected
+xnoremap in :<C-u>call VisualNumber()<CR>l
+onoremap in :<C-u>normal vin<CR>l
