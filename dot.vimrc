@@ -77,6 +77,11 @@ filetype plugin indent on    " required
 set nocompatible
 filetype plugin on
 syntax on
+" This is to make Vim's shell interactive, i.e. to load .bashrc. Only do it
+" when no diff mode, otherwise it will crash
+if &diff == 'nodiff'
+    set shellcmdflag=-ic
+endif
 " The following is so that vimwiki doesn't take over Tab in insert mode
 let g:vimwiki_table_mappings = 0
 " This is so that my vimwiki is hosted in the repos folder
@@ -224,6 +229,36 @@ function! CloseThisBuffer()
 endfunction
 nmap <Leader>wb <Plug>VimwikiGoBackLink
 nmap <BS> :call CloseThisBuffer()<CR>
+" Keybindings for time tracking with ti
+" Turn on with o
+nnoremap <leader>t<leader>o :!ti on $( date %+F )<CR>
+" Finish with f
+nnoremap <leader>t<leader>f :!ti fin<CR>
+" Write log to current diary entry with w
+function! GetDiaryTime()
+    let title = getline('1')
+    let diary_date = split(title, ' ')[1]
+    let diary_date = substitute(diary_date, '\.', '-', 'g')
+    let diary_date_log = system('ti log | grep ' . diary_date)
+    if diary_date_log == ''
+        let diary_date_log = '0 seconds'
+    else
+        let diary_date_log = split(diary_date_log, ' ')[4:]
+        let diary_date_log = join(diary_date_log, ' ')
+    endif
+    return diary_date_log
+endfunction
+function! WriteDiaryTime()
+    let diary_date_log = GetDiaryTime()
+    execute "normal! ggo\<cr>\<cr>Time working:  " . diary_date_log . "\<cr>\<esc>"
+endfunction
+nnoremap <leader>t<leader>w :call WriteDiaryTime()<CR>
+" Print today's log, rather than writing it
+function! PrintDiaryTime()
+    let diary_date_log = GetDiaryTime()
+    echo diary_date_log
+endfunction
+nnoremap <leader>t<leader>p :call PrintDiaryTime()<CR>
 " Make diary note with template, instead of empty diary note. Note that it is
 " not so easy because if the note is already created then you don't want to
 " insert the template. You only want to insert the template the first time you
@@ -405,12 +440,13 @@ nnoremap ,n :bn<CR>
 nnoremap ,b :bp<CR>
 nnoremap ,h :b#<CR>
 
-" The following quickly opens my .vimrc and loads it
+" The following keybindings quickly open .vimrc (and load it), my wiki index
+" and i3 config file
 nnoremap <leader>v :e $MYVIMRC<CR>
-nnoremap <leader>s :source $MYVIMRC<CR>
-
-" And the following quickly opens my wiki index
+nnoremap <C-s> :source $MYVIMRC<CR>
 nnoremap <leader>i :call LaunchVimwiki()<CR>
+nnoremap <leader>c :e ~/repos/dotfiles/config<CR>
+nnoremap <leader>b :e ~/repos/dotfiles/dot.bashrc<CR>
 
 "python with virtualenv support TODO Check if you see any difference
 py3 << EOF
