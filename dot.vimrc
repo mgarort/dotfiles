@@ -229,9 +229,17 @@ nmap <Leader>wb <Plug>VimwikiGoBackLink
 nmap <BS> :call CloseThisBuffer()<CR>
 " Keybindings for time tracking with ti. <leader>t stands for time commands
 " Turn on with o
-nnoremap <leader>t<leader>o :!ti on $( date \+\%F ) --no-color<CR>
+function! OnTi()
+    let on_message = system('ti on $( date \+\%F ) --no-color')
+    echo on_message
+endfunction
+nnoremap <silent> <leader>t<leader>o :call OnTi()<CR>
 " Finish with f
-nnoremap <leader>t<leader>f :!ti fin --no-color<CR>
+function! FinishTi()
+    let finish_message = system('ti fin --no-color')
+    echo finish_message
+endfunction
+nnoremap <silent> <leader>t<leader>f :call FinishTi()<CR>
 " Write log to current diary entry with w
 function! GetDiaryTime()
     let title = getline('1')
@@ -246,17 +254,23 @@ function! GetDiaryTime()
     endif
     return diary_date_log
 endfunction
-function! WriteDiaryTime()
+function! WriteTi()
     let diary_date_log = GetDiaryTime()
     execute "normal! ggo\<cr>\<cr>Time working:  " . diary_date_log . "\<cr>\<esc>"
 endfunction
-nnoremap <leader>t<leader>w :call WriteDiaryTime()<CR>
+nnoremap <silent> <leader>t<leader>w :call WriteTi()<CR>
 " Display the log of the time spent on the current diary entry's date, rather than writing it
-function! ShowLogDiaryTime()
+function! LogTi()
     let diary_date_log = GetDiaryTime()
     echo diary_date_log
 endfunction
-nnoremap <leader>t<leader>l :call ShowLogDiaryTime()<CR>
+nnoremap <silent> <leader>t<leader>l :call LogTi()<CR>
+" Display ti status
+function! StatusTi()
+    let status_message = system('ti status --no-color')
+    echo status_message
+endfunction
+nnoremap <silent> <leader>t<leader>s :call StatusTi()<CR>
 " Make diary note with template, instead of empty diary note. Note that it is
 " not so easy because if the note is already created then you don't want to
 " insert the template. You only want to insert the template the first time you
