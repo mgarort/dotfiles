@@ -586,9 +586,9 @@ nnoremap <C-w><Bar> :Vex<CR><C-w>=
 " Useful text objects by romainl (there are more at https://gist.github.com/romainl/c0a8b57a36aec71a986f1120e1931f20)
 " 24 simple text objects
 " ----------------------
-" i_ i. i: i, i; i| i/ i\ i* i+ i- i#
-" a_ a. a: a, a; a| a/ a\ a* a+ a- a#
-for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '-', '#' ]
+" i_ i. i: i, i; i| i/ i\ i* i+ i- i# i=
+" a_ a. a: a, a; a| a/ a\ a* a+ a- a# a=
+for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '-', '#' , '=']
 	execute 'xnoremap i' . char . ' :<C-u>normal! T' . char . 'vt' . char . '<CR>'
 	execute 'onoremap i' . char . ' :normal vi' . char . '<CR>'
 	execute 'xnoremap a' . char . ' :<C-u>normal! F' . char . 'vf' . char . '<CR>'
