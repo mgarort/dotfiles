@@ -609,6 +609,5 @@ function! VisualNumber()
 	normal v
 	call search('\(^\|[^0-9\.]\d\)', 'becW')
 endfunction
-" Added my own l at the end to avoid whitespace on the left being selected
-xnoremap in :<C-u>call VisualNumber()<CR>l
-onoremap in :<C-u>normal vin<CR>l
+xnoremap in :<C-u>call VisualNumber()<CR>
+onoremap in :<C-u>normal vin<CR>
