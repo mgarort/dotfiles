@@ -77,11 +77,6 @@ filetype plugin indent on    " required
 set nocompatible
 filetype plugin on
 syntax on
-" This is to make Vim's shell interactive, i.e. to load .bashrc. Only do it
-" when no diff mode, otherwise it will crash
-if &diff == 'nodiff'
-    set shellcmdflag=-ic
-endif
 " The following is so that vimwiki doesn't take over Tab in insert mode
 let g:vimwiki_table_mappings = 0
 " This is so that my vimwiki is hosted in the repos folder
@@ -207,6 +202,9 @@ function! Wikify()
     %s/\\item/- /ge
     %s/\\begin{verbatim}/{{{>/ge
     %s/\\end{verbatim}/}}}/ge
+    %s#\\underline{\(.*\)}#<u>\1</u>#ge
+    %s#\\textbf{\(.*\)}#<b>\1</b>#ge
+    %s#\\textit{\(.*\)}#<i>\1</i>#ge
 endfunction
 " Make fuction to open Vimwiki index (in order to open the index with a simple
 " i3 keybinding)
@@ -229,11 +227,11 @@ function! CloseThisBuffer()
 endfunction
 nmap <Leader>wb <Plug>VimwikiGoBackLink
 nmap <BS> :call CloseThisBuffer()<CR>
-" Keybindings for time tracking with ti
+" Keybindings for time tracking with ti. <leader>t stands for time commands
 " Turn on with o
-nnoremap <leader>t<leader>o :!ti on $( date %+F )<CR>
+nnoremap <leader>t<leader>o :!ti on $( date \+\%F ) --no-color<CR>
 " Finish with f
-nnoremap <leader>t<leader>f :!ti fin<CR>
+nnoremap <leader>t<leader>f :!ti fin --no-color<CR>
 " Write log to current diary entry with w
 function! GetDiaryTime()
     let title = getline('1')
@@ -253,12 +251,12 @@ function! WriteDiaryTime()
     execute "normal! ggo\<cr>\<cr>Time working:  " . diary_date_log . "\<cr>\<esc>"
 endfunction
 nnoremap <leader>t<leader>w :call WriteDiaryTime()<CR>
-" Print today's log, rather than writing it
-function! PrintDiaryTime()
+" Display the log of the time spent on the current diary entry's date, rather than writing it
+function! ShowLogDiaryTime()
     let diary_date_log = GetDiaryTime()
     echo diary_date_log
 endfunction
-nnoremap <leader>t<leader>p :call PrintDiaryTime()<CR>
+nnoremap <leader>t<leader>l :call ShowLogDiaryTime()<CR>
 " Make diary note with template, instead of empty diary note. Note that it is
 " not so easy because if the note is already created then you don't want to
 " insert the template. You only want to insert the template the first time you
