@@ -40,6 +40,7 @@ Plugin 'benmills/vimux'
 Plugin 'greghor/vim-pyShell'
 Plugin 'julienr/vim-cellmode'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'tomasiser/vim-code-dark'
@@ -117,8 +118,7 @@ function! OpenThisHTML()
     "so Vim goes back to editing instead of hanging while Firefox is open
     execute "!firefox -new-window" full_path_to_html_file "&"  
 endfunction
-nmap <C-h> :call OpenThisHTML()<CR><CR>
-imap <C-h> <Esc>:call OpenThisHTML()<CR><CR>
+nmap ,h :call OpenThisHTML()<CR><CR>
 " Process images so that they use less space, and map keybinding to <C-c> (c
 " for compress)
 function! ProcessImages()
@@ -450,12 +450,12 @@ let g:netrw_liststyle = 3
 nnoremap ,l :ls<CR>:b
 nnoremap ,n :bn<CR>
 nnoremap ,b :bp<CR>
-nnoremap ,h :b#<CR>
+nnoremap ,m :b#<CR>
 
 " The following keybindings quickly open .vimrc (and load it), my wiki index
 " and i3 config file
 nnoremap <leader>v :e $MYVIMRC<CR>
-nnoremap <C-s> :source $MYVIMRC<CR>
+nnoremap <leader>s :source $MYVIMRC<CR>
 nnoremap <leader>i :call LaunchVimwiki()<CR>
 nnoremap <leader>c :e ~/repos/dotfiles/config<CR>
 nnoremap <leader>b :e ~/repos/dotfiles/dot.bashrc<CR>
@@ -611,3 +611,7 @@ function! VisualNumber()
 endfunction
 xnoremap in :<C-u>call VisualNumber()<CR>
 onoremap in :<C-u>normal vin<CR>
+
+" <C-j> and <C-k> add blank lines below and above respectively
+nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
