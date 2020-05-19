@@ -291,8 +291,11 @@ let g:cellmode_tmux_panenumber=1
 " clipboard, it must be compiled with the +clipboard. I usually use the binary
 " vim-gtk, which can be installed with
 " sudo apt install vim-gtk
-vmap <C-Y> "+y
-map <C-P> "+p
+vmap <C-y> "+y
+map <C-p> "+p
+
+" set incremental search
+set incsearch
 
 " vim-cellmode mappings
 " start ipython shell with <C-s>. Note that for this to work, you need to add stty -ixon to .bashrc
