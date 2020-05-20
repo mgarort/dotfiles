@@ -619,3 +619,8 @@ onoremap in :<C-u>normal vin<CR>
 " <C-j> and <C-k> add blank lines below and above respectively
 nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
+" Add mappings to make (save) current session and load it. Three <leader> to avoid doing
+" it by mistake
+nnoremap <leader><leader><leader>m :mksession! ~/.vim/saved_session<CR>
+nnoremap <leader><leader><leader>l :source ~/.vim/saved_session<CR>
