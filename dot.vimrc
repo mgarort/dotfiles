@@ -40,6 +40,7 @@ Plugin 'benmills/vimux'
 Plugin 'greghor/vim-pyShell'
 Plugin 'julienr/vim-cellmode'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'tomasiser/vim-code-dark'
@@ -47,6 +48,7 @@ Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'vimwiki/vimwiki'
 Plugin 'preservim/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'justinmk/vim-sneak'
 "Plugin 'kien/ctrlp.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -117,8 +119,7 @@ function! OpenThisHTML()
     "so Vim goes back to editing instead of hanging while Firefox is open
     execute "!firefox -new-window" full_path_to_html_file "&"  
 endfunction
-nmap <C-h> :call OpenThisHTML()<CR><CR>
-imap <C-h> <Esc>:call OpenThisHTML()<CR><CR>
+nmap ,h :call OpenThisHTML()<CR><CR>
 " Process images so that they use less space, and map keybinding to <C-c> (c
 " for compress)
 function! ProcessImages()
@@ -202,6 +203,9 @@ function! Wikify()
     %s/\\item/- /ge
     %s/\\begin{verbatim}/{{{>/ge
     %s/\\end{verbatim}/}}}/ge
+    %s#\\underline{\(.*\)}#<u>\1</u>#ge
+    %s#\\textbf{\(.*\)}#<b>\1</b>#ge
+    %s#\\textit{\(.*\)}#<i>\1</i>#ge
 endfunction
 " Make fuction to open Vimwiki index (in order to open the index with a simple
 " i3 keybinding)
@@ -224,6 +228,50 @@ function! CloseThisBuffer()
 endfunction
 nmap <Leader>wb <Plug>VimwikiGoBackLink
 nmap <BS> :call CloseThisBuffer()<CR>
+" Keybindings for time tracking with ti. <leader>t stands for time commands
+" Turn on with o
+function! OnTi()
+    let on_message = system('ti on $( date \+\%F ) --no-color')
+    echo on_message
+endfunction
+nnoremap <silent> <leader>t<leader>o :call OnTi()<CR>
+" Finish with f
+function! FinishTi()
+    let finish_message = system('ti fin --no-color')
+    echo finish_message
+endfunction
+nnoremap <silent> <leader>t<leader>f :call FinishTi()<CR>
+" Write log to current diary entry with w
+function! GetDiaryTime()
+    let title = getline('1')
+    let diary_date = split(title, ' ')[1]
+    let diary_date = substitute(diary_date, '\.', '-', 'g')
+    let diary_date_log = system('ti log | grep ' . diary_date)
+    if diary_date_log == ''
+        let diary_date_log = '0 seconds'
+    else
+        let diary_date_log = split(diary_date_log, ' ')[4:]
+        let diary_date_log = join(diary_date_log, ' ')
+    endif
+    return diary_date_log
+endfunction
+function! WriteTi()
+    let diary_date_log = GetDiaryTime()
+    execute "normal! ggo\<cr>\<cr>Time working:  " . diary_date_log . "\<cr>\<esc>"
+endfunction
+nnoremap <silent> <leader>t<leader>w :call WriteTi()<CR>
+" Display the log of the time spent on the current diary entry's date, rather than writing it
+function! LogTi()
+    let diary_date_log = GetDiaryTime()
+    echo diary_date_log
+endfunction
+nnoremap <silent> <leader>t<leader>l :call LogTi()<CR>
+" Display ti status
+function! StatusTi()
+    let status_message = system('ti status --no-color')
+    echo status_message
+endfunction
+nnoremap <silent> <leader>t<leader>s :call StatusTi()<CR>
 " Make diary note with template, instead of empty diary note. Note that it is
 " not so easy because if the note is already created then you don't want to
 " insert the template. You only want to insert the template the first time you
@@ -243,8 +291,11 @@ let g:cellmode_tmux_panenumber=1
 " clipboard, it must be compiled with the +clipboard. I usually use the binary
 " vim-gtk, which can be installed with
 " sudo apt install vim-gtk
-vmap <C-Y> "+y
-map <C-P> "+p
+vmap <C-y> "+y
+map <C-p> "+p
+
+" set incremental search
+set incsearch
 
 " vim-cellmode mappings
 " start ipython shell with <C-s>. Note that for this to work, you need to add stty -ixon to .bashrc
@@ -403,14 +454,15 @@ let g:netrw_liststyle = 3
 nnoremap ,l :ls<CR>:b
 nnoremap ,n :bn<CR>
 nnoremap ,b :bp<CR>
-nnoremap ,h :b#<CR>
+nnoremap ,m :b#<CR>
 
-" The following quickly opens my .vimrc and loads it
+" The following keybindings quickly open .vimrc (and load it), my wiki index
+" and i3 config file
 nnoremap <leader>v :e $MYVIMRC<CR>
 nnoremap <leader>s :source $MYVIMRC<CR>
-
-" And the following quickly opens my wiki index
 nnoremap <leader>i :call LaunchVimwiki()<CR>
+nnoremap <leader>c :e ~/repos/dotfiles/config<CR>
+nnoremap <leader>b :e ~/repos/dotfiles/dot.bashrc<CR>
 
 "python with virtualenv support TODO Check if you see any difference
 py3 << EOF
@@ -538,9 +590,9 @@ nnoremap <C-w><Bar> :Vex<CR><C-w>=
 " Useful text objects by romainl (there are more at https://gist.github.com/romainl/c0a8b57a36aec71a986f1120e1931f20)
 " 24 simple text objects
 " ----------------------
-" i_ i. i: i, i; i| i/ i\ i* i+ i- i#
-" a_ a. a: a, a; a| a/ a\ a* a+ a- a#
-for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '-', '#' ]
+" i_ i. i: i, i; i| i/ i\ i* i+ i- i# i=
+" a_ a. a: a, a; a| a/ a\ a* a+ a- a# a=
+for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '-', '#' , '=']
 	execute 'xnoremap i' . char . ' :<C-u>normal! T' . char . 'vt' . char . '<CR>'
 	execute 'onoremap i' . char . ' :normal vi' . char . '<CR>'
 	execute 'xnoremap a' . char . ' :<C-u>normal! F' . char . 'vf' . char . '<CR>'
@@ -561,6 +613,14 @@ function! VisualNumber()
 	normal v
 	call search('\(^\|[^0-9\.]\d\)', 'becW')
 endfunction
-" Added my own l at the end to avoid whitespace on the left being selected
-xnoremap in :<C-u>call VisualNumber()<CR>l
-onoremap in :<C-u>normal vin<CR>l
+xnoremap in :<C-u>call VisualNumber()<CR>
+onoremap in :<C-u>normal vin<CR>
+
+" <C-j> and <C-k> add blank lines below and above respectively
+nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
+" Add mappings to make (save) current session and load it. Three <leader> to avoid doing
+" it by mistake
+nnoremap <leader><leader><leader>m :mksession! ~/.vim/saved_session<CR>
+nnoremap <leader><leader><leader>l :source ~/.vim/saved_session<CR>
