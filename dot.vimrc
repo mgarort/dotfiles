@@ -617,9 +617,9 @@ endfunction
 xnoremap in :<C-u>call VisualNumber()<CR>
 onoremap in :<C-u>normal vin<CR>
 
-" <C-j> and <C-k> add blank lines below and above respectively
-nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+" <S-j> and <S-k> add blank lines below and above respectively
+nnoremap <silent><S-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><S-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " Add mappings to make (save) current session and load it. Three <leader> to avoid doing
 " it by mistake
@@ -628,13 +628,18 @@ nnoremap <leader><leader><leader>l :source ~/.vim/saved_session<CR>
 
 " Useful commands to view and navigate table (csv or tsv) files
 " - <C-h> and <C-l> scroll half a page laterally, similarly to <C-d> and <C-u>
+" - For consistency, set <C-j> and <C-k> to scroll up and down too. This is
+"   probably more ergonomic as well
 " - ,t activates view of the current buffer as  a table (remember that ,
 "   commands usually do something related to the current buffer)
+set nostartofline
 nnoremap <C-h> zH
 nnoremap <C-l> zL
+nnoremap <C-j> <C-d>
+nnoremap <C-k> <C-u>
 function! ViewTable()
     set nowrap
-    " The following command depends on the plugin 'mechatroner/rainbow_csv'
-    RainbowDelim
+    set nowrite
+    RainbowAlign
 endfunction
 nnoremap ,t :call ViewTable()<CR>
