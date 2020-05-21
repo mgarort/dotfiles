@@ -49,6 +49,7 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'preservim/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'justinmk/vim-sneak'
+Plugin 'mechatroner/rainbow_csv'
 "Plugin 'kien/ctrlp.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -475,7 +476,7 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 " CtrlP configuration
-let g:ctrlp_map = '<c-l>'
+let g:ctrlp_map = '<leader>l'
 let g:ctrlp_cmd = 'CtrlP'
 
 " Keep the window margin 3 lines away from the cursor
@@ -624,3 +625,16 @@ nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 " it by mistake
 nnoremap <leader><leader><leader>m :mksession! ~/.vim/saved_session<CR>
 nnoremap <leader><leader><leader>l :source ~/.vim/saved_session<CR>
+
+" Useful commands to view and navigate table (csv or tsv) files
+" - <C-h> and <C-l> scroll half a page laterally, similarly to <C-d> and <C-u>
+" - ,t activates view of the current buffer as  a table (remember that ,
+"   commands usually do something related to the current buffer)
+nnoremap <C-h> zH
+nnoremap <C-l> zL
+function! ViewTable()
+    set nowrap
+    " The following command depends on the plugin 'mechatroner/rainbow_csv'
+    RainbowDelim
+endfunction
+nnoremap ,t :call ViewTable()<CR>
