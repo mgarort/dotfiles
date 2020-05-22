@@ -634,7 +634,10 @@ nnoremap <leader><leader><leader>l :source ~/.vim/saved_session<CR>
 "   probably more ergonomic as well
 " - ,t activates view of the current buffer as  a table (remember that ,
 "   commands usually do something related to the current buffer)
+" - sidescroll=1 allows to move the screen by 1 position at a time when moving
+"   the cursor with h and l
 set nostartofline
+set sidescroll=1
 nnoremap <C-h> zH
 nnoremap <C-l> zL
 nnoremap <C-j> <C-d>
