@@ -668,3 +668,5 @@ nmap <leader><leader><leader><leader><leader><leader>l <Plug>VimwikiTabMakeDiary
 " Useful commands for terminal mode
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-p> <C-w>"+p
+
+" Silly comment for test commit
