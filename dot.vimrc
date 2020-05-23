@@ -297,9 +297,6 @@ let g:cellmode_tmux_panenumber=1
 vmap <C-y> "+y
 map <C-p> "+p
 
-" Being able to paste in terminal
-tnoremap <C-p> "+p
-
 " set incremental search
 set incsearch
 
@@ -566,11 +563,6 @@ cnoremap <C-a> <C-b>
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
 
-" Make mapping so that :q actually means :qa when in diff mode (i.e. when
-" using vimdiff
-"cnoremap <expr> q<CR> &diff ? 'qa<CR>' : 'q<CR>'
-"
-
 " Make mapping so that Shift-Arrow increase and reduce the window size in normal
 " mode. As with the Vimwiki diary mappings for <C-Arrow>, first you need to
 " freed <S-Arrow> and then map them.
@@ -623,6 +615,8 @@ xnoremap in :<C-u>call VisualNumber()<CR>
 onoremap in :<C-u>normal vin<CR>
 
 " <S-j> and <S-k> add blank lines below and above respectively
+" Note that this stills leaves H, M and L for moving the cursor
+" within the window
 nnoremap <silent><S-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><S-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
@@ -641,16 +635,50 @@ nnoremap <leader><leader><leader>l :source ~/.vim/saved_session<CR>
 "   the cursor with h and l
 set nostartofline
 set sidescroll=1
-nnoremap <S-h> zH
-nnoremap <S-l> zL
-nnoremap <S-j> <C-d>
-nnoremap <S-k> <C-u>
+nnoremap <C-q> zH
+nnoremap <C-s> zL
 function! ViewTable()
     set nowrap
     set nowrite
     RainbowAlign
 endfunction
 nnoremap ,t :call ViewTable()<CR>
+
+" COMMANDS USEFUL FOR TERMINAL
+" Opening terminal, setting it to open below. Use <leader><CR>, similarly to how you 
+" open a terminal in i3 with $mod+<CR>
+nnoremap <leader><CR> :term ++close ++rows=12<CR>
+set splitbelow
+" Close terminal with <C-d> similar to how you close a terminal everywhere
+" else
+tnoremap <C-d> exit<CR>:q<CR>
+" Getting to terminal mode with just pressing <Esc>. Both mappings, <Esc> and
+" <Esc><Esc> are needed, since:
+" - If we map only <Esc>, using the arrow keys (to go to previous commands,
+"   for instance) won't work and will put the terminal in normal mode, since
+"   arrow keys are represented with a code starting with <Esc>
+" - If we map only <Esc><Esc>, pressing <Esc> and waiting for 1s doesnt' put
+"   the terminal in normal mode
+" - If we map both <Esc> and <Esc><Esc>, we can use the arrow keys and we can
+"   go into terminal mode either by pressing <Esc> and waiting for 1s, and by
+"   pressing <Esc> twice quickly
+tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc><Esc> <C-\><C-n>
+
+" Zooming in and out of windows and terminals (using a single new tab)
+function! ZoomInCurrentWindow()
+    let current_tabpage = tabpagenr()
+    if current_tabpage > 1
+        quit
+    else
+        let cursor_position = getcurpos()
+        tabe %
+        call setpos('.', cursor_position)
+    endif
+endfunction
+nnoremap <C-w>z  :call ZoomInCurrentWindow()<CR>
+tnoremap <C-w>z  <C-\><C-N>:call ZoomInCurrentWindow()<CR>i
+"nnoremap <C-w>z  :tabe %<CR> 
 
 " Change windows 
 nnoremap <C-k> <C-w>k
@@ -659,14 +687,10 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 tnoremap <C-k> <C-w>k
 tnoremap <C-j> <C-w>j
-tnoremap <C-l> <C-w>l
-tnoremap <C-h> <C-w>h
-
+" <C-h> and <C-l> are not mapped in the terminal because <C-l> is supposed to
+" clear the screen in the terminal
 " Freed <C-l> in Netrw
-nmap <leader><leader><leader><leader><leader><leader>l <Plug>VimwikiTabMakeDiaryNote
+nmap <leader><leader><leader><leader><leader><leader>l <Plug>NetrwRefresh
 
-" Useful commands for terminal mode
-tnoremap <Esc> <C-\><C-n>
+" Copying in terminal mode (same as copying to clipboard in normal mode)
 tnoremap <C-p> <C-w>"+p
-
-" Silly comment for test commit
