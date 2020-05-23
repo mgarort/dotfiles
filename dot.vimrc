@@ -295,6 +295,9 @@ let g:cellmode_tmux_panenumber=1
 vmap <C-y> "+y
 map <C-p> "+p
 
+" Being able to paste in terminal
+tnoremap <C-p> "+p
+
 " set incremental search
 set incsearch
 
@@ -636,13 +639,30 @@ nnoremap <leader><leader><leader>l :source ~/.vim/saved_session<CR>
 "   the cursor with h and l
 set nostartofline
 set sidescroll=1
-nnoremap <C-h> zH
-nnoremap <C-l> zL
-nnoremap <C-j> <C-d>
-nnoremap <C-k> <C-u>
+nnoremap <S-h> zH
+nnoremap <S-l> zL
+nnoremap <S-j> <C-d>
+nnoremap <S-k> <C-u>
 function! ViewTable()
     set nowrap
     set nowrite
     RainbowAlign
 endfunction
 nnoremap ,t :call ViewTable()<CR>
+
+" Change windows 
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+tnoremap <C-k> <C-w>k
+tnoremap <C-j> <C-w>j
+tnoremap <C-l> <C-w>l
+tnoremap <C-h> <C-w>h
+
+" Freed <C-l> in Netrw
+nmap <leader><leader><leader><leader><leader><leader>l <Plug>VimwikiTabMakeDiaryNote
+
+" Useful commands for terminal mode
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-p> <C-w>"+p
