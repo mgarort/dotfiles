@@ -665,20 +665,51 @@ tnoremap <C-d> exit<CR>:q<CR>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <Esc><Esc> <C-\><C-n>
 
-" Zooming in and out of windows and terminals (using a single new tab)
+" Zooming in and out of windows and terminals (using a single new tab) THIS
+" VERSIO DOESN'T WORK BECAUSE IT LEAVES THE TERMINAL IN NORMAL MODE
+"function! ZoomInCurrentWindow()
+"    " Check if current window/tab is already zoomed in
+"    if exists("t:is_zoomed")
+"        " Save cursor position
+"        let l:cursor_position = getcurpos()
+"        " Save info about where to go back to once tab is closed
+"        let l:original_tab = t:original_tab
+"        let l:original_window = t:original_window
+"        " Close tab and go back to original window
+"        " tabclose
+"        quit
+"        execute "tabn " . l:original_tab
+"        execute "wincmd " . l:original_window
+"        call setpos('.', l:cursor_position)
+"    " If not already zoomed in, zoom in
+"    else
+"        " Save the original tab, window and cursor positions in a function
+"        " variable, and then in a tab variable
+"        let l:original_tab = tabpagenr()
+"        let l:original_window = winnr()
+"        let l:cursor_position = getcurpos()
+"        " Create new tab and put cursor in same position as before
+"        tabe %
+"        call setpos('.', l:cursor_position)
+"        " Say that the current tab is zoomed, and save where we should go back
+"        " to when zoom stops
+"        let t:is_zoomed = 1 
+"        let t:original_tab = l:original_tab
+"        let t:original_window = l:original_window
+"    endif
+"endfunction
 function! ZoomInCurrentWindow()
-    let current_tabpage = tabpagenr()
-    if current_tabpage > 1
+    if exists("w:is_zoomed")
         quit
     else
         let cursor_position = getcurpos()
         tabe %
         call setpos('.', cursor_position)
+        let w:is_zoomed = 1
     endif
 endfunction
 nnoremap <C-w>z  :call ZoomInCurrentWindow()<CR>
 tnoremap <C-w>z  <C-\><C-N>:call ZoomInCurrentWindow()<CR>i
-"nnoremap <C-w>z  :tabe %<CR> 
 
 " Change windows 
 nnoremap <C-k> <C-w>k
