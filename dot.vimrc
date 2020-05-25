@@ -50,6 +50,7 @@ Plugin 'preservim/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'justinmk/vim-sneak'
 Plugin 'mechatroner/rainbow_csv'
+Plugin 'qpkorr/vim-bufkill'
 "Plugin 'kien/ctrlp.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -702,7 +703,9 @@ tnoremap <Esc><Esc> <C-\><C-n>
 "endfunction
 function! ZoomInCurrentWindow()
     if exists("w:is_zoomed")
+        let cursor_position = getcurpos()
         quit
+        call setpos('.', cursor_position)
     else
         let cursor_position = getcurpos()
         tabe %
