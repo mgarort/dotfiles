@@ -36,9 +36,9 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Comment out YouCompleteMe if in a cluster where you cannot compile it
 Plugin 'ycm-core/YouCompleteMe'
-Plugin 'benmills/vimux'
-Plugin 'greghor/vim-pyShell'
-Plugin 'julienr/vim-cellmode'
+"Plugin 'benmills/vimux'
+"Plugin 'greghor/vim-pyShell'
+"Plugin 'julienr/vim-cellmode'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'honza/vim-snippets'
@@ -226,7 +226,7 @@ function! CloseThisBuffer()
     if bufname("%") == ""
         q
     else
-        bd
+        BD
     endif
 endfunction
 nmap <Leader>wb <Plug>VimwikiGoBackLink
@@ -285,6 +285,9 @@ nnoremap <silent> <leader>t<leader>s :call StatusTi()<CR>
 " Here ends my vimwiki configuration
 
 
+" Make new windows open below and to the right
+set splitbelow
+set splitright
 
 " so that vim-cellmode sends code from the cell to the right pane
 let g:cellmode_tmux_panenumber=1
@@ -583,7 +586,8 @@ nnoremap <S-Right> <C-w>>
 " Make mapping so that  <C-w>_ and <C-w>| create horizontal and vertical
 " splits respectively
 nnoremap <C-w>_ :Hex<CR><C-w>=
-nnoremap <C-w><Bar> :Vex<CR><C-w>=
+" Vex! creates the split to the right
+nnoremap <C-w><Bar> :Vex!<CR><C-w>=
 
 " Useful text objects by romainl (there are more at https://gist.github.com/romainl/c0a8b57a36aec71a986f1120e1931f20)
 " 24 simple text objects
@@ -645,10 +649,8 @@ endfunction
 nnoremap ,t :call ViewTable()<CR>
 
 " COMMANDS USEFUL FOR TERMINAL
-" Opening terminal, setting it to open below. Use <leader><CR>, similarly to how you 
-" open a terminal in i3 with $mod+<CR>
+" Open terminal with <leader><CR>, similarly to how you open a terminal in i3 with $mod+<CR>
 nnoremap <leader><CR> :term ++close ++rows=12<CR>
-set splitbelow
 " Close terminal with <C-d> similar to how you close a terminal everywhere
 " else
 tnoremap <C-d> exit<CR>:q<CR>
@@ -725,3 +727,39 @@ nmap <leader><leader><leader><leader><leader><leader>l <Plug>NetrwRefresh
 
 " Copying in terminal mode (same as copying to clipboard in normal mode)
 tnoremap <C-p> <C-w>"+p
+
+" Make it easy to scroll in Vim terminal by going into normal mode with the
+" scroll wheel, and going out of it with right click
+function! ExitNormalMode()
+    unmap <buffer> <silent> <RightMouse>
+    call feedkeys("a")
+endfunction
+function! EnterNormalMode()
+    if &buftype == 'terminal' && mode('') == 't'
+        call feedkeys("\<c-w>N")
+        call feedkeys("\<c-y>")
+        map <buffer> <silent> <RightMouse> :call ExitNormalMode()<CR>
+    endif
+endfunction
+tmap <silent> <ScrollWheelUp> <c-w>:call EnterNormalMode()<CR>
+
+" Command to copy contents of cell
+function! CopyCell()
+    " Save content of clipboard in unused register
+    let @z = getreg('+')
+    " Copy cell (delimited by ##{ and ##}) to clipboard
+    let @+ = ''
+    exe '?##{?+1;/##}/-1y +'
+    " Paste clipboard to IPython command line, using IPython's %paste magic
+    wincmd j
+    call term_sendkeys(bufnr("%"), "%paste\<CR>")
+    wincmd k
+    " Recover the content of the clipboard (cannot do this because the
+    " terminal is executed after recovering the clipboard)
+    "echo getreg('+')
+    "let @+ = getreg('z')
+endfunction
+nnoremap <silent> <C-b> :call CopyCell()<CR>
+ 
+
+
