@@ -301,9 +301,6 @@ let g:cellmode_tmux_panenumber=1
 vmap <C-y> "+y
 map <C-p> "+p
 
-" set incremental search
-set incsearch
-
 " vim-cellmode mappings
 " start ipython shell with <C-s>. Note that for this to work, you need to add stty -ixon to .bashrc
 nmap <C-s> :call StartPyShell()<CR>
