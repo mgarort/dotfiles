@@ -44,9 +44,9 @@ Plugin 'tpope/vim-repeat'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'tomasiser/vim-code-dark'
-Plugin 'xuhdev/vim-latex-live-preview'
+"Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'vimwiki/vimwiki'
-Plugin 'preservim/nerdtree'
+"Plugin 'preservim/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'justinmk/vim-sneak'
 Plugin 'mechatroner/rainbow_csv'
@@ -121,6 +121,20 @@ function! OpenThisHTML()
     "so Vim goes back to editing instead of hanging while Firefox is open
     execute "!firefox -new-window" full_path_to_html_file "&"  
 endfunction
+"function! OpenThisPDF()
+"    let path_to_html_folder = expand(g:vimwiki_list[0]['path_html']) . '/'
+"    let full_path_to_wiki_file = expand('%:p')
+"    let note_name_with_wiki_extension = split(full_path_to_wiki_file, '/wiki/')[-1]
+"    let note_name = split(note_name_with_wiki_extension, '\.wiki')[0]
+"    " The quotes around make sure that firefox receives the full path instead
+"    " of just the path up to the first parenthesis
+"    let full_path_to_html_file = "'" . path_to_html_folder . note_name . ".html'"
+"    let full_path_to_pdf_file  = "'./pdf" . path_to_html_folder . note_name . ".html'"
+"    execute  "wkhtmltopdf -L 25mm -R 25mm -T 25mm -B 25mm" . full_path_to_html_file 2020-05-22\ Andreas.pdf
+"    "The & at the end guarantees that firefox is executed in the background,
+"    "so Vim goes back to editing instead of hanging while Firefox is open
+"    execute "!firefox -new-window" full_path_to_html_file "&"  
+"endfunction
 nmap ,h :call OpenThisHTML()<CR><CR>
 " Process images so that they use less space, and map keybinding to <C-c> (c
 " for compress)
@@ -425,13 +439,13 @@ if &term =~ "xterm\\|rxvt"
 endif
 
 " NERDTree keybindings
-nmap <F10> :NERDTree<CR>
-imap <F10> <Esc>:NERDTree<CR>i
-" When a file is selected, NERDTree quits instead of haning around and taking
-" screen space
-let g:NERDTreeQuitOnOpen = 1
+"nmap <F10> :NERDTree<CR>
+"imap <F10> <Esc>:NERDTree<CR>i
+"" When a file is selected, NERDTree quits instead of haning around and taking
+"" screen space
+"let g:NERDTreeQuitOnOpen = 1
 " If NERDTree is the last and only buffer, then Vim quits
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Netrw keybindings similar to NERDTree
 " This hides the annoying netrw banner
@@ -761,5 +775,8 @@ function! CopyCell()
 endfunction
 nnoremap <silent> <C-b> :call CopyCell()<CR>
  
-
-
+" Set path to search recursively for all the directories in the respos folder 
+" Using ** is not the best option because it may take a very long time, but
+" for my number of files it is ok
+set path=~/repos/**
+nnoremap <leader>f :find 
