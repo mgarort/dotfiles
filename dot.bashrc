@@ -131,9 +131,9 @@ alias zotero='/opt/Zotero_linux-x86_64/zotero'
 alias mhg='source /home/mgarort/housekeeping/virtualenv/mhg/bin/activate'
 alias python=python3
 alias topos='source /home/mgarort/housekeeping/virtualenv/topos/bin/activate'
-export RDBASE='/home/mgarort/housekeeping/rdkit-Release_2020_03_2'
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$RDBASE/lib"
-export PYTHONPATH="$PYTHONPATH:$HOME/repos/utils:$RDBASE"
+#export RDBASE='/home/mgarort/housekeeping/rdkit-Release_2020_03_2'
+#export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$RDBASE/lib"
+export PYTHONPATH="$PYTHONPATH:$HOME/repos/utils"
 #export BOOST_ROOT='/home/mgarort/housekeeping/boost_1_73_0'
 #export BOOST_LIBRARYDIR='/home/mgarort/housekeeping/boost_1_73_0/libs'
 export PATH="$PATH:~/housekeeping/bin"
@@ -201,3 +201,7 @@ PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
 [[ -f "${HOME}/.cwd" ]] && cd "$(< ${HOME}/.cwd)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
+# This will source initialize_conda.sh (needed to create or activate any conda environment) and activate the rdkit_environment
+alias activate_rdkit='source ~/housekeeping/initialize_conda.sh; conda activate rdkit'
