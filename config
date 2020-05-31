@@ -229,8 +229,8 @@ bindsym $mod+F2 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-000
 # Then, add the following line at the end:
 # user host = (root) NOPASSWD: /bin/brightness  , for example
 # mgarort hyperion = (root) NOPASSWD: /bin/brightness
-bindsym $mod+F3 exec sudo /bin/brightness -10
-bindsym $mod+F4 exec sudo /bin/brightness 10
+bindsym $mod+F3 exec sudo /bin/brightness -5
+bindsym $mod+F4 exec sudo /bin/brightness 5
 
 # General system control
 # The next command put the system in a state of deep sleep, too deep, so sound didn't work in headphones after awakening
