@@ -713,12 +713,11 @@ tnoremap <Esc><Esc> <C-\><C-n>
 "    endif
 "endfunction
 function! ZoomInCurrentWindow()
+    let cursor_position = getcurpos()
     if exists("w:is_zoomed")
-        let cursor_position = getcurpos()
         quit
         call setpos('.', cursor_position)
     else
-        let cursor_position = getcurpos()
         tabe %
         call setpos('.', cursor_position)
         let w:is_zoomed = 1
