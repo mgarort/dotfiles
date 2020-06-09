@@ -226,6 +226,7 @@ function! Wikify()
     %s#\\textbf{\(.*\)}#<b>\1</b>#ge
     %s#\\textit{\(.*\)}#<i>\1</i>#ge
 endfunction
+command Wikify call Wikify()
 " Make fuction to open Vimwiki index (in order to open the index with a simple
 " i3 keybinding)
 function! LaunchVimwiki()
