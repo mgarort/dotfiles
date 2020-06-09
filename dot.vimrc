@@ -300,6 +300,8 @@ nnoremap <silent> <leader>t<leader>s :call StatusTi()<CR>
 " Here ends my vimwiki configuration
 
 
+
+
 " Make new windows open below and to the right
 set splitbelow
 set splitright
@@ -314,6 +316,8 @@ let g:cellmode_tmux_panenumber=1
 " sudo apt install vim-gtk
 vmap <C-y> "+y
 map <C-p> "+p
+vmap <C-c> d:let @+ = @"<CR>i
+
 
 " vim-cellmode mappings
 " start ipython shell with <C-s>. Note that for this to work, you need to add stty -ixon to .bashrc
@@ -784,3 +788,6 @@ nnoremap <silent> <C-b> :call CopyCell()<CR>
 " for my number of files it is ok
 set path=~/repos/**
 nnoremap <leader>f :find 
+
+" Disable vim-sneak highlight so that it behaves more like the f and t motions
+hi! link Sneak Normal
