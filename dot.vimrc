@@ -44,13 +44,14 @@ Plugin 'tpope/vim-repeat'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'tomasiser/vim-code-dark'
-"Plugin 'xuhdev/vim-latex-live-preview'
+Plugin 'lervag/vimtex'
 Plugin 'vimwiki/vimwiki'
 "Plugin 'preservim/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'justinmk/vim-sneak'
 Plugin 'mechatroner/rainbow_csv'
 Plugin 'qpkorr/vim-bufkill'
+Plugin 'tpope/vim-fugitive'
 "Plugin 'kien/ctrlp.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -683,46 +684,17 @@ tnoremap <C-d> exit<CR>:q<CR>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <Esc><Esc> <C-\><C-n>
 
-" Zooming in and out of windows and terminals (using a single new tab) THIS
-" VERSIO DOESN'T WORK BECAUSE IT LEAVES THE TERMINAL IN NORMAL MODE
-"function! ZoomInCurrentWindow()
-"    " Check if current window/tab is already zoomed in
-"    if exists("t:is_zoomed")
-"        " Save cursor position
-"        let l:cursor_position = getcurpos()
-"        " Save info about where to go back to once tab is closed
-"        let l:original_tab = t:original_tab
-"        let l:original_window = t:original_window
-"        " Close tab and go back to original window
-"        " tabclose
-"        quit
-"        execute "tabn " . l:original_tab
-"        execute "wincmd " . l:original_window
-"        call setpos('.', l:cursor_position)
-"    " If not already zoomed in, zoom in
-"    else
-"        " Save the original tab, window and cursor positions in a function
-"        " variable, and then in a tab variable
-"        let l:original_tab = tabpagenr()
-"        let l:original_window = winnr()
-"        let l:cursor_position = getcurpos()
-"        " Create new tab and put cursor in same position as before
-"        tabe %
-"        call setpos('.', l:cursor_position)
-"        " Say that the current tab is zoomed, and save where we should go back
-"        " to when zoom stops
-"        let t:is_zoomed = 1 
-"        let t:original_tab = l:original_tab
-"        let t:original_window = l:original_window
-"    endif
-"endfunction
+" Maximize and minimize windows
 function! ZoomInCurrentWindow()
+    let bufnum = winbufnr(0) "Needed because setpos() doesn't work across buffers. See https://github.com/vim/vim/issues/1621
     let cursor_position = getcurpos()
     if exists("w:is_zoomed")
         quit
+        execute "b" . bufnum
         call setpos('.', cursor_position)
     else
         tabe %
+        execute "b" . bufnum
         call setpos('.', cursor_position)
         let w:is_zoomed = 1
     endif
