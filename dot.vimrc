@@ -764,3 +764,6 @@ nnoremap <leader>f :find
 
 " Disable vim-sneak highlight so that it behaves more like the f and t motions
 hi! link Sneak Normal
+
+" Vimtex configuration
+let g:vimtex_view_method = 'zathura'
