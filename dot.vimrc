@@ -226,7 +226,7 @@ function! Wikify()
     %s#\\textbf{\(.*\)}#<b>\1</b>#ge
     %s#\\textit{\(.*\)}#<i>\1</i>#ge
 endfunction
-command Wikify call Wikify()
+command! Wikify call Wikify()
 " Make fuction to open Vimwiki index (in order to open the index with a simple
 " i3 keybinding)
 function! LaunchVimwiki()
@@ -319,6 +319,8 @@ let g:cellmode_tmux_panenumber=1
 vmap <C-y> "+y
 map <C-p> "+p
 vmap <C-c> d:let @+ = @"<CR>i
+" Copy the last Vim selection to clipboard
+nmap <leader>+ :let @+=@"<CR>
 
 
 " vim-cellmode mappings
@@ -499,7 +501,7 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 " CtrlP configuration
-let g:ctrlp_map = '<leader>l'
+let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 
 " Keep the window margin 3 lines away from the cursor
@@ -767,3 +769,7 @@ hi! link Sneak Normal
 
 " Vimtex configuration
 let g:vimtex_view_method = 'zathura'
+nmap <localleader>lw :VimtexCountWords<CR>
+" CHECK IF THE FOLLOWING WORKS. It is supposed to be a list of regex to
+" filter. It DOESN'T WORK TODO 
+ let g:vimtex_log_ignore = ['^.*Warning.*$']
