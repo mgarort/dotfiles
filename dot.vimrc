@@ -36,9 +36,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Comment out YouCompleteMe if in a cluster where you cannot compile it
 Plugin 'ycm-core/YouCompleteMe'
-"Plugin 'benmills/vimux'
-"Plugin 'greghor/vim-pyShell'
-"Plugin 'julienr/vim-cellmode'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'honza/vim-snippets'
@@ -46,13 +43,11 @@ Plugin 'SirVer/ultisnips'
 Plugin 'tomasiser/vim-code-dark'
 Plugin 'lervag/vimtex'
 Plugin 'vimwiki/vimwiki'
-"Plugin 'preservim/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'justinmk/vim-sneak'
 Plugin 'mechatroner/rainbow_csv'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'tpope/vim-fugitive'
-"Plugin 'kien/ctrlp.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -72,11 +67,6 @@ filetype plugin indent on    " required
 
 " MY OWN STUFF 
 
-" emulate Visual Studio Code colorscheme
-" Removed from now because I've switched to using the function
-" AutomaticColorscheme
-"colorscheme codedark
-"
 " Here starts my vimwiki configuration
 " vimwiki configuration (may clash with Vundle configuration)
 set nocompatible
@@ -446,14 +436,6 @@ if &term =~ "xterm\\|rxvt"
   " use \003]12;gray\007 for gnome-terminal
 endif
 
-" NERDTree keybindings
-"nmap <F10> :NERDTree<CR>
-"imap <F10> <Esc>:NERDTree<CR>i
-"" When a file is selected, NERDTree quits instead of haning around and taking
-"" screen space
-"let g:NERDTreeQuitOnOpen = 1
-" If NERDTree is the last and only buffer, then Vim quits
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Netrw keybindings similar to NERDTree
 " This hides the annoying netrw banner
