@@ -131,17 +131,25 @@ alias zotero='/opt/Zotero_linux-x86_64/zotero'
 alias mhg='source /home/mgarort/housekeeping/virtualenv/mhg/bin/activate'
 alias python=python3
 alias topos='source /home/mgarort/housekeeping/virtualenv/topos/bin/activate'
+alias chembl='source /home/mgarort/housekeeping/environments/chembl/bin/activate'
 #export RDBASE='/home/mgarort/housekeeping/rdkit-Release_2020_03_2'
 #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$RDBASE/lib"
-export PYTHONPATH="$PYTHONPATH:$HOME/repos/utils"
+export PYTHONPATH="$PYTHONPATH:$HOME/repos/utils:$HOME/repos/guatask"
 #export BOOST_ROOT='/home/mgarort/housekeeping/boost_1_73_0'
 #export BOOST_LIBRARYDIR='/home/mgarort/housekeeping/boost_1_73_0/libs'
-export PATH="$PATH:~/housekeeping/bin"
+export PATH="$PATH:/home/mgarort/housekeeping/bin"
 alias ssh='ssh -X'
 alias x='xdg-open'
-alias d='cd ~/repos/dotfiles'
+alias dock='cd ~/repos/docking'
 alias r='cd ~/repos'
 alias p='cd ~/playground'
+alias wi='cd ~/repos/wiki'
+alias u='cd ~/repos/utils'
+alias dotv='cd ~/repos/dotvim'
+alias dotf='cd ~/repos/dotfiles'
+alias gua='cd ~/repos/guatask'
+
+export PREPARE_LIGAND_SCRIPT='/home/mgarort/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py'
 
 carl='/home/mgarort/7_MGM/roation_with_Rasmussen_Roman/'
 shopt -s direxpand
