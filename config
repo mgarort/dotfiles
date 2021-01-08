@@ -24,8 +24,9 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal from the current directory. Requires installing the command xcwd from https://github.com/schischi/xcwd
-bindsym $mod+Return exec "urxvt -cd `xcwd`"
+# start a terminal from the current director
+# TODO Consider changing for an application that doesn't require compiling, like https://gist.github.com/viking/5851049y. Requires installing the command xcwd from https://github.com/schischi/xcwd
+bindsym $mod+Return exec "urxvt -cd `xcwd`" 
 # bindsym $mod+Return exec gnome-terminal --working-directory `xcwd`
 #bindsym $mod+Return exec xfce4-terminal
 
@@ -75,7 +76,8 @@ bindsym $mod+z fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking   I have never used the stacked layout so I'll keep this keybinding for Anki notes (since s is next to a in the keyboard)
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+e layout toggle split
+bindsym $mod+e layout splith
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -188,6 +190,7 @@ bindsym $mod+r  exec urxvt -e ranger
 #bindsym $mod+r exec xfce4-terminal -e ranger
 bindsym $mod+f exec firefox 
 bindsym $mod+m exec rhythmbox
+bindsym $mod+p exec urxvt -e htop 
 # bindsym $mod+i exec urxvt -e htop Removed from now because I will ise $mod+i to open i3 configuration file
 #bindsym $mod+i exec gnome-terminal -e htop
 #bindsym $mod+i exec xfce4-terminal -e htop
@@ -206,7 +209,7 @@ bindsym $mod+i exec urxvt -e bash -ci "vim -c 'call LaunchVimwiki()'"
 #bindsym $mod+s exec "xfce4-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
 bindsym $mod+n exec "nautilus `xcwd`"
 bindsym $mod+equal exec teams
-bindsym $mod+s exec flameshot
+bindsym Print exec flameshot gui
 
 
 # Pulse Audio controls
@@ -231,6 +234,8 @@ bindsym $mod+F2 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-000
 # mgarort hyperion = (root) NOPASSWD: /bin/brightness
 bindsym $mod+F3 exec sudo /bin/brightness -5
 bindsym $mod+F4 exec sudo /bin/brightness 5
+# bindsym $mod+F3 exec xrandr --output eDP-1 --brightness 0.3
+# bindsym $mod+F4 exec xrandr --output eDP-1 --brightness 0.75
 
 # General system control
 # The next command put the system in a state of deep sleep, too deep, so sound didn't work in headphones after awakening
@@ -253,3 +258,7 @@ bindsym $mod+F7 exec xrandr --output DP-1 --rotate inverted; exec xrandr --outpu
 
 # Keyboard configuration
 exec setxkbmap -layout us -variant intl
+
+
+# Start nm-applet (supposedly this allows to use network manager)   https://faq.i3wm.org/question/2/how-can-i-use-networkmanager-with-i3.1.html
+# exec --no-startup-id nm-applet
