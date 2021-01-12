@@ -114,6 +114,8 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# TODO Check all the configurations by default, see if any of them
+# are useful, and discard the rest
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -174,7 +176,10 @@ bar {
 # xinput get-button-map 10         where 10 is the id of the touchpad, I obtain
 # 1 2 3 4 5 6 7          therefore, I need to change this to 1 0 3 4 5 6 7 to disable the middle button
 #                               and I need to change this to 1 1 3 4 5 6 7 to make the middle button part of the left button
-exec_always --no-startup-id xinput set-button-map 10 1 0 3 4 5 6 7
+
+# Get the id of the touchpad (apparently it's not always 10; sometimes it's 11)
+set $touchpad_id $( xinput | grep Touchpad | awk '{split($6,array,"="); print array[2]}' )
+exec_always --no-startup-id xinput set-button-map $touchpad_id 1 0 3 4 5 6 7
 
 
 # Resizing windows by 8 in i3 using keyboard only
@@ -195,13 +200,24 @@ bindsym $mod+p exec urxvt -e htop
 #bindsym $mod+i exec xfce4-terminal -e htop
 # bindsym $mod+c exec urxvt -e env DG_CURRENT_DESKTOP=GNOME gnome-control-center # Settings, this doesn't work
 bindsym $mod+Shift+w exec nm-connection-editor  # Wifi, but only to edit the wifi connections, not to connect
-bindsym $mod+c exec google-chrome
+bindsym $mod+g exec google-chrome
 bindsym $mod+a exec anki
 # To create an anki note, use $mod+s, which is next to $mod+a (for anki). This opens the note template, which could be stored anywhere
 # (I have commented this out for now, to freed s for screenshot)
 # bindsym $mod+s exec "urxvt -e vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex"
 # To open Vimwiki's index (i for index)
 bindsym $mod+i exec urxvt -e bash -ci "vim -c 'call LaunchVimwiki()'"
+# Start ssh. Use a mode "ssh" so that you can bind to multiple remote
+# machines, all of them through $mod+s
+bindsym $mod+s mode "ssh"
+mode "ssh"{
+    bindsym g exec urxvt -e bash -ci "ssh hpc_cam_gpu"; mode "default"
+    bindsym c exec urxvt -e bash -ci "ssh hpc_cam_cpu"; mode "default"
+    bindsym $mod+s mode "default"
+}
+# Reload i3 config (similar to Vim <leader>c, which is also related to i3 config
+# since it opens the i3 config)
+bindsym $mod+c exec urxvt -e i3-msg reload
 # To open i3 configuration file (think of a keybinding)
 # bindsym $mod+i exec "urxvt -e vim -c 'e ~/.config/i3/config'"
 # bindsym $mod+s exec "gnome-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
