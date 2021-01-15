@@ -91,6 +91,7 @@ bindsym $mod+space focus mode_toggle
 #bindsym $mod+d focus child
 
 # switch to workspace
+bindsym $mod+grave workspace 0
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -101,8 +102,20 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+minus workspace 11
+bindsym $mod+equal workspace 12
+
+# My usual normal usage for workspaces:
+# 0 (grave `): for remote sessions through ssh
+# 1: for local sessions in my laptop
+# 2: for Firefox
+# 3: for Vimwiki
+# 4: for Nautilus and other graphical programs
+# 11 (minus -): for Teams
+# 12 (equal =): for music
 
 # move focused container to workspace
+bindsym $mod+Shift+grave move container to workspace 0
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
@@ -113,6 +126,8 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+minus move container to workspace 11
+bindsym $mod+Shift+equal move container to workspace 12
 
 # TODO Check all the configurations by default, see if any of them
 # are useful, and discard the rest
@@ -211,8 +226,8 @@ bindsym $mod+i exec urxvt -e bash -ci "vim -c 'call LaunchVimwiki()'"
 # machines, all of them through $mod+s
 bindsym $mod+s mode "ssh"
 mode "ssh"{
-    bindsym g exec urxvt -e bash -ci "ssh hpc_cam_gpu"; mode "default"
-    bindsym c exec urxvt -e bash -ci "ssh hpc_cam_cpu"; mode "default"
+    bindsym $mod+g exec urxvt -e bash -ci "ssh -X hpc_cam_gpu"; mode "default"
+    bindsym $mod+c exec urxvt -e bash -ci "ssh -X hpc_cam_cpu"; mode "default"
     bindsym $mod+s mode "default"
 }
 # Reload i3 config (similar to Vim <leader>c, which is also related to i3 config
@@ -223,9 +238,20 @@ bindsym $mod+c exec urxvt -e i3-msg reload
 # bindsym $mod+s exec "gnome-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
 #bindsym $mod+s exec "xfce4-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
 bindsym $mod+n exec "nautilus `xcwd`"
-bindsym $mod+equal exec teams
+# bindsym $mod+equal exec teams
 bindsym Print exec flameshot gui
 
+
+# Mode "o" for office related things
+bindsym $mod+o mode "office"
+mode "office"{
+    bindsym $mod+t exec teams; mode "default"
+    # Create keybindings for:
+    # - Office
+    # - Dropbox
+    # - etc...
+    bindsym $mod+o mode "default"
+}
 
 # Pulse Audio controls
 # The next 2 ones were always commented
