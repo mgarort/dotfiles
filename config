@@ -108,8 +108,8 @@ bindsym $mod+equal workspace 12
 # My usual normal usage for workspaces:
 # 0 (grave `): for remote sessions through ssh
 # 1: for local sessions in my laptop
-# 2: for Firefox
-# 3: for Vimwiki
+# 2: for Vimwiki
+# 3: for Firefox
 # 4: for Nautilus and other graphical programs
 # 11 (minus -): for Teams
 # 12 (equal =): for music
@@ -174,6 +174,8 @@ bar {
         bindsym button3 nop
         bindsym button4 nop
         bindsym button5 nop
+        bindsym button6 nop
+        bindsym button7 nop
 }
 
 # MY OWN COMMANDS
