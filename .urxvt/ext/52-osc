@@ -3,6 +3,7 @@
 # This script adds OSC52 support to urxvt. Must be placed in ~/.urxvt/ext/52-osc
 # and loaded with the line       URxvt.perl-ext-common: 52-osc
 # in your ~/.Xdefaults
+# Taken from https://github.com/parantapa/dotfiles/blob/master/urxvt-perl/52-osc
 
 =head1 NAME
 52-osc - Implement OSC 32 ; Interact with X11 clipboard
