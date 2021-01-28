@@ -123,36 +123,76 @@ fi
 # ADDITIONAL COMMANDS BY ME
 #export PS1='$(pwd) $'
 #export PS1="\e[01;32m $PS1 \e[m"
-alias ls='ls --color'
-alias ml='source ~/housekeeping/environments/ml/bin/activate'
-alias ml2='source ~/housekeeping/virtualenv/ml2/bin/activate'
-alias youtube='source ~/housekeeping/virtualenv/youtube/bin/activate'
+alias ls='ls -v --color'
+alias activate_ml='source ~/housekeeping/environments/ml/bin/activate'
+alias activate_ml2='source ~/housekeeping/virtualenv/ml2/bin/activate'
+alias activate_youtube='source ~/housekeeping/virtualenv/youtube/bin/activate'
 alias zotero='/opt/Zotero_linux-x86_64/zotero'
-alias mhg='source /home/mgarort/housekeeping/virtualenv/mhg/bin/activate'
-alias python=python3
+alias activate_mhg='source /home/mgarort/housekeeping/virtualenv/mhg/bin/activate'
+#alias python=python3
 alias topos='source /home/mgarort/housekeeping/virtualenv/topos/bin/activate'
-alias chembl='source /home/mgarort/housekeeping/environments/chembl/bin/activate'
+alias activate_chembl='source /home/mgarort/housekeeping/environments/chembl/bin/activate'
+alias activate_visualization='source /home/mgarort/housekeeping/environments/visualization/bin/activate'
 #export RDBASE='/home/mgarort/housekeeping/rdkit-Release_2020_03_2'
 #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$RDBASE/lib"
-export PYTHONPATH="$PYTHONPATH:$HOME/repos/utils:$HOME/repos/guatask"
+export PYTHONPATH="$PYTHONPATH:$HOME/repos:$HOME/repos/guatask"
 #export BOOST_ROOT='/home/mgarort/housekeeping/boost_1_73_0'
 #export BOOST_LIBRARYDIR='/home/mgarort/housekeeping/boost_1_73_0/libs'
 export PATH="$PATH:/home/mgarort/housekeeping/bin"
-alias ssh='ssh -X'
+# alias ssh='ssh -X' I'm commenting this out for now, since it seems that Vim takes a long time to connect to the X server in the cluster.
 alias x='xdg-open'
+alias ju='jupyter notebook'
 alias dock='cd ~/repos/docking'
-alias r='cd ~/repos'
-alias p='cd ~/playground'
+alias repos='cd ~/repos'
+alias play='cd ~/playground'
 alias wi='cd ~/repos/wiki'
 alias u='cd ~/repos/utils'
 alias dotv='cd ~/repos/dotvim'
 alias dotf='cd ~/repos/dotfiles'
 alias gua='cd ~/repos/guatask'
+# Temporary aliases for working on TOPOS
+alias 1='cd ~/3_MAMME/Thesis/cancer/experiments/1_FFNN_with_SB_data'
+alias 2='cd ~/3_MAMME/Thesis/cancer/experiments/2_validate_SB_FFNN_on_metastasis'
+alias 3='cd ~/3_MAMME/Thesis/cancer/experiments/3_train_on_GENIE'
+alias 4='cd ~/3_MAMME/Thesis/cancer/experiments/4_L1_feature_selection'
+alias 5='cd ~/3_MAMME/Thesis/cancer/experiments/5_merge_SB_and_GENIE'
+alias 6='cd ~/3_MAMME/Thesis/cancer/experiments/6_check_if_GDC_has_CNA'
+alias 7='cd ~/3_MAMME/Thesis/cancer/experiments/7_do_saturation_curve_on_GENIE_only'
+alias 8='cd ~/3_MAMME/Thesis/cancer/experiments/8_RNA_classifier_wit_Firebrowse_data'
+alias 9='cd ~/3_MAMME/Thesis/cancer/experiments/9_methylation_classifier_with_GDC_data'
+alias 10='cd ~/3_MAMME/Thesis/cancer/experiments/10_classify_cancer_lines_with_RNA_classifier'
+alias 11='cd ~/3_MAMME/Thesis/cancer/experiments/11_validate_RNA_classifier_on_healthy_tissue_with_GTEX'
+alias 12='cd ~/3_MAMME/Thesis/cancer/experiments/12_map_methylation_probes'
+alias 13='cd ~/3_MAMME/Thesis/cancer/experiments/13_classify_CTC'
+alias 14='cd ~/3_MAMME/Thesis/cancer/experiments/14_RFE_for_RNA_classifier'
+alias 15='cd ~/3_MAMME/Thesis/cancer/experiments/15_tSNE_for_various_datasets'
+alias 16='cd ~/3_MAMME/Thesis/cancer/experiments/16_distinguish_cancer_and_healthy_cells'
+alias 17='cd ~/3_MAMME/Thesis/cancer/experiments/17_MET500_dataset'
+alias 18='cd ~/3_MAMME/Thesis/cancer/experiments/18_metastasis_expression+mutations'
+alias 19='cd ~/3_MAMME/Thesis/cancer/experiments/19_microarrays'
+alias 20='cd ~/3_MAMME/Thesis/cancer/experiments/20_Gini_coefficient'
+alias 21='cd ~/3_MAMME/Thesis/cancer/experiments/21_primary_metastasis_and_lines'
+alias 22='cd ~/3_MAMME/Thesis/cancer/experiments/22_accuracies_with_exactly_same_number_samples'
+alias 23='cd ~/3_MAMME/Thesis/cancer/experiments/23_gene_selection_different_samples'
+alias 24='cd ~/3_MAMME/Thesis/cancer/experiments/24_primary_lines'
+alias 25='cd ~/3_MAMME/Thesis/cancer/experiments/25_script_for_reviewers'
+alias 26='cd ~/3_MAMME/Thesis/cancer/experiments/26_primary_expression_and_methylation+mutations'
+alias 27='cd ~/3_MAMME/Thesis/cancer/experiments/27_mislabelled_lines'
+alias 28='cd ~/3_MAMME/Thesis/cancer/experiments/28_checking_lines_for_Hannah'
+alias 29='cd ~/3_MAMME/Thesis/cancer/experiments/29_accuracy_number_of_samples_correlation'
+alias 30='cd ~/3_MAMME/Thesis/cancer/experiments/30_k-fold_for_C-parameter_120_genes'
+alias 31='cd ~/3_MAMME/Thesis/cancer/experiments/31_confusion_matrix_and_mutations_didnt_help_for_17_classes'
+alias 32='cd ~/3_MAMME/Thesis/cancer/experiments/32_primary_metastasis_and_lines_merging'
+alias 33='cd ~/3_MAMME/Thesis/cancer/experiments/33_validating_on_independent_datasets_after_rejection_from_eLife'
+
 
 export PREPARE_LIGAND_SCRIPT='/home/mgarort/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py'
+export PDBQT_TO_PDB_SCRIPT='/home/mgarort/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/pdbqt_to_pdb.py'
 
 carl='/home/mgarort/7_MGM/roation_with_Rasmussen_Roman/'
 shopt -s direxpand
+
+export PATH_TO_MIGUEL_THESIS='~/3_MAMME/Thesis/'
 
 
 stty -ixon  # So as not to be disturbed by freezing from Ctrl+s, and having to unfreeze with Ctrl+q
@@ -213,3 +253,35 @@ PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
 
 # This will source initialize_conda.sh (needed to create or activate any conda environment) and activate the rdkit_environment
 alias activate_rdkit='source ~/housekeeping/initialize_conda.sh; conda activate rdkit'
+alias activate_con_rdkit='source ~/housekeeping/initialize_conda.sh; conda activate con_rdkit'
+alias activate_con_visualize='source ~/housekeeping/initialize_conda.sh; conda activate con_visualize' # I will try to name conda environments as starting with con_
+
+
+# Change Escape to CapsLock. No more accidental caps lock, and easier turning from insert to normal mode
+setxkbmap -option caps:escape
+
+. /etc/bash_completion
+
+# The next function is created to automatically git show with vim, rather
+# than in standard output. This allows easier navigation and visualization
+# (with syntax highlighting). Inspired from:
+# https://stackoverflow.com/questions/28048270/how-do-i-use-vim-as-git-show-editor
+vimgitshow() { 
+    # $1 is the argument given, which should be a file
+    # ${1##*.} is what comes after the dot, i.e. the file extension
+    extension=${1##*.}
+    # Filetype is set to "python" if the extension is ".py". 
+    # Otherwise it is set to the extension
+    # 
+    case $extension in
+        'py')
+            filetype='python'
+            ;;
+        # TODO Add more file extensions as cases, when needed
+        *)
+            filetype=$extension
+            ;;
+    esac
+
+    git show "$1" | vim - "+set filetype=$filetype nowrite nomodifiable nomodified"; 
+}
