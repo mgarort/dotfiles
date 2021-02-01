@@ -1,9 +1,8 @@
 ! My urxvt configuration. To be located on ~/.Xdefaults
 
+! Colors and font size
 *background:     #2a2b2e
 *foreground:     #DDDDDD
-
-
 ! black
 *color0:        #000000
 *color8:        #555544
@@ -24,5 +23,7 @@
 *color14:       #a1cdcd
 *color7:        #bbbb99
 *color15:       #eeeebb
-
 URxvt*font: xft:Monospace:pixelsize=18
+
+! Support for OSC52 escape sequence to copy to clipboard
+URxvt.perl-ext-common: 52-osc

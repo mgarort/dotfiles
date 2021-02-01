@@ -24,8 +24,9 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal from the current directory. Requires installing the command xcwd from https://github.com/schischi/xcwd
-bindsym $mod+Return exec "urxvt -cd `xcwd`"
+# start a terminal from the current director
+# TODO Consider changing for an application that doesn't require compiling, like https://gist.github.com/viking/5851049y. Requires installing the command xcwd from https://github.com/schischi/xcwd
+bindsym $mod+Return exec "urxvt -cd `xcwd`" 
 # bindsym $mod+Return exec gnome-terminal --working-directory `xcwd`
 #bindsym $mod+Return exec xfce4-terminal
 
@@ -75,7 +76,7 @@ bindsym $mod+z fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking   I have never used the stacked layout so I'll keep this keybinding for Anki notes (since s is next to a in the keyboard)
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+e layout splith
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -90,6 +91,7 @@ bindsym $mod+space focus mode_toggle
 #bindsym $mod+d focus child
 
 # switch to workspace
+bindsym $mod+grave workspace 0
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -100,8 +102,20 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+minus workspace 11
+bindsym $mod+equal workspace 12
+
+# My usual normal usage for workspaces:
+# 0 (grave `): for remote sessions through ssh
+# 1: for local sessions in my laptop
+# 2: for Vimwiki
+# 3: for Firefox
+# 4: for Nautilus and other graphical programs
+# 11 (minus -): for Teams
+# 12 (equal =): for music
 
 # move focused container to workspace
+bindsym $mod+Shift+grave move container to workspace 0
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
@@ -112,7 +126,11 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+minus move container to workspace 11
+bindsym $mod+Shift+equal move container to workspace 12
 
+# TODO Check all the configurations by default, see if any of them
+# are useful, and discard the rest
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -156,6 +174,8 @@ bar {
         bindsym button3 nop
         bindsym button4 nop
         bindsym button5 nop
+        bindsym button6 nop
+        bindsym button7 nop
 }
 
 # MY OWN COMMANDS
@@ -173,7 +193,10 @@ bar {
 # xinput get-button-map 10         where 10 is the id of the touchpad, I obtain
 # 1 2 3 4 5 6 7          therefore, I need to change this to 1 0 3 4 5 6 7 to disable the middle button
 #                               and I need to change this to 1 1 3 4 5 6 7 to make the middle button part of the left button
-exec_always --no-startup-id xinput set-button-map 10 1 0 3 4 5 6 7
+
+# Get the id of the touchpad (apparently it's not always 10; sometimes it's 11)
+set $touchpad_id $( xinput | grep Touchpad | awk '{split($6,array,"="); print array[2]}' )
+exec_always --no-startup-id xinput set-button-map $touchpad_id 1 0 3 4 5 6 7
 
 
 # Resizing windows by 8 in i3 using keyboard only
@@ -188,26 +211,50 @@ bindsym $mod+r  exec urxvt -e ranger
 #bindsym $mod+r exec xfce4-terminal -e ranger
 bindsym $mod+f exec firefox 
 bindsym $mod+m exec rhythmbox
+bindsym $mod+p exec urxvt -e htop 
 # bindsym $mod+i exec urxvt -e htop Removed from now because I will ise $mod+i to open i3 configuration file
 #bindsym $mod+i exec gnome-terminal -e htop
 #bindsym $mod+i exec xfce4-terminal -e htop
 # bindsym $mod+c exec urxvt -e env DG_CURRENT_DESKTOP=GNOME gnome-control-center # Settings, this doesn't work
 bindsym $mod+Shift+w exec nm-connection-editor  # Wifi, but only to edit the wifi connections, not to connect
-bindsym $mod+c exec google-chrome
+bindsym $mod+g exec google-chrome
 bindsym $mod+a exec anki
 # To create an anki note, use $mod+s, which is next to $mod+a (for anki). This opens the note template, which could be stored anywhere
 # (I have commented this out for now, to freed s for screenshot)
 # bindsym $mod+s exec "urxvt -e vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex"
 # To open Vimwiki's index (i for index)
 bindsym $mod+i exec urxvt -e bash -ci "vim -c 'call LaunchVimwiki()'"
+# Start ssh. Use a mode "ssh" so that you can bind to multiple remote
+# machines, all of them through $mod+s
+bindsym $mod+s mode "ssh"
+mode "ssh"{
+    bindsym $mod+g exec urxvt -e bash -ci "ssh hpc_cam_gpu"; mode "default"
+    bindsym $mod+c exec urxvt -e bash -ci "ssh hpc_cam_cpu"; mode "default"
+    bindsym $mod+s mode "default"
+}
+# Reload i3 config (similar to Vim <leader>c, which is also related to i3 config
+# since it opens the i3 config)
+bindsym $mod+c exec urxvt -e i3-msg reload
 # To open i3 configuration file (think of a keybinding)
 # bindsym $mod+i exec "urxvt -e vim -c 'e ~/.config/i3/config'"
 # bindsym $mod+s exec "gnome-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
 #bindsym $mod+s exec "xfce4-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
 bindsym $mod+n exec "nautilus `xcwd`"
-bindsym $mod+equal exec teams
-bindsym $mod+s exec flameshot
+# bindsym $mod+equal exec teams
+bindsym Print exec flameshot gui
 
+
+# Mode "o" for office related things
+bindsym $mod+o mode "office"
+mode "office"{
+    bindsym $mod+w exec libreoffice --writer; mode "default"
+    bindsym $mod+t exec teams; mode "default"
+    # Create keybindings for:
+    # - Office
+    # - Dropbox
+    # - etc...
+    bindsym $mod+o mode "default"
+}
 
 # Pulse Audio controls
 # The next 2 ones were always commented
@@ -229,8 +276,10 @@ bindsym $mod+F2 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-000
 # Then, add the following line at the end:
 # user host = (root) NOPASSWD: /bin/brightness  , for example
 # mgarort hyperion = (root) NOPASSWD: /bin/brightness
-bindsym $mod+F3 exec sudo /bin/brightness -5
-bindsym $mod+F4 exec sudo /bin/brightness 5
+bindsym $mod+F3 exec sudo /bin/brightness -3
+bindsym $mod+F4 exec sudo /bin/brightness 3
+# bindsym $mod+F3 exec xrandr --output eDP-1 --brightness 0.3
+# bindsym $mod+F4 exec xrandr --output eDP-1 --brightness 0.75
 
 # General system control
 # The next command put the system in a state of deep sleep, too deep, so sound didn't work in headphones after awakening
@@ -248,8 +297,12 @@ bindsym $mod+F5 exec xrandr --auto
 # This will stop sending the image to the laptop screen
 bindsym $mod+F6 exec xrandr --output eDP-1 --off
 # This will invert the external screen (flip it upside down)
-bindsym $mod+F7 exec xrandr --output DP-1 --rotate inverted
+bindsym $mod+F7 exec xrandr --output DP-1 --rotate inverted; exec xrandr --output DP-2 --rotate inverted
 
 
 # Keyboard configuration
 exec setxkbmap -layout us -variant intl
+
+
+# Start nm-applet (supposedly this allows to use network manager)   https://faq.i3wm.org/question/2/how-can-i-use-networkmanager-with-i3.1.html
+# exec --no-startup-id nm-applet
