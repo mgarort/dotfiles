@@ -1,0 +1,5 @@
+# The default screen escape key is <C-a>, which is inconvenient
+# because it clashes with the beginning-of-line motion. 
+# As a solution, set the escape key to <C-^>
+# (copied from https://wiki.archlinux.org/index.php/GNU_Screen )
+escape ^^^
