@@ -9,10 +9,10 @@
 ! red
 *color1:        #AE4747
 *color9:        #EE6363
-!green
+! green
 *color2:        #6b862f
 *color10:       #89b83f
-!brown/yellow
+! brown/yellow
 *color3:        #BAA520
 *color11:       #FFC135
 *color4:        #5485a4
@@ -23,7 +23,12 @@
 *color14:       #a1cdcd
 *color7:        #bbbb99
 *color15:       #eeeebb
-URxvt*font: xft:Monospace:pixelsize=18
+URxvt.font: xft:Monospace:pixelsize=18
+
+! Vertical separation between lines
+URxvt.lineSpace: 3
+! Horizontal separation between characters
+URxvt.letterSpace: 0
 
 ! Support for OSC52 escape sequence to copy to clipboard
 URxvt.perl-ext-common: 52-osc
