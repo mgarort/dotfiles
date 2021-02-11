@@ -231,7 +231,7 @@ bindsym $mod+s mode "ssh"
 mode "ssh"{
     bindsym $mod+g exec urxvt -e bash -ci "ssh hpc_cam_gpu"; mode "default"
     bindsym $mod+c exec urxvt -e bash -ci "ssh hpc_cam_cpu"; mode "default"
-    bindsym $mod+minus exec urxvt -e bash -ci 'ssh -t hpc_cam_cpu "watch -n10 squeue -u mg770"'; mode "default"
+    bindsym $mod+minus exec urxvt -e bash -ci 'ssh -t hpc_cam_cpu "watch -n30 squeue -u mg770"'; mode "default"
     bindsym $mod+s mode "default"
 }
 # Reload i3 config (similar to Vim <leader>c, which is also related to i3 config
