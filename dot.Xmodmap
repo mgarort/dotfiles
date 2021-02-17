@@ -1,0 +1,5 @@
+!Turn Caps Lock into a Escape key
+keycode 66 = Escape
+
+!Turn Escape into a second BackSpace key
+keycode 9 = BackSpace
