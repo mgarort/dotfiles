@@ -212,6 +212,7 @@ bindsym $mod+r  exec urxvt -e ranger
 bindsym $mod+f exec firefox 
 bindsym $mod+m exec rhythmbox
 bindsym $mod+bracketleft exec urxvt -e htop 
+bindsym $mod+bracketright exec urxvt -e watch -n2 sensors
 bindsym $mod+p exec urxvt -e python3
 # bindsym $mod+i exec urxvt -e htop Removed from now because I will ise $mod+i to open i3 configuration file
 #bindsym $mod+i exec gnome-terminal -e htop
