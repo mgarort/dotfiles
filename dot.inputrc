@@ -1,6 +1,14 @@
 # My readline configuration. To be placed on ~/.inputrc
+# readline and Vim insert/command line configurations are customized for consistency
 
-# Bind backward word and forward word to <C-b> and <C-f> respectively for 
-# consistency with my Vim configuration
-"\C-b": "\eb"
-"\C-f": "\ef"
+# Backward and forward word
+"\C-b": backward-word
+"\C-f": forward-word
+# Left, right, up, down 
+"\C-k": previous-history
+"\C-j": next-history
+"\C-h": backward-char
+"\C-l": forward-char
+# <M-h> and <M-l> for <Backspace> and <Delete> (these escape sequences are set to <M-h> and <M-l> in .Xdefaults)
+"\e[1;3D": backward-delete-char
+"\e[1;3C": delete-char
