@@ -26,9 +26,16 @@
 URxvt.font: xft:Monospace:pixelsize=18
 
 ! Vertical separation between lines
-URxvt.lineSpace: 3
+URxvt.lineSpace: 5
 ! Horizontal separation between characters
 URxvt.letterSpace: 0
 
 ! Support for OSC52 escape sequence to copy to clipboard
 URxvt.perl-ext-common: 52-osc
+
+! Map escape sequences to Meta (Alt) so that Vim and inputrc can recognize
+! those sequences and map the Alt key
+URxvt.keysym.M-h    : \033[1;3D
+URxvt.keysym.M-l    : \033[1;3C
+URxvt.keysym.M-k    : \033[1;3A
+URxvt.keysym.M-j    : \033[1;3B
