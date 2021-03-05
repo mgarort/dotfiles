@@ -2,13 +2,26 @@
 # readline and Vim insert/command line configurations are customized for consistency
 
 # Backward and forward word
-"\C-b": backward-word
-"\C-f": forward-word
-# Left, right, up, down 
-"\C-k": previous-history
-"\C-j": next-history
-"\C-h": backward-char
-"\C-l": forward-char
+# "\C-b": backward-word
+# "\C-f": forward-word
+# # Left, right, up, down 
+# "\C-k": previous-history
+# "\C-j": next-history
+# "\C-h": backward-char
+# "\C-l": forward-char
+
 # <M-h> and <M-l> for <Backspace> and <Delete> (these escape sequences are set to <M-h> and <M-l> in .Xdefaults)
 "\e[1;3D": backward-delete-char
 "\e[1;3C": delete-char
+# TODO Map these to what <Alt-h,j,k,l> actually does in my configuration, i.e. movign the cursor
+"\033[1;3D": backward-char
+"\033[1;3C": forward-char
+"\033[1;3A": previous-history
+"\033[1;3B": next-history
+
+
+# <M-b> and <M-f> are bound to the following escape sequences by urxvt so that they can be used by Vim, so
+# we need to bind those escape sequences to what <M-b> and <M-f> usually do in readline
+"\033[20~": backward-word
+"\033[21~": forward-word
+
