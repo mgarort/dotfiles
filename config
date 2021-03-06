@@ -259,6 +259,7 @@ bindsym $mod+o mode "office"
 mode "office"{
     bindsym $mod+w exec libreoffice --writer; mode "default"
     bindsym $mod+t exec teams; mode "default"
+    bindsym $mod+d exec dropbox start; mode "default"
     # Create keybindings for:
     # - Office
     # - Dropbox
