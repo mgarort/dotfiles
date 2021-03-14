@@ -23,7 +23,7 @@
 *color14:       #a1cdcd
 *color7:        #bbbb99
 *color15:       #eeeebb
-URxvt.font: xft:Monospace:pixelsize=18
+URxvt.font: xft:Monospace:pixelsize=20
 
 ! Vertical separation between lines
 URxvt.lineSpace: 5
