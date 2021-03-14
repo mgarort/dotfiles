@@ -146,6 +146,10 @@ xkb_symbols "intl" {
 
     key <LSGT> { [ backslash,   bar,            backslash,      bar ] };
 
+    key <CAPS> { [ Escape, Escape, Escape, Escape ] };
+
+    key <ESC> { [ BackSpace, BackSpace, BackSpace, BackSpace ] };
+
     include "level3(ralt_switch)"
 };
 
