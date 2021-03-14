@@ -220,32 +220,40 @@ exec xmodmap ~/.Xmodmap
 # ---------------------------------
 #
 
-# start a terminal from the current director
-# TODO Consider changing for an application that doesn't require compiling, like https://gist.github.com/viking/5851049y. Requires installing the command xcwd from https://github.com/schischi/xcwd
+# Launch terminal from the curent directory
 bindsym $mod+Return exec "urxvt -cd `xcwd`" 
-# bindsym $mod+Return exec gnome-terminal --working-directory `xcwd`
-#bindsym $mod+Return exec xfce4-terminal
+# Launch nautilus from the current directory
+bindsym $mod+n exec "nautilus `xcwd`"
+# TODO Consider changing for an application that doesn't require compiling, like https://gist.github.com/viking/5851049y. Requires installing the command xcwd from https://github.com/schischi/xcwd
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec dmenu_run
 
-bindsym $mod+r  exec urxvt -e ranger 
-# bindsym $mod+r exec gnome-terminal -e ranger
-#bindsym $mod+r exec xfce4-terminal -e ranger
+# ranger
+bindsym $mod+r exec urxvt -e ranger 
+# firefox
 bindsym $mod+f exec firefox 
+# screenshot
+bindsym Print exec flameshot gui
+# google-chrome
+bindsym $mod+g exec google-chrome
+# rhythmbox 
 bindsym $mod+m exec rhythmbox
+# Brackets for monitoring: htop and sensors
 bindsym $mod+bracketleft exec urxvt -e htop 
 bindsym $mod+bracketright exec urxvt -e watch -n2 sensors
+# python
 bindsym $mod+p exec urxvt -e python3
-# bindsym $mod+Shift+w exec nm-connection-editor  # Wifi, but only to edit the wifi connections, not to connect
-bindsym $mod+g exec google-chrome
+# anki
 bindsym $mod+a exec anki
-# Open your wiki/zettelkasten by the index
+# Open Vim at the index of your zettelkasten
 bindsym $mod+i exec urxvt -e bash -ci "vim -c 'call LaunchVimwiki()'"
+# Open Vim session at the home directory
+bindsym $mod+v exec urxvt -e bash -ci "vim -c 'cd $HOME'"
 # Start ssh. Use a mode "ssh" so that you can bind to multiple remote
 # machines, all of them through $mod+s
 bindsym $mod+s mode "ssh"
@@ -262,15 +270,6 @@ mode "ssh"{
     bindsym $mod+u exec bash -ci 'fusermount -u /home/mgarort/clustermtp'; mode "default"
     bindsym $mod+s mode "default"
 }
-# To open i3 configuration file (think of a keybinding)
-# bindsym $mod+i exec "urxvt -e vim -c 'e ~/.config/i3/config'"
-# bindsym $mod+s exec "gnome-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
-#bindsym $mod+s exec "xfce4-terminal -e 'vim -c LLPStartPreview /home/mgarort/repos/anki-decks/note_template.tex'"
-bindsym $mod+n exec "nautilus `xcwd`"
-# bindsym $mod+equal exec teams
-bindsym Print exec flameshot gui
-
-
 # Mode "o" for office related things
 bindsym $mod+o mode "office"
 mode "office"{
@@ -283,9 +282,6 @@ mode "office"{
     # - etc...
     bindsym $mod+o mode "default"
 }
-
-
-
 
 
 # ---------------------------------
