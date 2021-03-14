@@ -35,7 +35,18 @@ URxvt.perl-ext-common: 52-osc
 
 ! Map escape sequences to Meta (Alt) so that Vim and inputrc can recognize
 ! those sequences and map the Alt key
+! Sequence for symbolic keybinding <M-Left>
 URxvt.keysym.M-h    : \033[1;3D
+! Sequence for symbolic keybinding <M-Right>
 URxvt.keysym.M-l    : \033[1;3C
+! Sequence for symbolic keybinding <M-Up>
 URxvt.keysym.M-k    : \033[1;3A
+! Sequence for symbolic keybinding <M-Down>
 URxvt.keysym.M-j    : \033[1;3B
+
+! Map <M-s> to <F8> (the RHS is the escape sequence for <F8>
+URxvt.keysym.M-s : \033[19~
+! Map <M-b> to <F9> (the RHS is the escape sequence for <F9>)
+URxvt.keysym.M-b : \033[20~
+! Map <M-f> to <F10> (the RHS is the escape sequence for <F10>)
+URxvt.keysym.M-f : \033[21~
