@@ -35,7 +35,7 @@ shopt -s direxpand
 
 
 # To make the prompt really cool, show username, host, Git branch, and starts line below
-PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;32m\]@\[\033[0;32m\]\h \[\033[0;36m\]\w\[\033[0;32m\]$(__git_ps1) \[\033[0;37m\]$(git_sha) \[\033[0;31m\]$(git_status)\n\[\033[0;32m\] \$\[\033[0m\]  '
+export PS1='\[\033[01;32m\]\[\033[0m\033[01;32m\]\u\[\033[01;32m\]@\[\033[01;32m\]\h \[\033[01;36m\]\w\[\033[0;32m\]$(__git_ps1) \[\033[0;37m\]$(git_sha) \[\033[0;31m\]$(git_status)\n\[\033[01;32m\] \$\[\033[0m\]  '
 
 
 git_status() {
