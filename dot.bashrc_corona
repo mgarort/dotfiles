@@ -1,8 +1,32 @@
-# My .bashrc file for my personal laptop (as opposed to the version for the Cambridge HPC cluster). To be located on ~/.bashrc
 
+# ---------------------------------
+# SECTION:  Default bashrc configuration that came with Ubuntu
+# ---------------------------------
+#
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
 
 # If not running interactively, don't do anything
 case $- in
@@ -10,20 +34,6 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -98,59 +108,50 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+# Commands to be executed before the prompt is displayed
+# Save current working dir
+PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+# Change to saved working dir
+[[ -f "${HOME}/.cwd" ]] && cd "$(< ${HOME}/.cwd)"
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
 
-# CUSTOMIZED BASH DISPLAY COLORS
 
-# ADDITIONAL COMMANDS BY ME
-#export PS1='$(pwd) $'
-#export PS1="\e[01;32m $PS1 \e[m"
-alias ls='ls -v --color'
-alias activate_ml='source ~/housekeeping/environments/ml/bin/activate'
-alias activate_ml2='source ~/housekeeping/virtualenv/ml2/bin/activate'
-alias activate_youtube='source ~/housekeeping/virtualenv/youtube/bin/activate'
-alias zotero='/opt/Zotero_linux-x86_64/zotero'
-alias activate_mhg='source /home/mgarort/housekeeping/virtualenv/mhg/bin/activate'
-#alias python=python3
-alias topos='source /home/mgarort/housekeeping/virtualenv/topos/bin/activate'
-alias activate_chembl='source /home/mgarort/housekeeping/environments/chembl/bin/activate'
-alias activate_visualization='source /home/mgarort/housekeeping/environments/visualization/bin/activate'
-#export RDBASE='/home/mgarort/housekeeping/rdkit-Release_2020_03_2'
-#export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$RDBASE/lib"
-export PYTHONPATH="$PYTHONPATH:$HOME/repos:$HOME/repos/guatask"
-#export BOOST_ROOT='/home/mgarort/housekeeping/boost_1_73_0'
-#export BOOST_LIBRARYDIR='/home/mgarort/housekeeping/boost_1_73_0/libs'
-export PATH="$PATH:/home/mgarort/housekeeping/bin"
-# alias ssh='ssh -X' I'm commenting this out for now, since it seems that Vim takes a long time to connect to the X server in the cluster.
+
+##################################################
+
+
+# ---------------------------------
+# SECTION:  Aliases
+# ---------------------------------
+#
+
+# aliases for commands
 alias x='xdg-open'
+alias s='XDG_CURRENT_DESKTOP=GNOME; gnome-control-center'
 alias ju='jupyter notebook'
-alias dock='cd ~/repos/docking'
-alias repos='cd ~/repos'
-alias play='cd ~/playground'
+
+# aliases for going to directories
 alias wi='cd ~/repos/wiki'
-alias u='cd ~/repos/utils'
-alias dotv='cd ~/repos/dotvim'
-alias dotf='cd ~/repos/dotfiles'
-alias gua='cd ~/repos/guatask'
-# Temporary aliases for working on TOPOS
+
+# aliases for activating environments. In general, I will try to follow the
+# following convention: for an environment with the general name `env`:
+# - If it's a conda environment, we should call it `con_env`, and
+#   activate it with `activate_con_env`
+# - If it is a virtualenv environment, we should call it `env`, and activate
+#   it with `activate_env`
+alias activate_ml='source ~/housekeeping/environments/ml/bin/activate'
+# This will source initialize_conda.sh (needed to create or activate any conda environment) and activate the rdkit_environment
+alias activate_rdkit='source ~/housekeeping/initialize_conda.sh; conda activate rdkit'
+alias activate_con_rdkit='source ~/housekeeping/initialize_conda.sh; conda activate con_rdkit'
+alias activate_con_visualize='source ~/housekeeping/initialize_conda.sh; conda activate con_visualize' # I will try to name conda environments as starting with con_
+
+
+
+
+
+# Temporary aliases and variables for working on TOPOS
+export PATH_TO_MIGUEL_THESIS='~/3_MAMME/Thesis/'
 alias 1='cd ~/3_MAMME/Thesis/cancer/experiments/1_FFNN_with_SB_data'
 alias 2='cd ~/3_MAMME/Thesis/cancer/experiments/2_validate_SB_FFNN_on_metastasis'
 alias 3='cd ~/3_MAMME/Thesis/cancer/experiments/3_train_on_GENIE'
@@ -186,102 +187,3 @@ alias 32='cd ~/3_MAMME/Thesis/cancer/experiments/32_primary_metastasis_and_lines
 alias 33='cd ~/3_MAMME/Thesis/cancer/experiments/33_validating_on_independent_datasets_after_rejection_from_eLife'
 
 
-export PREPARE_LIGAND_SCRIPT='/home/mgarort/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py'
-export PDBQT_TO_PDB_SCRIPT='/home/mgarort/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/pdbqt_to_pdb.py'
-
-carl='/home/mgarort/7_MGM/roation_with_Rasmussen_Roman/'
-shopt -s direxpand
-
-export PATH_TO_MIGUEL_THESIS='~/3_MAMME/Thesis/'
-
-
-stty -ixon  # So as not to be disturbed by freezing from Ctrl+s, and having to unfreeze with Ctrl+q
-
-# ENVIRONMENT VARIABLES FOR CODE RUN ON LAPTOP / CLUSTER
-
-ROATION_WITH_RASMUSSEN_ROMAN='/home/mgarort/7_MGM/roation_with_Rasmussen_Roman/'
-export ROATION_WITH_RASMUSSEN_ROMAN
-alias s='XDG_CURRENT_DESKTOP=GNOME; gnome-control-center'
-
-# To make the prompt really cool, show username, host, Git branch, and starts line below
-#PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h \w\[\033[0;32m\]$(__git_ps1)$(git_status)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\] ▶\[\033[0m\] '
-PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;32m\]@\[\033[0;32m\]\h \[\033[0;36m\]\w\[\033[0;32m\]$(__git_ps1) \[\033[0;37m\]$(git_sha) \[\033[0;31m\]$(git_status)\n\[\033[0;32m\] \$\[\033[0m\]  '
-
-
-git_status() {
-    # Outputs a series of indicators based on the status of the
-    # working directory:
-    # + changes are staged and ready to commit
-    # ! unstaged changes are present
-    # ? untracked files are present
-    # S changes have been stashed
-    # P local commits need to be pushed to the remote
-    local branch=$(__git_ps1)
-    if [[ -n $branch ]]; then
-        local status="$(git status --porcelain 2>/dev/null)"
-        local output=''
-        [[ -n $(egrep '^[MADRC]' <<<"$status") ]] && output="$output+"
-        [[ -n $(egrep '^.[MD]' <<<"$status") ]] && output="$output!"
-        [[ -n $(egrep '^\?\?' <<<"$status") ]] && output="$output?"
-        [[ -n $(git stash list) ]] && output="${output}S"
-        [[ -n $(git log --branches --not --remotes) ]] && output="${output}P"
-        [[ -n $output ]] && output="  ($output)  "  # separate from branch name
-        echo $output
-    fi
-}
-
-git_sha() {
-    # Outputs the git commit sha id
-    local branch=$(__git_ps1)
-    if [[ -n $branch  ]]; then
-        local sha="$(git rev-parse --short HEAD)"
-        output="[$sha]"
-        echo $output
-    fi
-}
-
-
-# Commands to be executed before the prompt is displayed
-# Save current working dir
-PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
-
-# Change to saved working dir
-[[ -f "${HOME}/.cwd" ]] && cd "$(< ${HOME}/.cwd)"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-
-# This will source initialize_conda.sh (needed to create or activate any conda environment) and activate the rdkit_environment
-alias activate_rdkit='source ~/housekeeping/initialize_conda.sh; conda activate rdkit'
-alias activate_con_rdkit='source ~/housekeeping/initialize_conda.sh; conda activate con_rdkit'
-alias activate_con_visualize='source ~/housekeeping/initialize_conda.sh; conda activate con_visualize' # I will try to name conda environments as starting with con_
-
-
-# Change Escape to CapsLock. No more accidental caps lock, and easier turning from insert to normal mode
-setxkbmap -option caps:escape
-
-. /etc/bash_completion
-
-# The next function is created to automatically git show with vim, rather
-# than in standard output. This allows easier navigation and visualization
-# (with syntax highlighting). Inspired from:
-# https://stackoverflow.com/questions/28048270/how-do-i-use-vim-as-git-show-editor
-vimgitshow() { 
-    # $1 is the argument given, which should be a file
-    # ${1##*.} is what comes after the dot, i.e. the file extension
-    extension=${1##*.}
-    # Filetype is set to "python" if the extension is ".py". 
-    # Otherwise it is set to the extension
-    # 
-    case $extension in
-        'py')
-            filetype='python'
-            ;;
-        # TODO Add more file extensions as cases, when needed
-        *)
-            filetype=$extension
-            ;;
-    esac
-
-    git show "$1" | vim - "+set filetype=$filetype nowrite nomodifiable nomodified"; 
-}

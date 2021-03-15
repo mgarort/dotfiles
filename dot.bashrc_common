@@ -1,0 +1,155 @@
+# My bashrc configuration. To be located on ~/.bashrc
+# This file contains the configuration that is common to every machine I work in.
+# Then, it checks whether bashrc files specific to the cluster or my laptop exist,
+# and if they do, it sources that configuration too.
+
+
+# ---------------------------------
+# SECTION:  Default configuration that came with Ubuntu/cluster
+# ---------------------------------
+#
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# So as not to be disturbed by freezing from Ctrl+s, and having to unfreeze with Ctrl+q
+stty -ixon 
+ 
+# Expand directory names
+shopt -s direxpand
+
+
+##################################################
+
+
+
+# To make the prompt really cool, show username, host, Git branch, and starts line below
+PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;32m\]@\[\033[0;32m\]\h \[\033[0;36m\]\w\[\033[0;32m\]$(__git_ps1) \[\033[0;37m\]$(git_sha) \[\033[0;31m\]$(git_status)\n\[\033[0;32m\] \$\[\033[0m\]  '
+
+
+git_status() {
+    # Outputs a series of indicators based on the status of the
+    # working directory:
+    # + changes are staged and ready to commit
+    # ! unstaged changes are present
+    # ? untracked files are present
+    # S changes have been stashed
+    # P local commits need to be pushed to the remote
+    local branch=$(__git_ps1)
+    if [[ -n $branch ]]; then
+        local status="$(git status --porcelain 2>/dev/null)"
+        local output=''
+        [[ -n $(egrep '^[MADRC]' <<<"$status") ]] && output="$output+"
+        [[ -n $(egrep '^.[MD]' <<<"$status") ]] && output="$output!"
+        [[ -n $(egrep '^\?\?' <<<"$status") ]] && output="$output?"
+        [[ -n $(git stash list) ]] && output="${output}S"
+        [[ -n $(git log --branches --not --remotes) ]] && output="${output}P"
+        [[ -n $output ]] && output="  ($output)  "  # separate from branch name
+        echo $output
+    fi
+}
+
+git_sha() {
+    # Outputs the git commit sha id
+    local branch=$(__git_ps1)
+    if [[ -n $branch  ]]; then
+        local sha="$(git rev-parse --short HEAD)"
+        output="[$sha]"
+        echo $output
+    fi
+}
+
+# View every man command in Vim
+vimman() {
+     vim -c ":call ViewManFromCommandLine('$1')"
+}
+alias man=vimman
+
+# The next function is created to automatically git show with vim, rather
+# than in standard output. This allows easier navigation and visualization
+# (with syntax highlighting). Inspired from:
+# https://stackoverflow.com/questions/28048270/how-do-i-use-vim-as-git-show-editor
+vimgitshow() { 
+    # $1 is the argument given, which should be a file
+    # ${1##*.} is what comes after the dot, i.e. the file extension
+    extension=${1##*.}
+    # Filetype is set to "python" if the extension is ".py". 
+    # Otherwise it is set to the extension
+    # 
+    case $extension in
+        'py')
+            filetype='python'
+            ;;
+        # TODO Add more file extensions as cases, when needed
+        *)
+            filetype=$extension
+            ;;
+    esac
+
+    git show "$1" | vim - "+set filetype=$filetype nowrite nomodifiable nomodified"; 
+}
+
+# fzf options
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_OPTS='--bind=alt-left:backward-char,alt-right:forward-char,alt-up:up,alt-down:down,f9:backward-word,f10:forward-word'
+export FZF_DEFAULT_COMMAND="find . -maxdepth 1 | sed 's/^..//'"
+
+# aliases for moving to directories
+alias dock='cd ~/repos/docking'
+alias dockt='cd ~/repos/docking/tasks'
+alias docks='cd ~/repos/docking/submissions/'
+alias re='cd ~/repos'
+alias play='cd ~/playground'
+alias u='cd ~/repos/utils'
+alias dotv='cd ~/repos/dotvim'
+alias dotf='cd ~/repos/dotfiles'
+alias gua='cd ~/repos/guatask'
+alias gg='cd ~/repos/custom_graph_grammar/'
+alias ggt='cd ~/repos/custom_graph_grammar/tasks'
+alias ggs='cd ~/repos/custom_graph_grammar/submissions/'
+
+
+# aliases for commands
+alias ls='ls -v --color'
+
+# PATH and PYTHONPATH
+export PATH="$PATH:/home/mg770/housekeeping/bin"
+export PYTHONPATH="$PYTHONPATH:$HOME/repos/guatask:$HOME/repos/docking/tasks:$HOME/repos"  # Adding docking/tasks allows us to import tasks and load their outputs with load_outputs()
+
+
+
+# ---------------------------------
+# SECTION:  Things I'm testing to see if I keep
+# ---------------------------------
+#
+
+# Short function to create aliases for current directories (similar to marks in Vim)
+m ()
+{
+    alias $1="cd $(pwd)"
+}
+
+
+# ---------------------------------
+# SECTION:  Load laptop or cluster-specific configuration
+# ---------------------------------
+#
+
+if [ -f ~/.bashrc_corona ]; then
+    . ~/.bashrc_corona
+elif [ -f ~/.bashrc_cluster ]; then
+    . ~/.bashrc_cluster
+
+fi
+

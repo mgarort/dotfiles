@@ -1,0 +1,51 @@
+# ---------------------------------
+# SECTION: Default bashrc configuration in the cluster
+# ---------------------------------
+#
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+source ~/.bash_git
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+
+
+
+
+##################################################
+
+export TERM=xterm-256color # So that we can spawn new terminals over ssh, for instance to open Vim or htop (before, I received the obscure error message "Error opening terminal: rxvt-unicode-256color"
+
+
+export PREPARE_LIGAND_SCRIPT='/home/mg770/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py'
+export PDBQT_TO_PDB_SCRIPT='/home/mg770/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/pdbqt_to_pdb.py'
+
+
+# ---------------------------------
+# SECTION:  Aliases
+# ---------------------------------
+#
+
+# alias for going to directories
+alias rds='cd /rds/user/mg770/hpc-work/'
+
+
+# aliases for commands
+alias sq='squeue -u mg770 --format="%.18i %.9P %.60j %.8u %.2t %.10M %.6D %R"'
+alias sintr="DISPLAY=''; sintr"
+
+# aliases for environments
+
+
+
+
+
+
