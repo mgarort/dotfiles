@@ -1,3 +1,6 @@
+# My bashrc config that is specific to the cluster. To place on ~/.bashrc_cluster
+# only in the cluster. It will be sourced by .bashrc
+
 # ---------------------------------
 # SECTION: Default bashrc configuration in the cluster
 # ---------------------------------
@@ -8,6 +11,9 @@ if [ -f /etc/bashrc ]; then
         . /etc/bashrc
 fi
 
+# Sourcing this script is needed in newer versions of git to add git info to the
+# prompt (interestingly, older versions have __ps1_prompt_ out of the box, but
+# newer versions don't; see wiki note 'PS1: Include Git info in your prompt')
 source ~/.bash_git
 
 

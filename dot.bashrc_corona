@@ -1,3 +1,5 @@
+# My bashrc config that is specific to corona. To place on ~/.bashrc_corona
+# only in corona. It will be sourced by .bashrc
 
 # ---------------------------------
 # SECTION:  Default bashrc configuration that came with Ubuntu
