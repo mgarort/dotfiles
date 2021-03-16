@@ -103,7 +103,7 @@ vimgitshow() {
 # fzf options
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPTS='--bind=alt-left:backward-char,alt-right:forward-char,alt-up:up,alt-down:down,f9:backward-word,f10:forward-word'
-export FZF_DEFAULT_COMMAND="find . -maxdepth 1 | sed 's/^..//'"
+export FZF_DEFAULT_COMMAND="find . -maxdepth 1 | sed 's/^..//' | grep -v -x -F '.'"
 
 # aliases for moving to directories
 alias dock='cd ~/repos/docking'
