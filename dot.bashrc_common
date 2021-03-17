@@ -103,7 +103,13 @@ vimgitshow() {
 # fzf options
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPTS='--bind=alt-left:backward-char,alt-right:forward-char,alt-up:up,alt-down:down,f9:backward-word,f10:forward-word'
-export FZF_DEFAULT_COMMAND="find . -maxdepth 1 | sed 's/^..//' | grep -v -x -F '.'"
+# This is so that, when using fzf in the wiki to search for notes:
+# - The search is limited to the current directory, not going to subdirectories
+# - The first two dots of each line, which are './' (meaning "in the current directory"),
+#   are removed
+# - The extension '.wiki' is removed
+# - The results '.' (current directory), '.gitignore' and '.git' are excluded
+export FZF_DEFAULT_COMMAND="find . -maxdepth 1 | sed 's/^..//' | sed 's/\.wiki$//' | grep -v -x -F -e '.' -e '.git' -e '.gitignore'"
 
 # aliases for moving to directories
 alias dock='cd ~/repos/docking'
