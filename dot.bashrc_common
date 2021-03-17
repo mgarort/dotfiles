@@ -109,7 +109,7 @@ export FZF_DEFAULT_OPTS='--bind=alt-left:backward-char,alt-right:forward-char,al
 #   are removed
 # - The extension '.wiki' is removed
 # - The results '.' (current directory), '.gitignore' and '.git' are excluded
-export FZF_DEFAULT_COMMAND="find . -maxdepth 1 | sed 's/^..//' | grep -v -x -F -e '.' -e '.git' -e '.gitignore'"
+export FZF_DEFAULT_COMMAND="find . -maxdepth 1 | sed 's/^..//' | grep -v -x -F -e '.' -e '.git' -e '.gitignore' | grep -v \"\.sw[pon]\""
 
 # aliases for moving to directories
 alias dock='cd ~/repos/docking'
