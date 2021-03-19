@@ -130,7 +130,7 @@ alias ggs='cd ~/repos/custom_graph_grammar/submissions/'
 alias ls='ls -v --color'
 
 # PATH and PYTHONPATH
-export PATH="$PATH:/home/mg770/housekeeping/bin"
+export PATH="$PATH:$HOME/housekeeping/bin"
 export PYTHONPATH="$PYTHONPATH:$HOME/repos/guatask:$HOME/repos/docking/tasks:$HOME/repos"  # Adding docking/tasks allows us to import tasks and load their outputs with load_outputs()
 
 
