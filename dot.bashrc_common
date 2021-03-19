@@ -122,6 +122,7 @@ alias ggs='cd ~/repos/custom_graph_grammar/submissions/'
 
 # aliases for commands
 alias ls='ls -v --color'
+alias so='source ~/.bashrc'
 
 # PATH and PYTHONPATH
 export PATH="$PATH:/home/mg770/housekeeping/bin"
