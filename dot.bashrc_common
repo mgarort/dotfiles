@@ -103,7 +103,13 @@ vimgitshow() {
 # fzf options
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPTS='--bind=alt-left:backward-char,alt-right:forward-char,alt-up:up,alt-down:down,f9:backward-word,f10:forward-word'
-export FZF_DEFAULT_COMMAND="find . -maxdepth 1 | sed 's/^..//'"
+# This is so that, when using fzf in the wiki to search for notes:
+# - The search is limited to the current directory, not going to subdirectories
+# - The first two dots of each line, which are './' (meaning "in the current directory"),
+#   are removed
+# - The extension '.wiki' is removed
+# - The results '.' (current directory), '.gitignore' and '.git' are excluded
+export FZF_DEFAULT_COMMAND="find . -maxdepth 1 | sed 's/^..//' | grep -v -x -F -e '.' -e '.git' -e '.gitignore' | grep -v \"\.sw[pon]\""
 
 # aliases for moving to directories
 alias dock='cd ~/repos/docking'
@@ -125,7 +131,7 @@ alias ls='ls -v --color'
 alias so='source ~/.bashrc'
 
 # PATH and PYTHONPATH
-export PATH="$PATH:/home/mg770/housekeeping/bin"
+export PATH="$PATH:$HOME/housekeeping/bin"
 export PYTHONPATH="$PYTHONPATH:$HOME/repos/guatask:$HOME/repos/docking/tasks:$HOME/repos"  # Adding docking/tasks allows us to import tasks and load their outputs with load_outputs()
 
 

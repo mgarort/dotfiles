@@ -211,9 +211,6 @@ bindsym $mod+F7 exec xrandr --output DP-1 --rotate inverted; exec xrandr --outpu
 # Keyboard configuration
 exec setxkbmap -layout us -variant intl
 
-# Customize CapsLock and Escape keys
-exec xmodmap ~/.Xmodmap
-
 
 # ---------------------------------
 # SECTION:  Launching applications
