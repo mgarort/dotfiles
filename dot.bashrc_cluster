@@ -37,6 +37,16 @@ export PREPARE_LIGAND_SCRIPT='/home/mg770/housekeeping/mgltools_x86_64Linux2_1.5
 export PDBQT_TO_PDB_SCRIPT='/home/mg770/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/pdbqt_to_pdb.py'
 
 
+
+# ---------------------------------
+# SECTION:  stty (set teletype) options
+# ---------------------------------
+#
+# So as not to be disturbed by freezing from Ctrl+s, and having to unfreeze with Ctrl+q
+stty -ixon 
+
+
+
 # ---------------------------------
 # SECTION:  Aliases
 # ---------------------------------
