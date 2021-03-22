@@ -260,7 +260,7 @@ mode "ssh"{
     # c for cpu
     bindsym $mod+c exec urxvt -e bash -ci "ssh hpc_cam_cpu"; mode "default"
     # w for watch
-    bindsym $mod+w exec urxvt -e bash -ci 'ssh -t hpc_cam_cpu "watch -n30 squeue -u mg770"'; mode "default"
+    bindsym $mod+minus exec urxvt -e bash -ci 'ssh -t hpc_cam_cpu "watch -n30 squeue -u mg770"'; mode "default"
     # m for mount TODO Check improved version that was recommended to you on Reddit
     bindsym $mod+m exec bash -ci 'sshfs mg770@login-cpu.hpc.cam.ac.uk:/home/mg770 /home/mgarort/clustermtp'; exec urxvt -e bash -ci 'nautilus /home/mgarort/clustermtp/'; mode "default"
     # u for unmount
