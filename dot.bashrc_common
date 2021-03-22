@@ -23,11 +23,10 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# So as not to be disturbed by freezing from Ctrl+s, and having to unfreeze with Ctrl+q
-stty -ixon 
- 
 # Expand directory names
 shopt -s direxpand
+
+# XXX ssty -ixon is set in every terminal (both local and cluster), but if it is set here it leads to errors. It has to be set in local and cluster-specific bashrc files
 
 
 ##################################################
@@ -128,6 +127,7 @@ alias ggs='cd ~/repos/custom_graph_grammar/submissions/'
 
 # aliases for commands
 alias ls='ls -v --color'
+alias lf="ls -d */ | sed 's/\///' | column -c $COLUMNS"
 alias so='source ~/.bashrc'
 
 # PATH and PYTHONPATH

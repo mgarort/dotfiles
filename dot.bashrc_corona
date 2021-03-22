@@ -122,12 +122,18 @@ PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
 
 ##################################################
 
+# ---------------------------------
+# SECTION:  stty (set teletype) options
+# ---------------------------------
+#
+# So as not to be disturbed by freezing from Ctrl+s, and having to unfreeze with Ctrl+q
+stty -ixon 
+
 
 # ---------------------------------
 # SECTION:  Aliases
 # ---------------------------------
 #
-
 # aliases for commands
 alias x='xdg-open'
 alias s='XDG_CURRENT_DESKTOP=GNOME; gnome-control-center'
