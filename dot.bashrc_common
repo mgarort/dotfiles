@@ -130,6 +130,8 @@ alias ggp='cd ~/repos/custom_graph_grammar/playground/'
 # aliases for commands
 alias ls='ls -v --color'
 alias lf="ls -d */ | sed 's/\///' | column -c $COLUMNS"
+alias ll='ls -valh'
+alias lt='ls -talh'
 alias so='source ~/.bashrc'
 
 # PATH and PYTHONPATH
