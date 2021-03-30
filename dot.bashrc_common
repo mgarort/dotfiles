@@ -34,8 +34,26 @@ shopt -s direxpand
 
 
 # To make the prompt really cool, show username, host, Git branch, and starts line below
-export PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;32m\]@\[\033[0;32m\]\h \[\033[0;36m\]\w\[\033[0;32m\]$(__git_ps1) \[\033[0;37m\]$(git_sha) \[\033[0;31m\]$(git_status)\n\[\033[01;32m\] \$\[\033[0m\]  '
+export PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;32m\]@\[\033[0;32m\]\h \[\033[0;36m\]\w\[\033[0;32m\]$(__git_ps1)\[\033[0;37m\]$(git_sha)\[\033[0;31m\]$(git_status)'"\[\033[0;37m\]\$(wrapped_conda_env)"'  \n\[\033[01;32m\] \$\[\033[0m\]  ' #"($CONDA_DEFAULT_ENV)"
 
+wrapped_conda_env() {
+    # conda environment name wrapped up in parentheses
+    if [[ -z "$CONDA_DEFAULT_ENV" ]]; then
+        echo ''
+    else
+        echo " ($CONDA_DEFAULT_ENV)"
+    fi
+}
+
+git_sha() {
+    # Outputs the git commit sha id
+    local branch=$(__git_ps1)
+    if [[ -n $branch  ]]; then
+        local sha="$(git rev-parse --short HEAD)"
+        output=" [$sha]"
+        echo $output
+    fi
+}
 
 git_status() {
     # Outputs a series of indicators based on the status of the
@@ -59,15 +77,6 @@ git_status() {
     fi
 }
 
-git_sha() {
-    # Outputs the git commit sha id
-    local branch=$(__git_ps1)
-    if [[ -n $branch  ]]; then
-        local sha="$(git rev-parse --short HEAD)"
-        output="[$sha]"
-        echo $output
-    fi
-}
 
 # View every man command in Vim
 vimman() {
@@ -79,7 +88,7 @@ alias man=vimman
 # than in standard output. This allows easier navigation and visualization
 # (with syntax highlighting). Inspired from:
 # https://stackoverflow.com/questions/28048270/how-do-i-use-vim-as-git-show-editor
-vimgitshow() { 
+vimgitshow() {
     # $1 is the argument given, which should be a file
     # ${1##*.} is what comes after the dot, i.e. the file extension
     extension=${1##*.}

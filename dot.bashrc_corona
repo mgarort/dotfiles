@@ -134,7 +134,7 @@ export PDBQT_TO_PDB_SCRIPT='/home/mgarort/housekeeping/mgltools_x86_64Linux2_1.5
 # ---------------------------------
 #
 # So as not to be disturbed by freezing from Ctrl+s, and having to unfreeze with Ctrl+q
-stty -ixon 
+stty -ixon
 
 
 # ---------------------------------

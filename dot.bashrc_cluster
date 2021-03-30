@@ -48,7 +48,8 @@ export PDBQT_TO_PDB_SCRIPT='/home/mg770/housekeeping/mgltools_x86_64Linux2_1.5.7
 # ---------------------------------
 #
 # So as not to be disturbed by freezing from Ctrl+s, and having to unfreeze with Ctrl+q
-stty -ixon 
+stty -ixon
+# shopt -s expand_aliases
 
 
 
@@ -64,14 +65,22 @@ alias rds='cd /rds/user/mg770/hpc-work/'
 # aliases for commands
 alias sq='squeue -u mg770 --format="%.18i %.9P %.60j %.8u %.2t %.10M %.6D %R"'
 alias sintr="DISPLAY=''; sintr"
-# XXX In order to use obminimize (which belongs to open babel), you need to activate 
+# XXX In order to use obminimize (which belongs to open babel), you need to activate
 # `eigen-4.3.7-gcc-5.4.0-gplg77n` with `module load eigen-3.3.7-gcc-5.4.0-gplg77n`
-alias obminimize='/home/mg770/housekeeping/openbabel-install/bin/obminimize' 
+alias obminimize='/home/mg770/housekeeping/openbabel-install/bin/obminimize'
 
 # aliases for environments
 
 
 
+# ---------------------------------
+# SECTION:  Functions
+# ---------------------------------
+#
+watch_squeue()
+{
+    watch -n30 'squeue -u mg770 --format="%.18i %.9P %.60j %.8u %.2t %.10M %.6D %R"'
+}
 
 
 

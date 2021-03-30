@@ -1,0 +1,10 @@
+# conda configuration. To be placed on ~/.condarc
+# NOTE This file is automatically updated every time `conda config`
+#      command is run (https://conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html)
+
+
+# Set the environment prompt to the same as $PS1
+# $PS1 is designed to already incorporate conda environment information
+env_prompt: '\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;32m\]@\[\033[0;32m\]\h
+  \[\033[0;36m\]\w\[\033[0;32m\]$(__git_ps1)\[\033[0;37m\]$(git_sha)\[\033[0;31m\]$(git_status)\[\033[0;37m\]$(wrapped_conda_env)  \n\[\033[01;32m\]
+  \$\[\033[0m\]  '
