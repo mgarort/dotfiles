@@ -123,6 +123,7 @@ export FZF_DEFAULT_COMMAND="find . -maxdepth 1 | sed 's/^..//' | grep -v -x -F -
 alias dock='cd ~/repos/docking'
 alias dockt='cd ~/repos/docking/tasks'
 alias docks='cd ~/repos/docking/submissions/'
+alias dockp='cd ~/repos/docking/playground/'
 alias re='cd ~/repos'
 alias play='cd ~/playground'
 alias u='cd ~/repos/utils'
@@ -132,6 +133,7 @@ alias gua='cd ~/repos/guatask'
 alias gg='cd ~/repos/custom_graph_grammar/'
 alias ggt='cd ~/repos/custom_graph_grammar/tasks'
 alias ggs='cd ~/repos/custom_graph_grammar/submissions/'
+alias ggp='cd ~/repos/custom_graph_grammar/playground/'
 
 
 # aliases for commands

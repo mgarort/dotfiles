@@ -123,6 +123,13 @@ PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
 ##################################################
 
 # ---------------------------------
+# SECTION: Variable for the "predicting docking" project
+# ---------------------------------
+#
+export PREPARE_LIGAND_SCRIPT='/home/mgarort/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py'
+export PREPARE_LIGAND_SCRIPT='/home/mgarort/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/pdbqt_to_pdb.py'
+
+# ---------------------------------
 # SECTION:  stty (set teletype) options
 # ---------------------------------
 #

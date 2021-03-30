@@ -33,6 +33,11 @@ export TERM=xterm-256color # So that we can spawn new terminals over ssh, for in
 # This will avoid an annoying error message when pushing and pulling from Git
 unset SSH_ASKPASS
 
+# ---------------------------------
+# SECTION: Variable for the "predicting docking" project
+# ---------------------------------
+#
+
 export PREPARE_LIGAND_SCRIPT='/home/mg770/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py'
 export PDBQT_TO_PDB_SCRIPT='/home/mg770/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/pdbqt_to_pdb.py'
 
