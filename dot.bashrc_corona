@@ -127,7 +127,7 @@ PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
 # ---------------------------------
 #
 # So as not to be disturbed by freezing from Ctrl+s, and having to unfreeze with Ctrl+q
-stty -ixon 
+stty -ixon
 
 
 # ---------------------------------
