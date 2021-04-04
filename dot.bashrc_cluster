@@ -79,7 +79,7 @@ alias obminimize='/home/mg770/housekeeping/openbabel-install/bin/obminimize'
 #
 watch_squeue()
 {
-    watch -n30 'squeue -u mg770 --format="%.18i %.9P %.60j %.8u %.2t %.10M %.6D %R"'
+    watch -n15 'squeue -u mg770 --format="%.18i %.9P %.60j %.8u %.2t %.10M %.6D %R"'
 }
 
 
