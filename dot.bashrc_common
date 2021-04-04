@@ -138,6 +138,7 @@ alias ggp='cd ~/repos/custom_graph_grammar/playground/'
 
 # aliases for commands
 alias ls='ls -v --color'
+alias ll='ls -valh'
 alias lf="ls -d */ | sed 's/\///' | column -c $COLUMNS"
 alias so='source ~/.bashrc'
 
