@@ -102,7 +102,7 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alh'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -127,7 +127,7 @@ PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
 # ---------------------------------
 #
 export PREPARE_LIGAND_SCRIPT='/home/mgarort/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/prepare_ligand4.py'
-export PREPARE_LIGAND_SCRIPT='/home/mgarort/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/pdbqt_to_pdb.py'
+export PDBQT_TO_PDB_SCRIPT='/home/mgarort/housekeeping/mgltools_x86_64Linux2_1.5.7/MGLToolsPckgs/AutoDockTools/Utilities24/pdbqt_to_pdb.py'
 
 # ---------------------------------
 # SECTION:  stty (set teletype) options
