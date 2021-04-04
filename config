@@ -24,7 +24,7 @@ font pango:monospace 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
-# Use Mouse+$mod to drag floating windows to their wanted position TODO What is this?? 
+# Use Mouse+$mod to drag floating windows to their wanted position TODO What is this??
 floating_modifier $mod
 
 # reload the configuration file
@@ -69,14 +69,14 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # Resizing windows by 8 in i3 using keyboard only
-bindsym $mod+Shift+y resize shrink width 8 px or 8 ppt 
+bindsym $mod+Shift+y resize shrink width 8 px or 8 ppt
 bindsym $mod+Shift+u resize grow height 8 px or 8 ppt
 bindsym $mod+Shift+i resize shrink height 8 px or 8 ppt
 bindsym $mod+Shift+o resize grow width 8 px or 8 ppt
 
 
 # Change the direction in which windows are spawned
-bindsym $mod+t split toggle 
+bindsym $mod+t split toggle
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -181,17 +181,17 @@ exec_always --no-startup-id xinput set-button-map $touchpad_id 1 0 3 4 5 6 7
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 # The next 2 ones worked in Hyperion
-#bindsym XF86AudioRaiseVolume exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
-#bindsym XF86AudioLowerVolume exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
+#bindsym XF86AudioRaiseVolume exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5%
+#bindsym XF86AudioLowerVolume exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5%
 # The next 2 ones were always commented
-#bindsym $mod+F6 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
-#bindsym $mod+F5 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
+#bindsym $mod+F6 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5%
+#bindsym $mod+F5 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5%
 # The next 2 ones worked in Corona
-bindsym $mod+F1 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5% 
-bindsym $mod+F2 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5% 
+bindsym $mod+F1 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5%
+bindsym $mod+F2 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5%
 
 # Brightness control
-# These need the script brightness (in the mydotfiles repo) to be copied to /bin/brightness. Since /bin/brightness needs sudo access to work, you have to allow that command to be executed as sudo without entering a password. This can be done by modifying the /etc/sudoers file. To modify this file safely, use the command visudo in the following way:    
+# These need the script brightness (in the mydotfiles repo) to be copied to /bin/brightness. Since /bin/brightness needs sudo access to work, you have to allow that command to be executed as sudo without entering a password. This can be done by modifying the /etc/sudoers file. To modify this file safely, use the command visudo in the following way:
 # sudo EDITOR=vim visudo
 # Then, add the following line at the end:
 # user host = (root) NOPASSWD: /bin/brightness  , for example
@@ -218,7 +218,7 @@ exec setxkbmap -layout us -variant intl
 #
 
 # Launch terminal from the curent directory
-bindsym $mod+Return exec "urxvt -cd `xcwd`" 
+bindsym $mod+Return exec "urxvt -cd `xcwd`"
 # Launch nautilus from the current directory
 bindsym $mod+n exec "nautilus `xcwd`"
 # TODO Consider changing for an application that doesn't require compiling, like https://gist.github.com/viking/5851049y. Requires installing the command xcwd from https://github.com/schischi/xcwd
@@ -231,17 +231,17 @@ bindsym $mod+n exec "nautilus `xcwd`"
 bindsym $mod+d exec dmenu_run
 
 # ranger
-bindsym $mod+r exec urxvt -e ranger 
+bindsym $mod+r exec urxvt -e ranger
 # firefox
-bindsym $mod+f exec firefox 
+bindsym $mod+f exec firefox
 # screenshot
 bindsym Print exec flameshot gui
 # google-chrome
 bindsym $mod+g exec google-chrome
-# rhythmbox 
+# rhythmbox
 bindsym $mod+m exec rhythmbox
 # Brackets for monitoring: htop and sensors
-bindsym $mod+bracketleft exec urxvt -e htop 
+bindsym $mod+bracketleft exec urxvt -e htop
 bindsym $mod+bracketright exec urxvt -e watch -n2 sensors
 # python
 bindsym $mod+p exec urxvt -e python3
@@ -260,7 +260,7 @@ mode "ssh"{
     # c for cpu
     bindsym $mod+c exec urxvt -e bash -ci "ssh hpc_cam_cpu"; mode "default"
     # w for watch
-    bindsym $mod+minus exec urxvt -e bash -ci 'ssh -t hpc_cam_cpu "watch -n30 squeue -u mg770"'; mode "default"
+    bindsym $mod+minus exec urxvt -e bash -ci 'ssh -t hpc_cam_cpu "watch_squeue"'; mode "default"
     # m for mount TODO Check improved version that was recommended to you on Reddit
     bindsym $mod+m exec bash -ci 'sshfs mg770@login-cpu.hpc.cam.ac.uk:/home/mg770 /home/mgarort/clustermtp'; exec urxvt -e bash -ci 'nautilus /home/mgarort/clustermtp/'; mode "default"
     # u for unmount
