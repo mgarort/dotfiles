@@ -136,8 +136,8 @@ alias gg='cd ~/repos/custom_graph_grammar/'
 alias ggt='cd ~/repos/custom_graph_grammar/tasks'
 alias ggs='cd ~/repos/custom_graph_grammar/submissions/'
 alias ggp='cd ~/repos/custom_graph_grammar/playground/'
-alias gym='cd ~/repos/dockgym/'
-alias gymp='cd ~/repos/dockgym/play/'
+alias dg='cd ~/repos/dockgym/'
+alias dgp='cd ~/repos/dockgym/play/'
 
 
 # aliases for commands
