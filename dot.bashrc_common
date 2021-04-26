@@ -146,6 +146,7 @@ alias lf="ls -d */ | sed 's/\///' | column -c $COLUMNS"
 alias ll='ls -valh'
 alias lt='ls -talh'
 alias so='source ~/.bashrc'
+alias rp='realpath'
 
 # PATH and PYTHONPATH
 export PATH="$PATH:$HOME/housekeeping/bin"
