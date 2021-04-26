@@ -160,6 +160,7 @@ alias activate_ml='source ~/housekeeping/environments/ml/bin/activate'
 alias activate_rdkit='source ~/housekeeping/initialize_conda.sh; conda activate rdkit'
 alias activate_con_rdkit='source ~/housekeeping/initialize_conda.sh; conda activate con_rdkit'
 alias activate_con_visualize='source ~/housekeeping/initialize_conda.sh; conda activate con_visualize' # I will try to name conda environments as starting with con_
+alias activate_conda_pymol='source ~/housekeeping/initialize_conda.sh; conda activate conda_pymol'
 
 
 
