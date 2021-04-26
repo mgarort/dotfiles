@@ -50,3 +50,13 @@ URxvt.keysym.M-s : \033[19~
 URxvt.keysym.M-b : \033[20~
 ! Map <M-f> to <F10> (the RHS is the escape sequence for <F10>)
 URxvt.keysym.M-f : \033[21~
+
+
+! Map <M-f> to <F7> (the RHS is the escape sequence for <F7>)
+URxvt.keysym.M-BackSpace : \033[18~
+
+! Keysym names for keys
+! <Alt-Escape>
+! URxvt.keysym.M-Escape
+! <Alt-Backspace>
+! URxvt.keysym.M-BackSpace

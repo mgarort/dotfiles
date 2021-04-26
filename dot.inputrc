@@ -4,7 +4,7 @@
 # Backward and forward word
 # "\C-b": backward-word
 # "\C-f": forward-word
-# # Left, right, up, down 
+# # Left, right, up, down
 # "\C-k": previous-history
 # "\C-j": next-history
 # "\C-h": backward-char
@@ -25,3 +25,5 @@
 "\033[20~": backward-word
 "\033[21~": forward-word
 
+# <M-backspace> is bound to <F7>, so to recover the original behaviour of <M-backspace> we need to map <F7>
+"\033[18~": backward-kill-word
