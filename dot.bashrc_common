@@ -155,6 +155,13 @@ alias lt='ls -talh'
 alias so='source ~/.bashrc'
 alias rp='realpath'
 
+# aliases for environments
+alias inicon='source ~/repos/dotfiles/initialize_conda.sh'
+
+
+
+
+
 # PATH and PYTHONPATH
 export PATH="$PATH:$HOME/housekeeping/bin"
 export PYTHONPATH="$PYTHONPATH:$HOME/repos/guatask:$HOME/repos/docking/tasks:$HOME/repos"  # Adding docking/tasks allows us to import tasks and load their outputs with load_outputs()
@@ -184,4 +191,5 @@ elif [ -f ~/.bashrc_cluster ]; then
     . ~/.bashrc_cluster
 
 fi
+
 
