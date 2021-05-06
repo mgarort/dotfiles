@@ -157,7 +157,6 @@ alias wi='cd ~/repos/wiki'
 #   it with `activate_env`
 alias activate_ml='source ~/housekeeping/environments/ml/bin/activate'
 # This will source initialize_conda.sh (needed to create or activate any conda environment) and activate the rdkit_environment
-alias inicon='source ~/housekeeping/initialize_conda.sh'
 alias activate_rdkit='source ~/housekeeping/initialize_conda.sh; conda activate rdkit'
 alias activate_con_rdkit='source ~/housekeeping/initialize_conda.sh; conda activate con_rdkit'
 alias activate_con_visualize='source ~/housekeeping/initialize_conda.sh; conda activate con_visualize' # I will try to name conda environments as starting with con_
