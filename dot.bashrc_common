@@ -32,6 +32,10 @@ shopt -s direxpand
 ##################################################
 
 
+# ---------------------------------
+# SECTION:  Prompt
+# ---------------------------------
+#
 
 # To make the prompt really cool, show username, host, Git branch, and starts line below
 export PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;32m\]@\[\033[0;32m\]\h \[\033[0;36m\]\w\[\033[0;32m\]$(__git_ps1)\[\033[0;37m\]$(git_sha)\[\033[0;31m\]$(git_status)'"\[\033[0;37m\]\$(wrapped_conda_env)"'  \n\[\033[01;32m\] \$\[\033[0m\]  ' #"($CONDA_DEFAULT_ENV)"
@@ -108,7 +112,10 @@ vimgitshow() {
     git show "$1" | vim - "+set filetype=$filetype nowrite nomodifiable nomodified"; 
 }
 
-# fzf options
+# ---------------------------------
+# SECTION:  fzf options
+# ---------------------------------
+#
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPTS='--bind=alt-left:backward-char,alt-right:forward-char,alt-up:up,alt-down:down,f9:backward-word,f10:forward-word'
 # This is so that, when using fzf in the wiki to search for notes:
@@ -119,6 +126,11 @@ export FZF_DEFAULT_OPTS='--bind=alt-left:backward-char,alt-right:forward-char,al
 # - The results '.' (current directory), '.gitignore' and '.git' are excluded
 export FZF_DEFAULT_COMMAND="find . -maxdepth 1 | sed 's/^..//' | grep -v -x -F -e '.' -e '.git' -e '.gitignore' | grep -v \"\.sw[pon]\""
 
+
+# ---------------------------------
+# SECTION:  Aliases
+# ---------------------------------
+#
 # aliases for moving to directories
 alias dock='cd ~/repos/docking'
 alias dockt='cd ~/repos/docking/tasks'
@@ -150,7 +162,6 @@ alias dgu='cd ~/repos/dockgym/utils/'
 alias dgs='cd ~/repos/dockgym/src/'
 alias dockg='cd ~/repos/dockgym/'
 
-
 # aliases for commands
 alias ls='ls -v --color'
 alias lf="ls -d */ | sed 's/\///' | column -c $COLUMNS"
@@ -158,6 +169,13 @@ alias ll='ls -valh'
 alias lt='ls -talh'
 alias so='source ~/.bashrc'
 alias rp='realpath'
+
+# aliases for environments
+alias inicon='source ~/repos/dotfiles/initialize_conda.sh'
+
+
+
+
 
 # PATH and PYTHONPATH
 export PATH="$PATH:$HOME/housekeeping/bin"
@@ -188,4 +206,5 @@ elif [ -f ~/.bashrc_cluster ]; then
     . ~/.bashrc_cluster
 
 fi
+
 
