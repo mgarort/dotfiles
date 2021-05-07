@@ -4,7 +4,16 @@
 
 
 # Set the environment prompt to the same as $PS1
-# $PS1 is designed to already incorporate conda environment information
-env_prompt: '\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;32m\]@\[\033[0;32m\]\h
-  \[\033[0;36m\]\w\[\033[0;32m\]$(__git_ps1)\[\033[0;37m\]$(git_sha)\[\033[0;31m\]$(git_status)\[\033[0;37m\]$(wrapped_conda_env)  \n\[\033[01;32m\]
-  \$\[\033[0m\]  '
+# - In miniconda <= 4.5 the environment prompt replaces $PS1. So to obtain the
+#   the same as $PS1, we have to set env_promp to the same as $PS1 as follows:
+#
+# env_prompt: '\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;32m\]@\[\033[0;32m\]\h
+#   \[\033[0;36m\]\w\[\033[0;32m\]$(__git_ps1)\[\033[0;37m\]$(git_sha)\[\033[0;31m\]$(git_status)\[\033[0;37m\]$(wrapped_conda_env)  \n\[\033[01;32m\]
+#   \$\[\033[0m\]  '
+#
+# - In miniconda > 4.5 the environment prompt is added before $PS1. So to
+# obtain the same as $PS1, we have to set env_prompt to an empty string as
+# follows:
+# env_prompt: ''
+
+env_prompt: ''
