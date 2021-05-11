@@ -159,8 +159,10 @@ alias dgt='cd ~/repos/dockgym/tasks/'
 alias dgr='cd ~/repos/dockgym/receptors/'
 alias dgb='cd ~/repos/dockgym/bin/'
 alias dgu='cd ~/repos/dockgym/utils/'
-alias dgs='cd ~/repos/dockgym/src/'
+alias dgd='cd ~/repos/dockgym/dockgym/'
+alias dgs='cd ~/repos/dockgym/submissions/'
 alias dockg='cd ~/repos/dockgym/'
+alias vae='cd ~/repos/vae-opt2020/'
 
 # aliases for commands
 alias ls='ls -v --color'
@@ -172,6 +174,19 @@ alias rp='realpath'
 
 # aliases for environments
 alias inicon='source ~/repos/dotfiles/initialize_conda.sh'
+
+
+# ---------------------------------
+# SECTION:  Functions
+# ---------------------------------
+#
+# Upgrade dockgym pip installation
+udg(){
+    location=$(pwd)
+    cd ~/repos/dockgym/
+    pip install --upgrade .
+    cd $location
+}
 
 
 
