@@ -17,3 +17,7 @@
 # env_prompt: ''
 
 env_prompt: ''
+envs_dirs:
+  - /rds/user/mg770/hpc-work/conda/envs/
+pkgs_dirs:
+  - /rds/user/mg770/hpc-work/conda/pkgs/
