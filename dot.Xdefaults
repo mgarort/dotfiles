@@ -60,3 +60,14 @@ URxvt.keysym.M-BackSpace : \033[18~
 ! URxvt.keysym.M-Escape
 ! <Alt-Backspace>
 ! URxvt.keysym.M-BackSpace
+
+! Disable autoscroll on output if you are a bit up on your terminal:
+! - When you are at the bottom of the output - the console scrolls down
+!   on new output.
+! - When you've scrolled a bit up - auto-scrolling on output stops.
+! - When you press any key except for the mouse - the terminal scrolls
+!   to the end and starts auto-scrolling.
+! (from https://superuser.com/questions/1415969/how-to-disable-urxvt-autoscroll-on-output )
+URxvt*scrollTtyOutput:      false
+URxvt*scrollWithBuffer:     true
+URxvt*scrollTtyKeypress:    true

@@ -27,3 +27,15 @@
 
 # <M-backspace> is bound to <F7>, so to recover the original behaviour of <M-backspace> we need to map <F7>
 "\033[18~": backward-kill-word
+
+# Cycle through autocomplete suggestions with <Tab>:
+# - The first press of <Tab> shows all suggestions
+# - The second starts cycling forward
+# - <S-Tab> cycles backward
+# From
+# https://unix.stackexchange.com/questions/55203/bash-autocomplete-first-list-files-then-cycle-through-them
+# https://unix.stackexchange.com/questions/17012/inputrc-tab-not-behaving-as-expected
+TAB:menu-complete
+"\e[Z":menu-complete-backward
+set show-all-if-ambiguous on
+set menu-complete-display-prefix on
