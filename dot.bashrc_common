@@ -131,7 +131,12 @@ export FZF_DEFAULT_COMMAND="find . -maxdepth 1 | sed 's/^..//' | grep -v -x -F -
 # SECTION:  Aliases
 # ---------------------------------
 #
-# aliases for moving to directories
+# aliases for general movement between directories
+alias ..='cd ..'
+alias ...='cd ../..'
+alias -- -='cd -'
+
+# aliases for moving to specific directories
 alias dock='cd ~/repos/docking'
 alias dockt='cd ~/repos/docking/tasks'
 alias docks='cd ~/repos/docking/submissions/'
@@ -156,13 +161,12 @@ alias ggp='cd ~/repos/custom_graph_grammar/playground/'
 alias ds='cd ~/repos/dockgym/'
 alias dockstring='cd ~/repos/dockgym/'
 alias docks='cd ~/repos/dockgym/'
-alias dsp='cd ~/repos/dockgym/playground/'
-alias dst='cd ~/repos/dockgym-tasks/'
-alias dsr='cd ~/repos/dockgym/dockstring/targets/'
-alias dsb='cd ~/repos/dockgym/dockstring/bin/'
-alias dsu='cd ~/repos/dockgym/utils/'
+alias dst='cd ~/repos/dockstring-experiments/tasks/'
+alias dss='cd ~/repos/dockstring-experiments/submissions/'
+alias dsc='cd ~/repos/dockstring-experiments/scripts/'
+alias dsp='cd ~/repos/dockstring-experiments/playground/'
+alias dsr='cd ~/repos/dockgym/dockstring/resources/'
 alias dsd='cd ~/repos/dockgym/dockstring/'
-alias dss='cd ~/repos/dockgym/submissions/'
 alias vae='cd ~/repos/vae-opt2020/'
 
 # aliases for commands
@@ -175,6 +179,7 @@ alias rp='realpath'
 
 # aliases for environments
 alias inicon='source ~/repos/dotfiles/initialize_conda.sh'
+alias activate_dockgym='source ~/repos/dotfiles/initialize_conda.sh; source activate dockgym'
 
 
 # ---------------------------------
