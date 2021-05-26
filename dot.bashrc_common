@@ -205,7 +205,7 @@ export PYTHONPATH="$PYTHONPATH:$HOME/repos/guatask:$HOME/repos/docking/tasks:$HO
 
 
 # ---------------------------------
-# SECTION:  Things I'm testing to see if I keep
+# SECTION:  Scratch: temporary functions, and things I'm testing to see if I keep
 # ---------------------------------
 #
 
@@ -213,6 +213,13 @@ export PYTHONPATH="$PYTHONPATH:$HOME/repos/guatask:$HOME/repos/docking/tasks:$HO
 m ()
 {
     alias $1="cd $(pwd)"
+}
+
+qgene()
+{
+    gene=$1
+    cat /home/mg770/repos/dockstring-experiments/tasks/auc_with_labels/OUTPUT/"$gene"/auc.txt
+    cat /home/mg770/repos/dockstring-experiments/tasks/dock_experimentally_measured/OUTPUT/"$gene"/correlation.txt
 }
 
 
