@@ -12,3 +12,9 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# For some reason, the original TERM value of rxvt-unicode-256color is troublesome
+# for the Python shell within conda, and some keys such as backspace do not work in the Python
+# shell in conda as a result. Changing TERM fixes it somehow
+# (from https://stackoverflow.com/questions/47893138/back-space-not-functional-in-python-and-ipython-in-shell )
+TERM=xterm-256color
