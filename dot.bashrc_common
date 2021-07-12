@@ -180,6 +180,7 @@ alias rp='realpath'
 # aliases for environments
 alias inicon='source ~/repos/dotfiles/initialize_conda.sh'
 alias activate_dockgym='source ~/repos/dotfiles/initialize_conda.sh; source activate dockgym'
+alias activate_dockstring-working-copy='source ~/repos/dotfiles/initialize_conda.sh; source activate dockstring-working-copy'
 
 
 # ---------------------------------
