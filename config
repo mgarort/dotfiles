@@ -27,15 +27,11 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position TODO What is this??
 floating_modifier $mod
 
-# reload the configuration file
+# Reload i3 config (similar to Vim <leader>c, which is also related to i3 config
 bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3) TODO What is this?
 bindsym $mod+Shift+r restart
-
-# Reload i3 config (similar to Vim <leader>c, which is also related to i3 config
-# since it opens the i3 config)
-bindsym $mod+c exec urxvt -e i3-msg reload
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available). Also, disables buttons 1-5 (i.e. mouse) in the i3 bar,
@@ -237,7 +233,7 @@ bindsym $mod+f exec firefox
 # screenshot
 bindsym Print exec flameshot gui
 # google-chrome
-bindsym $mod+g exec google-chrome
+bindsym $mod+c exec google-chrome
 # rhythmbox
 bindsym $mod+m exec rhythmbox
 # Brackets for monitoring: htop and sensors
