@@ -207,6 +207,13 @@ bindsym $mod+F7 exec xrandr --output DP-1 --rotate inverted; exec xrandr --outpu
 # Keyboard configuration
 exec setxkbmap -layout us -variant intl
 
+# Battery pop-up notification
+# Script i3-battery-popup downloaded from https://github.com/rjekker/i3-battery-popup
+# and saved in my dotfiles repository. Must symlink it to /bin/battery-popup
+exec --no-startup-id /bin/i3-battery-popup -n -D -L 45 -l 10
+
+
+
 
 # ---------------------------------
 # SECTION:  Launching applications
