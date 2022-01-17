@@ -1,0 +1,11 @@
+# This file sets the default keyboard that is selected when booting
+# To place on /etc/default/keyboard
+
+# Consult the keyboard(5) manual page.
+
+XKBMODEL="pc105"
+XKBLAYOUT="us"
+XKBVARIANT="intl"
+XKBOPTIONS=""
+
+BACKSPACE="guess"
