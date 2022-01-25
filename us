@@ -125,7 +125,7 @@ xkb_symbols "intl" {
     key <AC04> { [	   f,          F,             f,                F ] };
     key <AC05> { [	   g,          G,             g,                G ] };
     key <AC06> { [	   h,          H,             h,                H ] };
-    key <AC07> { [	   j,          J,             j,                J ] };
+    key <AC07> { [	   j,          J,    idiaeresis,       Idiaeresis ] };
     key <AC08> { [	   k,          K,            oe,               OE ] };
 
     key <AC09> { [	   l,          L,        oslash,         Ooblique ] };

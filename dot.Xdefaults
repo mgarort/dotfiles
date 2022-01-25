@@ -23,7 +23,9 @@
 *color14:       #a1cdcd
 *color7:        #bbbb99
 *color15:       #eeeebb
-URxvt.font: xft:Monospace:pixelsize=20
+! In big screen: 20
+! In laptop screen: ?
+URxvt.font: xft:Monospace:pixelsize=24
 
 ! Vertical separation between lines
 URxvt.lineSpace: 5
