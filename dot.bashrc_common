@@ -184,7 +184,7 @@ alias dbr='cd ~/repos/dockbiotic/dockbiotic/'
 alias ls='ls -v --color'
 alias lf="ls -d */ | sed 's=/==' | column -c $COLUMNS"
 alias ll='ls -valh'
-alias lt='ls -talh'
+alias lt='ls -talhr'
 alias so='source ~/.bashrc'
 alias rp='realpath'
 

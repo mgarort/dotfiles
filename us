@@ -95,8 +95,8 @@ xkb_symbols "intl" {
     key <TLDE> { [     grave,      tilde,    dead_grave,       asciitilde ] };
     key <AE01> { [	   1,     exclam,    exclamdown,      onesuperior ] };
     key <AE02> { [	   2,         at,   twosuperior, dead_doubleacute ] };
-    key <AE03> { [	   3, numbersign, threesuperior,      dead_macron ] };
-    key <AE04> { [	   4,     dollar,      currency,         sterling ] };
+    key <AE03> { [	   3, numbersign,      sterling,      dead_macron ] };
+    key <AE04> { [	   4,     dollar,      EuroSign,         sterling ] };
     key <AE05> { [	   5,    percent,      EuroSign,     dead_cedilla ] };
     key <AE06> { [    6,      circumflex,      sterling,      asciicircum ] };
     key <AE07> { [	   7,  ampersand,       onehalf,	dead_horn ] };
