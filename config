@@ -253,7 +253,7 @@ bindsym $mod+p exec urxvt -e python3
 # anki
 bindsym $mod+a exec anki
 # Open Vim as a scratchpad
-bindsym $mod+b exec urxvt -e bash -ci "vim -c 'call LaunchScratchpad()'"
+# bindsym $mod+b exec urxvt -e bash -ci "vim -c 'call LaunchScratchpad()'"
 # Open Vim at the index of your zettelkasten
 bindsym $mod+i exec urxvt -e bash -ci "vim -c 'call LaunchVimwiki()'"
 # Open Vim session at the home directory
