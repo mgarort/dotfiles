@@ -60,6 +60,7 @@ stty -ixon
 
 # alias for going to directories
 alias rds='cd /rds/user/mg770/hpc-work/'
+alias rfs='cd ~/rfs/rfs-extra-HpO9i0vq3cs'
 
 
 # aliases for commands
