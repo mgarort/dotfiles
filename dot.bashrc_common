@@ -182,7 +182,7 @@ alias dbr='cd ~/repos/dockbiotic/dockbiotic/'
 
 # aliases for commands
 alias ls='ls -v --color'
-alias lf="ls -d */ | sed 's/\///' | column -c $COLUMNS"
+alias lf="ls -d */ | sed 's=/==' | column -c $COLUMNS"
 alias ll='ls -valh'
 alias lt='ls -talh'
 alias so='source ~/.bashrc'
@@ -192,6 +192,13 @@ alias rp='realpath'
 alias inicon='source ~/repos/dotfiles/initialize_conda.sh'
 alias activate_dockgym='source ~/repos/dotfiles/initialize_conda.sh; source activate dockgym'
 alias activate_dockstring-working-copy='source ~/repos/dotfiles/initialize_conda.sh; source activate dockstring-working-copy'
+alias activate_dockstring-vae='source ~/repos/dotfiles/initialize_conda.sh; source activate dockstring-vae'
+alias activate_dockstring-vae2='source ~/repos/dotfiles/initialize_conda.sh; source activate dockstring-vae2; module load cuda/10.0'
+alias activate_deepchem='source ~/repos/dotfiles/initialize_conda.sh; source activate deepchem; module load cuda/10.2'
+alias activate_molgrid='source ~/repos/dotfiles/initialize_conda.sh; source activate molgrid; module load cuda/10.2'
+alias activate_moldqn='source ~/repos/dotfiles/initialize_conda.sh; source activate moldqn; module load cuda/10.1'
+alias activate_dockbiotic='source ~/repos/dotfiles/initialize_conda.sh; source activate dockbiotic'
+alias activate_dc='source ~/repos/dotfiles/initialize_conda.sh; source activate dc; module load cuda/10.2'
 
 
 # ---------------------------------
