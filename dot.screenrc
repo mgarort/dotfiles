@@ -3,3 +3,10 @@
 # As a solution, set the escape key to <C-^>
 # (copied from https://wiki.archlinux.org/index.php/GNU_Screen )
 escape ^^^
+
+# The following is to get the correct background color when opening Vim on a
+# screen session. Taken from
+# https://stackoverflow.com/questions/14689925/vim-background-with-gnu-screen
+altscreen on
+defbce on
+set term=screen-256color
