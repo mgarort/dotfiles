@@ -1,0 +1,15 @@
+--regex-C=/$x/x/x/e/ (NOTE ctags config doesn't allow comments, so this syntax is a workaround, as seen here
+--regex-C=/$x/x/x/e/  https://stackoverflow.com/questions/10973224/how-to-add-comments-to-an-exuberant-ctags-config-file/ )
+
+--regex-C=/$x/x/x/e/ ctags configuration file. To be placed on ~/.ctags
+
+--regex-C=/$x/x/x/e/ Configuration to create tags for LaTeX labels and citations
+--regex-C=/$x/x/x/e/ Copied from https://stackoverflow.com/questions/8119405/create-tags-file-for-latex-for-labels-and-bib-items
+
+--langdef=tex2
+--langmap=tex2:.tex
+--regex-tex2=/\\label[ \t]*\*?\{[ \t]*([^}]*)\}/\1/l,label/
+
+--langdef=bib
+--langmap=bib:.bib
+--regex-bib=/^@[A-Za-z]+\{([^,]*)/\1/b,bib/
