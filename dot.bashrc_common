@@ -137,22 +137,21 @@ alias ...='cd ../..'
 alias -- -='cd -'
 
 # aliases for moving to specific directories
-alias dock='cd ~/repos/docking'
-alias dockt='cd ~/repos/docking/tasks'
-alias docks='cd ~/repos/docking/submissions/'
-alias dockp='cd ~/repos/docking/playground/'
 alias re='cd ~/repos'
-alias repo='cd ~/repos'
-alias repos='cd ~/repos'
+alias dotv='cd ~/repos/dotvim'
+alias dotf='cd ~/repos/dotfiles'
+
+# aliases for commands
+alias ls='ls -v --color'
+alias lf="ls -d */ | sed 's=/==' | column -c $COLUMNS"
+alias ll='ls -valh'
+alias lt='ls -talhr'
+alias so='source ~/.bashrc'
+
+# temporary aliases
 alias play='cd ~/playground'
 alias house='cd ~/housekeeping/'
 alias u='cd ~/repos/utils'
-alias dotv='cd ~/repos/dotvim'
-alias dotva='cd ~/repos/dotvim/after'
-alias dotvb='cd ~/repos/dotvim/bundle'
-alias dotvf='cd ~/repos/dotvim/ftplugin/'
-alias dotvp='cd ~/repos/dotvim/plugin/'
-alias dotf='cd ~/repos/dotfiles'
 alias gua='cd ~/repos/guatask'
 alias gg='cd ~/repos/custom_graph_grammar/'
 alias ggt='cd ~/repos/custom_graph_grammar/tasks'
@@ -180,13 +179,6 @@ alias dbd='cd ~/repos/dockbiotic/data/'
 alias dbe='cd ~/repos/dockbiotic/experiments/'
 alias dbr='cd ~/repos/dockbiotic/dockbiotic/'
 
-# aliases for commands
-alias ls='ls -v --color'
-alias lf="ls -d */ | sed 's=/==' | column -c $COLUMNS"
-alias ll='ls -valh'
-alias lt='ls -talhr'
-alias so='source ~/.bashrc'
-alias rp='realpath'
 
 # aliases for environments
 alias inicon='source ~/repos/dotfiles/initialize_conda.sh'
