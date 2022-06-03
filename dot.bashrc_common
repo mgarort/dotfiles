@@ -246,4 +246,7 @@ elif [ -f ~/.bashrc_cluster ]; then
 
 fi
 
+if [ -f ~/.bashrc_git ]; then
+    . ~/dot.bashrc_git
+fi
 
