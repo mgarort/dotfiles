@@ -64,6 +64,12 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
+# move focused workspace between monitors
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+j move workspace to output up
+bindsym $mod+Control+k move workspace to output down
+bindsym $mod+Control+l move workspace to output right
+
 # Resizing windows by 8 in i3 using keyboard only
 bindsym $mod+Shift+y resize shrink width 8 px or 8 ppt
 bindsym $mod+Shift+u resize grow height 8 px or 8 ppt
