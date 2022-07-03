@@ -212,6 +212,15 @@ bindsym $mod+F7 exec xrandr --output DP-1 --rotate inverted; exec xrandr --outpu
 # This will return the external screen to normal orientation (reverse the flip upside down)
 bindsym $mod+F8 exec xrandr --output DP-1 --rotate normal; exec xrandr --output DP-2 --rotate normal
 
+# Mode "x" for xrandr screen settings
+bindsym $mod+x mode "xrandr"
+mode "xrandr"{
+    bindsym $mod+a exec xrandr --auto; mode "default"
+    bindsym $mod+2 exec xrandr --auto; exec xrandr --output DP-2-2 --auto --right-of DP-2-1; exec xrandr --output eDP-1 --off; mode "default"
+    bindsym $mod+l exec xrandr --output eDP-1 --auto --above DP-2-1; exec xrandr --output DP-2-1 --off; exec xrandr --output DP-2-2 --off; mode "default"
+    bindsym $mod+x mode "default"
+}
+
 # Keyboard configuration
 exec setxkbmap -layout us -variant intl
 
