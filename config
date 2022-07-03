@@ -356,3 +356,13 @@ mode "resize" {
 }
 
 #bindsym $mod+r mode "resize" # I will use $mod+r for ranger
+
+
+# Disable mouse warping, i.e. setting the mouse position to the center
+# of the focused window when focusing a window in a different screen
+# or monitor
+mouse_warping none
+
+
+
+
