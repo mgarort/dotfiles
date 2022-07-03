@@ -249,3 +249,7 @@ fi
 source ~/repos/dotfiles/dot.bash_git
 alias s='XDG_CURRENT_DESKTOP=GNOME; gnome-control-center'
 alias wi='cd ~/repos/wiki'
+
+if [ -f ~/.bashrc_git ]; then
+    . ~/dot.bashrc_git
+fi
