@@ -1,0 +1,1 @@
+lg='ls --human-readable --size -1 -S --classify'
