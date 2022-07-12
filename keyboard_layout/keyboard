@@ -3,9 +3,16 @@
 
 # Consult the keyboard(5) manual page.
 
-XKBMODEL="pc105"
-XKBLAYOUT="us"
-XKBVARIANT="intl"
-XKBOPTIONS=""
+# For the customized US layout
+# XKBMODEL="pc105"
+# XKBLAYOUT="us"
+# XKBVARIANT="intl"
+# XKBOPTIONS=""
+# BACKSPACE="guess"
 
+# For the customized UK layout
+XKBMODEL="pc105"
+XKBLAYOUT="gb"
+XKBVARIANT="extd"
+XKBOPTIONS=""
 BACKSPACE="guess"

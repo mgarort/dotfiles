@@ -129,11 +129,6 @@ export FZF_DEFAULT_COMMAND="find . -maxdepth 1 | sed 's/^..//' | grep -v -x -F -
 
 
 
-
-
-
-
-
 # ---------------------------------
 # SECTION:  Functions
 # ---------------------------------
@@ -194,3 +189,5 @@ fi
 if [ -f ~/.bashrc_aliases ]; then
     . ~/.bashrc_aliases
 fi
+
+stty -ixon

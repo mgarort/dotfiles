@@ -66,3 +66,8 @@ alias dbo='cd ~/repos/dockbiotic/plots'
 alias dbd='cd ~/repos/dockbiotic/data/'
 alias dbe='cd ~/repos/dockbiotic/experiments/'
 alias dbr='cd ~/repos/dockbiotic/dockbiotic/'
+
+
+alias lg='ls --human-readable --size -1 -S --classify'
+alias count='find . -type f | wc -l'
+alias left='ls -t -1'
