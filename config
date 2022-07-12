@@ -64,6 +64,12 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
+# move focused workspace between monitors
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+j move workspace to output up
+bindsym $mod+Control+k move workspace to output down
+bindsym $mod+Control+l move workspace to output right
+
 # Resizing windows by 8 in i3 using keyboard only
 bindsym $mod+Shift+y resize shrink width 8 px or 8 ppt
 bindsym $mod+Shift+u resize grow height 8 px or 8 ppt
@@ -206,6 +212,32 @@ bindsym $mod+F7 exec xrandr --output DP-1 --rotate inverted; exec xrandr --outpu
 # This will return the external screen to normal orientation (reverse the flip upside down)
 bindsym $mod+F8 exec xrandr --output DP-1 --rotate normal; exec xrandr --output DP-2 --rotate normal
 
+# Mode "x" for xrandr screen settings
+bindsym $mod+x mode "xrandr"
+mode "xrandr"{
+    bindsym $mod+a exec xrandr --auto; mode "default"
+    bindsym $mod+2 exec xrandr --auto; exec xrandr --output DP-2-2 --auto --right-of DP-2-1; exec xrandr --output eDP-1 --off; mode "default"
+    bindsym $mod+l exec xrandr --output eDP-1 --auto --above DP-2-1; exec xrandr --output DP-2-1 --off; exec xrandr --output DP-2-2 --off; mode "default"
+    bindsym $mod+x mode "default"
+}
+
+# Set default monitors for workspaces
+workspace 0 output eDP-1 DP-2-1
+workspace 1 output eDP-1 DP-2-1
+workspace 2 output eDP-1 DP-2-1
+workspace 3 output eDP-1 DP-2-2
+workspace 4 output eDP-1 DP-2-2
+workspace 5 output eDP-1 DP-2-2
+workspace 6 output eDP-1 DP-2-2
+workspace 7 output eDP-1 DP-2-2
+workspace 8 output eDP-1 DP-2-2
+workspace 9 output eDP-1 DP-2-2
+workspace 10 output eDP-1 DP-2-2
+workspace 11 output eDP-1 DP-2-2
+workspace 12 output eDP-1 DP-2-2
+
+
+
 # Keyboard configuration
 exec setxkbmap -layout us -variant intl
 
@@ -255,7 +287,7 @@ bindsym $mod+a exec anki
 # Open Vim as a scratchpad
 # bindsym $mod+b exec urxvt -e bash -ci "vim -c 'call LaunchScratchpad()'"
 # Open Vim at the index of your zettelkasten
-bindsym $mod+i exec urxvt -e bash -ci "vim -c 'call LaunchVimwiki()'"
+bindsym $mod+i workspace 2; exec urxvt -e bash -ci "vim -c 'call LaunchVimwiki()'"
 # Open Vim session at the home directory
 bindsym $mod+v exec urxvt -e bash -ci "vim -c 'cd $HOME'"
 # Start ssh. Use a mode "ssh" so that you can bind to multiple remote
@@ -324,3 +356,13 @@ mode "resize" {
 }
 
 #bindsym $mod+r mode "resize" # I will use $mod+r for ranger
+
+
+# Disable mouse warping, i.e. setting the mouse position to the center
+# of the focused window when focusing a window in a different screen
+# or monitor
+mouse_warping none
+
+
+
+

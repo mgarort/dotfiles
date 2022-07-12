@@ -246,6 +246,10 @@ elif [ -f ~/.bashrc_cluster ]; then
 
 fi
 
+source ~/repos/dotfiles/dot.bash_git
+alias s='XDG_CURRENT_DESKTOP=GNOME; gnome-control-center'
+alias wi='cd ~/repos/wiki'
+
 if [ -f ~/.bashrc_git ]; then
     . ~/.bashrc_git
 fi
