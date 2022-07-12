@@ -1,1 +1,3 @@
-lg='ls --human-readable --size -1 -S --classify'
+alias lg='ls --human-readable --size -1 -S --classify'
+alias count='find . -type f | wc -l'
+alias left='ls -t -1'
