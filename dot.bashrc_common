@@ -147,11 +147,11 @@ alias lf="ls -d */ | sed 's=/==' | column -c $COLUMNS"
 alias ll='ls -valh'
 alias lt='ls -talhr'
 alias so='source ~/.bashrc'
+alias u="urxvt  -e bash -c 'setxkbmap -layout gb -variant extd ; xmodmap -e "'"'"keycode 49 = grave"'"'"; bash' &"
 
 # temporary aliases
 alias play='cd ~/playground'
 alias house='cd ~/housekeeping/'
-alias u='cd ~/repos/utils'
 alias gua='cd ~/repos/guatask'
 alias gg='cd ~/repos/custom_graph_grammar/'
 alias ggt='cd ~/repos/custom_graph_grammar/tasks'
@@ -247,6 +247,7 @@ elif [ -f ~/.bashrc_cluster ]; then
 fi
 
 if [ -f ~/.bashrc_git ]; then
-    . ~/dot.bashrc_git
+    . ~/.bashrc_git
 fi
 
+stty -ixon
