@@ -189,5 +189,3 @@ fi
 if [ -f ~/.bashrc_aliases ]; then
     . ~/.bashrc_aliases
 fi
-
-stty -ixon
