@@ -178,6 +178,12 @@ bindsym $mod+Shift+Control+l exec "i3-msg exit"
 set $touchpad_id $( xinput | grep Touchpad | awk '{split($6,array,"="); print array[2]}' )
 exec_always --no-startup-id xinput set-button-map $touchpad_id 1 0 3 4 5 6 7
 
+# NOTE The following keybindings use function keys (i.e. F1-F12). Function keys are 
+#      disabled by default in many laptop makes, leaving instead media keys such
+#      as play, pause, etc as default. For your function keybindings to work, you'll
+#      have to make function keys the default.
+#      In Dell, you can toggle between function keys and media keys with Fn+Esc.
+
 # Pulse Audio controls
 # The next 2 ones were always commented
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -189,8 +195,11 @@ exec_always --no-startup-id xinput set-button-map $touchpad_id 1 0 3 4 5 6 7
 #bindsym $mod+F6 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5%
 #bindsym $mod+F5 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5%
 # The next 2 ones worked in Corona
-bindsym $mod+F1 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5%
-bindsym $mod+F2 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5%
+# bindsym $mod+F1 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -5%
+# bindsym $mod+F2 exec --no-startup-id  pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +5%
+# The next 2 worked in Chaucer
+bindsym $mod+F1 exec amixer set Master 5%-
+bindsym $mod+F2 exec amixer set Master 5%+
 
 # Brightness control
 # These need the script brightness (in the mydotfiles repo) to be copied to /bin/brightness. Since /bin/brightness needs sudo access to work, you have to allow that command to be executed as sudo without entering a password. This can be done by modifying the /etc/sudoers file. To modify this file safely, use the command visudo in the following way:
