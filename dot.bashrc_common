@@ -26,7 +26,9 @@ shopt -s checkwinsize
 # Expand directory names
 shopt -s direxpand
 
-# XXX ssty -ixon is set in every terminal (both local and cluster), but if it is set here it leads to errors. It has to be set in local and cluster-specific bashrc files
+# Only execute if the current shell is interactive, as explained here
+# https://stackoverflow.com/questions/24623021/getting-stty-standard-input-inappropriate-ioctl-for-device-when-using-scp-thro
+[[ $- == *i* ]] &&  stty -ixon
 
 
 ##################################################
@@ -189,3 +191,7 @@ fi
 if [ -f ~/.bashrc_aliases ]; then
     . ~/.bashrc_aliases
 fi
+
+
+
+
