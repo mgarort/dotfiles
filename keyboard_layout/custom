@@ -1,0 +1,165 @@
+// My custom keyboard configuration
+//
+// Automatically setting the keyboard configuration is problematic in Ubuntu
+// and/or i3. In the past have tried and failed with the following strategies:
+//
+// - setxkbmap command on
+//      - ~/.bashrc (because not executed until first terminal started)
+//      - ~/.bash_profile
+//      - ~/.profile
+//      - ~/.config/i3/config (i3 config file)
+//      - ~/.xprofile ?
+//      - ~/.xinitrc ?
+//
+// - Config file /etc/default/keyboard
+//
+// In the end, the easiest and most error-prone way I have found is to
+// overwrite whatever keyboard file the system is using by default with this
+// file. For example,
+//
+// - If the system is using the layout "gb" and no variant is specified, then
+//   overwrite the file /usr/share/X11/xkb/symbols/gb with this file, and keep
+//   the first `xkb_symbols` before as default and with the name "basic".
+
+//   lines that indicate `default` and the next line which gives the name
+//   "basic".
+//
+// - If the system is using the layout "gb" and the variant "intl", then
+//   overwrite the file /usr/share/X11/xkb/symbols/gb with this file, and
+//   rename the second `xkb_symbols` from "variant" to "intl".
+
+
+default  partial alphanumeric_keys modifier_keys
+xkb_symbols "basic" {
+
+    name[Group1]= "Custom keyboard by mgarort";
+
+
+    key <TLDE>	{ [     grave,    notsign,          bar,          bar ]	};
+    key <AE01> { [	   1,     exclam,    exclamdown,      onesuperior ] };
+    key <AE02> { [	   2,   quotedbl,   twosuperior, dead_doubleacute ] };
+    key <AE03> { [	   3,   sterling, threesuperior,      dead_macron ] };
+    key <AE04> { [	   4,     dollar,      EuroSign,         sterling ] };
+    key <AE05> { [	   5,    percent,      EuroSign,     dead_cedilla ] };
+    key <AE06> { [         6, circumflex,      sterling,      asciicircum ] };
+    key <AE07> { [	   7,  ampersand,       onehalf,	dead_horn ] };
+    key <AE08> { [	   8,   asterisk, threequarters,      dead_ogonek ] };
+    key <AE09> { [	   9,  parenleft, leftsinglequotemark, dead_breve ] };
+    key <AE10> { [	   0, parenright, rightsinglequotemark, dead_abovering ] };
+    key <AE11> { [     minus, underscore,           yen,    dead_belowdot ] };
+    key <AE12> { [     equal,       plus,      multiply,         division ] };
+
+    key <AD01> { [	   q,          Q,    adiaeresis,       Adiaeresis ] };
+    key <AD02> { [	   w,          W,         aring,            Aring ] };
+    key <AD03> { [	   e,          E,        eacute,           Eacute ] };
+    key <AD04> { [	   r,          R,    registered,       registered ] };
+    key <AD05> { [	   t,          T,         thorn,            THORN ] };
+    key <AD06> { [	   y,          Y,             y,                Y ] };
+    key <AD07> { [	   u,          U,        uacute,           Uacute ] };
+    key <AD08> { [	   i,          I,        iacute,           Iacute ] };
+    key <AD09> { [	   o,          O,        oacute,           Oacute ] };
+    key <AD10> { [	   p,          P,    odiaeresis,       Odiaeresis ] };
+    key <AD11> { [ bracketleft,  braceleft,  guillemotleft, leftdoublequotemark ] };
+    key <AD12> { [bracketright, braceright, guillemotright, rightdoublequotemark ] };
+
+    key <AC01> { [	   a,          A,        aacute,           Aacute ] };
+    key <AC02> { [	   s,          S,        ssharp,          section ] };
+    key <AC03> { [	   d,          D,           eth,              ETH ] };
+    key <AC04> { [	   f,          F,             f,                F ] };
+    key <AC05> { [	   g,          G,             g,                G ] };
+    key <AC06> { [	   h,          H,             h,                H ] };
+    key <AC07> { [	   j,          J,    udiaeresis,       Udiaeresis ] };
+    key <AC08> { [	   k,          K,    idiaeresis,       Idiaeresis ] };
+    key <AC09> { [	   l,          L,        oslash,         Ooblique ] };
+    key <AC10> { [ semicolon,      colon,     paragraph,           degree ] };
+    key <AC11> { [apostrophe,         at, dead_diaeresis,      dead_acute ] };
+
+    key <AB01> { [	   z,          Z,            ae,               AE ] };
+    key <AB02> { [	   x,          X,             x,                X ] };
+    key <AB03> { [	   c,          C,     copyright,             cent ] };
+    key <AB04> { [	   v,          V,             v,                V ] };
+    key <AB05> { [	   b,          B,             b,                B ] };
+    key <AB06> { [	   n,          N,        ntilde,           Ntilde ] };
+    key <AB07> { [	   m,          M,            mu,               mu ] };
+    key <AB08> { [     comma,       less,      ccedilla,         Ccedilla ] };
+    key <AB09> { [    period,    greater, dead_abovedot,       dead_caron ] };
+    key <AB10> { [     slash,   question,  questiondown,        dead_hook ] };
+    key <BKSL>	{ [numbersign, asciitilde,   dead_grave,   dead_breve ]	};
+
+    key <LSGT> { [ backslash,   bar,            backslash,      bar ] };
+
+    key <CAPS> { [ Escape, Escape, Escape, Escape ] };
+
+    key <ESC> { [ BackSpace, BackSpace, BackSpace, BackSpace ] };
+
+    include "level3(ralt_switch)"
+};
+
+
+// The following is the same keyboard duplicated, just to make it easier to
+// set a variant if a variant is the default.
+
+partial alphanumeric_keys
+xkb_symbols "variant" {
+
+    name[Group1]= "Custom keyboard by mgarort (identical to one above)";
+
+    key <TLDE>	{ [     grave,    notsign,          bar,          bar ]	};
+    key <AE01> { [	   1,     exclam,    exclamdown,      onesuperior ] };
+    key <AE02> { [	   2,   quotedbl,   twosuperior, dead_doubleacute ] };
+    key <AE03> { [	   3,   sterling, threesuperior,      dead_macron ] };
+    key <AE04> { [	   4,     dollar,      EuroSign,         sterling ] };
+    key <AE05> { [	   5,    percent,      EuroSign,     dead_cedilla ] };
+    key <AE06> { [         6, circumflex,      sterling,      asciicircum ] };
+    key <AE07> { [	   7,  ampersand,       onehalf,	dead_horn ] };
+    key <AE08> { [	   8,   asterisk, threequarters,      dead_ogonek ] };
+    key <AE09> { [	   9,  parenleft, leftsinglequotemark, dead_breve ] };
+    key <AE10> { [	   0, parenright, rightsinglequotemark, dead_abovering ] };
+    key <AE11> { [     minus, underscore,           yen,    dead_belowdot ] };
+    key <AE12> { [     equal,       plus,      multiply,         division ] };
+
+    key <AD01> { [	   q,          Q,    adiaeresis,       Adiaeresis ] };
+    key <AD02> { [	   w,          W,         aring,            Aring ] };
+    key <AD03> { [	   e,          E,        eacute,           Eacute ] };
+    key <AD04> { [	   r,          R,    registered,       registered ] };
+    key <AD05> { [	   t,          T,         thorn,            THORN ] };
+    key <AD06> { [	   y,          Y,             y,                Y ] };
+    key <AD07> { [	   u,          U,        uacute,           Uacute ] };
+    key <AD08> { [	   i,          I,        iacute,           Iacute ] };
+    key <AD09> { [	   o,          O,        oacute,           Oacute ] };
+    key <AD10> { [	   p,          P,    odiaeresis,       Odiaeresis ] };
+    key <AD11> { [ bracketleft,  braceleft,  guillemotleft, leftdoublequotemark ] };
+    key <AD12> { [bracketright, braceright, guillemotright, rightdoublequotemark ] };
+
+    key <AC01> { [	   a,          A,        aacute,           Aacute ] };
+    key <AC02> { [	   s,          S,        ssharp,          section ] };
+    key <AC03> { [	   d,          D,           eth,              ETH ] };
+    key <AC04> { [	   f,          F,             f,                F ] };
+    key <AC05> { [	   g,          G,             g,                G ] };
+    key <AC06> { [	   h,          H,             h,                H ] };
+    key <AC07> { [	   j,          J,    udiaeresis,       Udiaeresis ] };
+    key <AC08> { [	   k,          K,    idiaeresis,       Idiaeresis ] };
+    key <AC09> { [	   l,          L,        oslash,         Ooblique ] };
+    key <AC10> { [ semicolon,      colon,     paragraph,           degree ] };
+    key <AC11> { [apostrophe,         at, dead_diaeresis,      dead_acute ] };
+
+    key <AB01> { [	   z,          Z,            ae,               AE ] };
+    key <AB02> { [	   x,          X,             x,                X ] };
+    key <AB03> { [	   c,          C,     copyright,             cent ] };
+    key <AB04> { [	   v,          V,             v,                V ] };
+    key <AB05> { [	   b,          B,             b,                B ] };
+    key <AB06> { [	   n,          N,        ntilde,           Ntilde ] };
+    key <AB07> { [	   m,          M,            mu,               mu ] };
+    key <AB08> { [     comma,       less,      ccedilla,         Ccedilla ] };
+    key <AB09> { [    period,    greater, dead_abovedot,       dead_caron ] };
+    key <AB10> { [     slash,   question,  questiondown,        dead_hook ] };
+    key <BKSL>	{ [numbersign, asciitilde,   dead_grave,   dead_breve ]	};
+
+    key <LSGT> { [ backslash,   bar,            backslash,      bar ] };
+
+    key <CAPS> { [ Escape, Escape, Escape, Escape ] };
+
+    key <ESC> { [ BackSpace, BackSpace, BackSpace, BackSpace ] };
+
+    include "level3(ralt_switch)"
+};
