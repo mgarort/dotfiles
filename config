@@ -247,11 +247,6 @@ workspace 12 output eDP-1 DP-2-2
 
 
 
-# Keyboard configuration
-# Unfortunately simply executing setxkbmap with
-#       exec_always "setxkbmap -model pc105 -layout miguel_custom -variant miguel_custom"
-# doesn't work, so instead we open a new terminal and execute the command there
-exec --no-startup-id urxvt -e setxkbmap -layout miguel_custom -variant miguel_custom
 
 # Battery pop-up notification
 # Script i3-battery-popup downloaded from https://github.com/rjekker/i3-battery-popup
@@ -374,7 +369,3 @@ mode "resize" {
 # of the focused window when focusing a window in a different screen
 # or monitor
 mouse_warping none
-
-
-
-
