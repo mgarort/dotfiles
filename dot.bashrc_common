@@ -184,10 +184,10 @@ elif [ -f ~/.bashrc_cluster ]; then
 
 fi
 
-if [ -f ~/.bashrc_git ]; then
-    . ~/.bashrc_git
+if [ -f ~/.bash_git ]; then
+    . ~/.bash_git
 fi
 
-if [ -f ~/.bashrc_aliases ]; then
-    . ~/.bashrc_aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
