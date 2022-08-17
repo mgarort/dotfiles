@@ -177,8 +177,8 @@ qgene()
 # ---------------------------------
 #
 
-if [ -f ~/.bashrc_corona ]; then
-    . ~/.bashrc_corona
+if [ -f ~/.bashrc_local ]; then
+    . ~/.bashrc_local
 elif [ -f ~/.bashrc_cluster ]; then
     . ~/.bashrc_cluster
 
