@@ -10,7 +10,10 @@ alias -- -='cd -'
 
 # aliases for moving to specific directories
 alias re='cd ~/repos'
-alias wi='cd ~/repos/wiki'
+alias no='cd ~/repos/notes'
+alias nw='cd ~/repos/notes/wiki'
+alias nl='cd ~/repos/notes/local_html'
+alias np='cd ~/repos/notes/pcloud_html'
 alias dotv='cd ~/repos/dotvim'
 alias dotf='cd ~/repos/dotfiles'
 
