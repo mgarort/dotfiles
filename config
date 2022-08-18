@@ -319,6 +319,7 @@ mode "office"{
     bindsym $mod+w exec libreoffice --writer; mode "default"
     bindsym $mod+t exec teams; mode "default"
     bindsym $mod+d exec dropbox start; mode "default"
+    bindsym $mod+p exec pcloud; mode "default"
     bindsym $mod+s exec slack; mode "default"
     # Create keybindings for:
     # - Office
