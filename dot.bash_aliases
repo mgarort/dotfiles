@@ -28,6 +28,8 @@ alias so='source ~/.bashrc'
 
 # aliases for gui applications
 alias s='XDG_CURRENT_DESKTOP=GNOME; gnome-control-center'
+alias ju='jupyter notebook'
+alias x='xdg-open'
 
 # aliases for environments
 alias inicon='source ~/repos/dotfiles/initialize_conda.sh'

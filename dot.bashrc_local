@@ -125,16 +125,3 @@ PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
 #
 # So as not to be disturbed by freezing from Ctrl+s, and having to unfreeze with Ctrl+q
 stty -ixon
-
-
-# ---------------------------------
-# SECTION:  Aliases
-# ---------------------------------
-#
-# aliases for commands
-alias x='xdg-open'
-alias s='XDG_CURRENT_DESKTOP=GNOME; gnome-control-center'
-alias ju='jupyter notebook'
-
-# aliases for going to directories
-alias wi='cd ~/repos/wiki'
