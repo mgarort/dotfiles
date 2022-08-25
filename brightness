@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Script to be placed under /bin
+# Check that the intel_backlight path is correct
+
 # Define simple calculators
 max_intel_brightness=$( cat /sys/class/backlight/intel_backlight/max_brightness )
 calc(){ awk "BEGIN { print "$*" }"; }
