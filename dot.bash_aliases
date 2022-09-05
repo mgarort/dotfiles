@@ -18,6 +18,9 @@ alias nl='cd ~/repos/notes/local_html'
 alias np='cd ~/repos/notes/pcloud_html'
 alias dotv='cd ~/repos/dotvim'
 alias dotf='cd ~/repos/dotfiles'
+alias pics='cd ~/Pictures'
+alias docs='cd ~/Documents'
+alias dls='cd ~/Downloads'
 
 # aliases for commands
 alias ls='ls -v --color'
