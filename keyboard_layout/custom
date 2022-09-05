@@ -13,20 +13,18 @@
 //
 // - Config file /etc/default/keyboard
 //
-// In the end, the easiest and most error-prone way I have found is to
+// In the end, the easiest and least error-prone way I have found is to
 // overwrite whatever keyboard file the system is using by default with this
 // file. For example,
 //
 // - If the system is using the layout "gb" and no variant is specified, then
 //   overwrite the file /usr/share/X11/xkb/symbols/gb with this file, and keep
-//   the first `xkb_symbols` before as default and with the name "basic".
-
-//   lines that indicate `default` and the next line which gives the name
-//   "basic".
+//   the first `xkb_symbols` line as set below, with the name "basic".
 //
 // - If the system is using the layout "gb" and the variant "intl", then
 //   overwrite the file /usr/share/X11/xkb/symbols/gb with this file, and
-//   rename the second `xkb_symbols` from "variant" to "intl".
+//   rename the second `xkb_symbols` line from the name "variant" to the
+//   name "intl".
 
 
 default  partial alphanumeric_keys modifier_keys
