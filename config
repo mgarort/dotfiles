@@ -114,7 +114,7 @@ bindsym $mod+minus workspace 11
 bindsym $mod+equal workspace 12
 
 # My usual normal usage for workspaces:
-# 0 (grave `): for remote sessions through ssh
+# 0 (grave `): for developing code: either remote sessions through ssh, or VS Code
 # 1: for local sessions in my laptop
 # 2: for Vimwiki
 # 3: for Firefox
@@ -227,23 +227,25 @@ mode "xrandr"{
     bindsym $mod+a exec xrandr --auto; mode "default"
     bindsym $mod+2 exec xrandr --auto; exec xrandr --output DP-2-2 --auto --right-of DP-2-1; exec xrandr --output eDP-1 --off; mode "default"
     bindsym $mod+l exec xrandr --output eDP-1 --auto --above DP-2-1; exec xrandr --output DP-2-1 --off; exec xrandr --output DP-2-2 --off; mode "default"
+    # Engineering
+    bindsym $mod+e exec xrandr --auto; exec xrandr --output DP-4 --primary --left-of "eDP-1"; exec xrandr --output eDP-1 --off; mode "default"
     bindsym $mod+x mode "default"
 }
 
 # Set default monitors for workspaces
-workspace 0 output eDP-1 DP-2-1
-workspace 1 output eDP-1 DP-2-1
-workspace 2 output eDP-1 DP-2-1
-workspace 3 output eDP-1 DP-2-2
-workspace 4 output eDP-1 DP-2-2
-workspace 5 output eDP-1 DP-2-2
-workspace 6 output eDP-1 DP-2-2
-workspace 7 output eDP-1 DP-2-2
-workspace 8 output eDP-1 DP-2-2
-workspace 9 output eDP-1 DP-2-2
-workspace 10 output eDP-1 DP-2-2
-workspace 11 output eDP-1 DP-2-2
-workspace 12 output eDP-1 DP-2-2
+# workspace 0 output eDP-1 DP-2-1
+# workspace 1 output eDP-1 DP-2-1
+# workspace 2 output eDP-1 DP-2-1
+# workspace 3 output eDP-1 DP-2-2
+# workspace 4 output eDP-1 DP-2-2
+# workspace 5 output eDP-1 DP-2-2
+# workspace 6 output eDP-1 DP-2-2
+# workspace 7 output eDP-1 DP-2-2
+# workspace 8 output eDP-1 DP-2-2
+# workspace 9 output eDP-1 DP-2-2
+# workspace 10 output eDP-1 DP-2-2
+# workspace 11 output eDP-1 DP-2-2
+# workspace 12 output eDP-1 DP-2-2
 
 
 
@@ -278,10 +280,14 @@ bindsym $mod+d exec dmenu_run
 bindsym $mod+r exec urxvt -e ranger
 # firefox
 bindsym $mod+f exec firefox
+# youtube
+bindsym $mod+y workspace 10; exec firefox -new-window "https://music.youtube.com"
+# VS Code
+bindsym $mod+v workspace 0; exec code
 # screenshot
 bindsym Print exec flameshot gui
 # google-chrome
-bindsym $mod+c exec google-chrome
+bindsym $mod+c workspace 8; exec google-chrome "https://gmail.com"
 # rhythmbox
 bindsym $mod+m exec rhythmbox
 # Brackets for monitoring: htop and sensors
@@ -295,8 +301,6 @@ bindsym $mod+a exec anki
 # bindsym $mod+b exec urxvt -e bash -ci "vim -c 'call LaunchScratchpad()'"
 # Open Vim at the index of your zettelkasten
 bindsym $mod+i workspace 2; exec urxvt -e bash -ci "vim -c 'call LaunchVimwiki()'"
-# Open Vim session at the home directory
-bindsym $mod+v exec urxvt -e bash -ci "vim -c 'cd $HOME'"
 # Start ssh. Use a mode "ssh" so that you can bind to multiple remote
 # machines, all of them through $mod+s
 bindsym $mod+s mode "ssh"
@@ -317,7 +321,7 @@ mode "ssh"{
 bindsym $mod+o mode "office"
 mode "office"{
     bindsym $mod+w exec libreoffice --writer; mode "default"
-    bindsym $mod+t exec teams; mode "default"
+    bindsym $mod+t workspace 9; exec teams; mode "default"
     bindsym $mod+d exec dropbox start; mode "default"
     bindsym $mod+p exec pcloud; mode "default"
     bindsym $mod+s exec slack; mode "default"
