@@ -296,7 +296,7 @@ bindsym $mod+bracketright exec urxvt -e watch -n2 sensors
 # python
 bindsym $mod+p exec urxvt -e python3
 # anki
-bindsym $mod+a exec anki
+bindsym $mod+a workspace 6; exec anki
 # Open Vim as a scratchpad
 # bindsym $mod+b exec urxvt -e bash -ci "vim -c 'call LaunchScratchpad()'"
 # Open Vim at the index of your zettelkasten
