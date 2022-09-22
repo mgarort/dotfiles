@@ -3,14 +3,23 @@
 
 [
 // Use Ctrl+' to toggle the
-    {
-        "key": "ctrl+'",
-        "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active"
-    },
-    {
-        "key": "ctrl+`",
-        "command": "-workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active"
-    }
+{
+    "key": "ctrl+'",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+},
+{
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+},
+// Go to file with `#+p`, similar to fuzzy search with <leader>p in Vim
+{
+    "key": "[Backslash] p",
+    "command": "workbench.action.quickOpen"
+},
+{
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpen"
+}
 ]
