@@ -1,0 +1,16 @@
+// VS Code custom keybindings
+// To be symlinked at ~/.config/Code/User/keybindings.json
+
+[
+// Use Ctrl+' to toggle the
+    {
+        "key": "ctrl+'",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    }
+]
