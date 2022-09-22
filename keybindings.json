@@ -13,13 +13,50 @@
     "command": "-workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
 },
-// Go to file with `#+p`, similar to fuzzy search with <leader>p in Vim
 {
-    "key": "[Backslash] p",
+    "key": "alt+, alt+n",
+    "command": "workbench.action.nextEditor"
+},
+{
+    "key": "ctrl+pagedown",
+    "command": "-workbench.action.nextEditor"
+},
+{
+    "key": "alt+, alt+b",
+    "command": "workbench.action.previousEditor"
+},
+{
+    "key": "ctrl+pageup",
+    "command": "-workbench.action.previousEditor"
+},
+{
+    "key": "alt+[Backslash] alt+p",
     "command": "workbench.action.quickOpen"
 },
 {
     "key": "ctrl+p",
     "command": "-workbench.action.quickOpen"
-}
+},
+{
+    "key": "ctrl+c",
+    "command": "workbench.action.terminal.hideFind",
+    "when": "terminalFindVisible && terminalFocus && terminalHasBeenCreated || terminalFindVisible && terminalFocus && terminalProcessSupported"
+},
+{
+    "key": "shift+escape",
+    "command": "-workbench.action.terminal.hideFind",
+    "when": "terminalFindVisible && terminalFocus && terminalHasBeenCreated || terminalFindVisible && terminalFocus && terminalProcessSupported"
+},
+{
+    "key": "shift+alt+.",
+    "command": "editor.action.indentLines",
+    "when": "editorTextFocus && !editorReadonly"
+},
+{
+    "key": "shift+alt+,",
+    "command": "editor.action.outdentLines",
+    "when": "editorTextFocus && !editorReadonly"
+},
+// Go to file with `#+p`, similar to fuzzy search with <leader>p in Vim
+
 ]
