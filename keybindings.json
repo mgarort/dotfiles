@@ -4,9 +4,22 @@
 //
 // Many keybindings are similar to your Vim configuration, with an
 // added Alt to get around the non-modality (i.e. we don't have normal mode
-// and we need to press keybindings without affecting the input in insert mode)
+// and we need to press keybindings without affecting the input in insert mode).
+//
+// <leader> in the comments refers to #, like in your Vim config
 
 [
+// <leader>e to open the file explorer
+{
+    "key": "alt+[Backslash] alt+e",
+    "command": "workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled"
+},
+{
+    "key": "ctrl+shift+e",
+    "command": "-workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled"
+},
 // Use Ctrl+' to toggle the terminal
 {
     "key": "ctrl+'",
@@ -56,7 +69,7 @@
     "when": "editorTextFocus && !editorReadonly"
 },
 // Vim-fugitive-like keybindings for Git
-// Open Git window with #g, similar to <leader>g
+// Open Git window with <leader>g
 {
     "key": "alt+[Backslash] alt+g",
     "command": "workbench.view.scm",
@@ -97,5 +110,4 @@
         ]
     },
 },
-
 ]
