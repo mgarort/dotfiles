@@ -1,8 +1,13 @@
 // VS Code custom keybindings
+//
 // To be symlinked at ~/.config/Code/User/keybindings.json
+//
+// Many keybindings are similar to your Vim configuration, with an
+// added Alt to get around the non-modality (i.e. we don't have normal mode
+// and we need to press keybindings without affecting the input in insert mode)
 
 [
-// Use Ctrl+' to toggle the
+// Use Ctrl+' to toggle the terminal
 {
     "key": "ctrl+'",
     "command": "workbench.action.terminal.toggleTerminal",
@@ -13,6 +18,7 @@
     "command": "-workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
 },
+// Go to next and previous file with ,n and ,b like in Vim
 {
     "key": "alt+, alt+n",
     "command": "workbench.action.nextEditor"
@@ -29,6 +35,7 @@
     "key": "ctrl+pageup",
     "command": "-workbench.action.previousEditor"
 },
+// Fuzzy search for file with <C-p>, like in Vim
 {
     "key": "alt+[Backslash] alt+p",
     "command": "workbench.action.quickOpen"
@@ -37,16 +44,7 @@
     "key": "ctrl+p",
     "command": "-workbench.action.quickOpen"
 },
-{
-    "key": "ctrl+c",
-    "command": "workbench.action.terminal.hideFind",
-    "when": "terminalFindVisible && terminalFocus && terminalHasBeenCreated || terminalFindVisible && terminalFocus && terminalProcessSupported"
-},
-{
-    "key": "shift+escape",
-    "command": "-workbench.action.terminal.hideFind",
-    "when": "terminalFindVisible && terminalFocus && terminalHasBeenCreated || terminalFindVisible && terminalFocus && terminalProcessSupported"
-},
+// Indent and outdent (remove indent) with > and < respectively
 {
     "key": "shift+alt+.",
     "command": "editor.action.indentLines",
@@ -56,7 +54,21 @@
     "key": "shift+alt+,",
     "command": "editor.action.outdentLines",
     "when": "editorTextFocus && !editorReadonly"
-},
-// Go to file with `#+p`, similar to fuzzy search with <leader>p in Vim
-
+}
+// Vim-fugitive-like keybindings for Git
+{
+    "key": "alt+s",
+    "command": "git.stage",
+    "when": "workbench.scm.active"
+}
+{
+    "key": "alt+u",
+    "command": "git.unstage",
+    "when": "workbench.scm.active"
+}
+{
+    "key": "shift+alt+u",
+    "command": "git.unstageAll",
+    "when": "workbench.scm.active"
+}
 ]
