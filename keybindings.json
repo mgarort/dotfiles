@@ -54,21 +54,48 @@
     "key": "shift+alt+,",
     "command": "editor.action.outdentLines",
     "when": "editorTextFocus && !editorReadonly"
-}
+},
 // Vim-fugitive-like keybindings for Git
+// Open Git window with #g, similar to <leader>g
+{
+    "key": "alt+[Backslash] alt+g",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
+},
+{
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm",
+    "when": "workbench.scm.active"
+},
+// Stage with s
 {
     "key": "alt+s",
     "command": "git.stage",
     "when": "workbench.scm.active"
-}
+},
+// Unstage with u
 {
     "key": "alt+u",
     "command": "git.unstage",
     "when": "workbench.scm.active"
-}
+},
+// Unstage all with U
 {
     "key": "shift+alt+u",
     "command": "git.unstageAll",
     "when": "workbench.scm.active"
-}
+},
+// Go to commit message text box with cc. Requires the multi-command extension by ryuta46
+// From https://stackoverflow.com/questions/63491911/how-to-use-keyboard-to-focus-on-git-commit-message-input-in-vscode
+{
+    "key": "alt+c alt+c",
+    "command": "extension.multiCommand.execute",
+    "args": {
+        "sequence": [
+            "list.focusFirst",
+            "list.select",
+        ]
+    },
+},
+
 ]
