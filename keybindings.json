@@ -134,7 +134,15 @@
 {
     "key": "ctrl+w",
     "command": "deleteWordLeft", 
-}, 
+},
+{
+    "key": "ctrl+u",
+    "command": "deleteAllLeft"
+},
+{
+    "key": "ctrl+k",
+    "command": "deleteAllRight"
+},
 {
     "key": "alt+b",
     "command": "cursorWordLeft",
