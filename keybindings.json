@@ -146,6 +146,14 @@
     "when": "textInputFocus"
 },
 {
+    "key": "ctrl+e",
+    "command": "cursorLineEnd"
+},
+{
+    "key": "ctrl+a",
+    "command": "cursorLineStart"
+},
+{
     "key": "alt+h",
     "command": "cursorLeft",
     "when": "textInputFocus"
