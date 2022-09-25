@@ -165,4 +165,13 @@
     "command": "cursorDown",
     "when": "textInputFocus"
 },
+// Increase or decrease split window size (same keybinding as in Vim)
+{
+    "key": "shift+alt+left",
+    "command": "workbench.action.decreaseViewSize"
+},
+{
+    "key": "shift+alt+right",
+    "command": "workbench.action.increaseViewSize"
+},
 ]
