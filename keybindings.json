@@ -132,4 +132,43 @@
         ]
     },
 },
+// Readline-like actions
+{
+    "key": "alt+backspace",
+    "command": "deleteWordPartLeft", 
+},
+{
+    "key": "ctrl+w",
+    "command": "deleteWordLeft", 
+}, 
+{
+    "key": "alt+b",
+    "command": "cursorWordLeft",
+    "when": "textInputFocus"
+},
+{
+    "key": "alt+f",
+    "command": "cursorWordEndRight",
+    "when": "textInputFocus"
+},
+{
+    "key": "alt+h",
+    "command": "cursorLeft",
+    "when": "textInputFocus"
+},
+{
+    "key": "alt+l",
+    "command": "cursorRight",
+    "when": "textInputFocus"
+},
+{
+    "key": "alt+k",
+    "command": "cursorUp",
+    "when": "textInputFocus"
+},
+{
+    "key": "alt+j",
+    "command": "cursorDown",
+    "when": "textInputFocus"
+},
 ]
