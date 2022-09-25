@@ -68,6 +68,28 @@
     "command": "editor.action.outdentLines",
     "when": "editorTextFocus && !editorReadonly"
 },
+// Iterate through autocomplete suggestions with <Tab> and <S-Tab>
+// From https://thomasventurini.com/articles/move-through-suggestions-with-tab-in-vs-code/
+{
+    "key": "tab",
+    "command": "selectNextQuickFix",
+    "when": "editorFocus && quickFixWidgetVisible"
+},
+{
+    "key": "shift+tab",
+    "command": "selectPrevQuickFix",
+    "when": "editorFocus && quickFixWidgetVisible"
+},
+{
+    "key": "tab",
+    "command": "selectNextSuggestion",
+    "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+},
+{
+    "key": "shift+tab",
+    "command": "selectPrevSuggestion",
+    "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+},
 // Vim-fugitive-like keybindings for Git
 // Open Git window with <leader>g
 {
