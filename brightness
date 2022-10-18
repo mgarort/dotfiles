@@ -1,7 +1,20 @@
 #!/bin/bash
 
+# (Check that the intel_backlight path is correct)
+
 # Script to be placed under /bin
-# Check that the intel_backlight path is correct
+# And then, you need to enable applying sudo to it without a password. To do this,
+# use the command visudo in the following way:
+#
+# `sudo EDITOR=vim visudo`
+#
+# Then, add the following line at the end:
+#
+# `user host = (root) NOPASSWD: /bin/brightness`
+#
+# For example:
+#
+# `mgarort hyperion = (root) NOPASSWD: /bin/brightness`
 
 # Define simple calculators
 max_intel_brightness=$( cat /sys/class/backlight/intel_backlight/max_brightness )
@@ -26,7 +39,7 @@ fi
 # 1. Do it in the laptop
 final_float_intel_brightness=$( calc_percentage_to_intel $final_percentage_brightness )
 final_intel_brightness=$( float_to_int $final_float_intel_brightness )
-echo $final_intel_brightness | tee /sys/class/backlight/intel_backlight/brightness
+echo $final_intel_brightness | sudo tee /sys/class/backlight/intel_backlight/brightness
 # 2. Do it in external screen (if connected)
 external_screen=$( xrandr -q | grep -v "eDP-1" | grep -v "disconnected" | grep "connected" | awk '{print $1}' )
 final_fraction_brightness=$( calc $final_percentage_brightness/100 )
