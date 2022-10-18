@@ -34,6 +34,7 @@ alias so='source ~/.bashrc'
 alias s='XDG_CURRENT_DESKTOP=GNOME; gnome-control-center'
 alias ju='jupyter notebook'
 alias x='xdg-open'
+alias adt='~/bin/mgltools_x86_64Linux2_1.5.6/bin/adt'
 
 # aliases for environments
 alias inicon='source ~/repos/dotfiles/initialize_conda.sh'
