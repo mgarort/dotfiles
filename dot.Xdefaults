@@ -24,8 +24,8 @@
 *color7:        #bbbb99
 *color15:       #eeeebb
 ! In big screen: 20
-! In laptop screen: ?
-URxvt.font: xft:Monospace:pixelsize=24
+! In laptop screen: ?  (changed from 24 to 26 on the 22nd August 2022)
+URxvt.font: xft:Monospace:pixelsize=26
 
 ! Vertical separation between lines
 URxvt.lineSpace: 5
