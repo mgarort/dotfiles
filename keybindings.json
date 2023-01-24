@@ -234,4 +234,10 @@
     "command": "-workbench.action.quit",
 },
 
+// Controls if the editor should allow to move selections via drag and drop.
+{
+"editor.dragAndDrop": false,
+},
+
+
 ]
