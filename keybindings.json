@@ -257,4 +257,15 @@
     "command": "editor.action.inlineSuggest.trigger",
     "when": "editorTextFocus && !editorHasSelection",
 },
+// F12 for starting debugging (F10 for stepping to next line and F11 for stepping into)
+{
+    "key": "f12",
+    "command": "jupyter.debugcurrentcell.palette"
+},
+{
+    "key": "f12",
+    "command": "-editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+},
+
 ]
