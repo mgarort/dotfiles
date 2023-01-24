@@ -268,4 +268,22 @@
     "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
 },
 
+// Ctrl-] for entering function or class definition (similar to Vim)
+{
+    "key": "ctrl+]",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+},
+
+// Ctrl-O and Ctrl-I for going back/forward in buffers/windows (similar to Vim)
+{
+    "key": "ctrl+o",
+    "command": "workbench.action.navigateBackInNavigationLocations"
+},
+{
+    "key": "ctrl+i",
+    "command": "workbench.action.navigateForwardInNavigationLocations"
+},
+
+
 ]
