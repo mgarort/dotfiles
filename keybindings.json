@@ -227,5 +227,11 @@
       "revealCursor": true,
       "value": 1
     }
-}
+},
+// Avoid closing with <C-q>
+{
+    "key": "ctrl+q",
+    "command": "-workbench.action.quit",
+},
+
 ]
