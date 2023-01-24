@@ -240,4 +240,21 @@
 },
 
 
+// Cut only when selection
+{
+    "key": "ctrl+x",
+    "command": "-editor.action.clipboardCutAction"
+},
+{
+    "key": "ctrl+x",
+    "command": "editor.action.clipboardCutAction",
+    "when": "editorTextFocus && editorHasSelection",
+},
+
+// When not selection, Ctrl-X triggers autocomplete (as in Vim)
+{
+    "key": "ctrl+x",
+    "command": "editor.action.inlineSuggest.trigger",
+    "when": "editorTextFocus && !editorHasSelection",
+},
 ]
