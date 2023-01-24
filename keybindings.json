@@ -190,7 +190,7 @@
     "key": "shift+alt+right",
     "command": "workbench.action.increaseViewSize"
 },
-// Window motion and view
+// Move between windows
 {
     "key": "ctrl+h",
     "command": "workbench.action.navigateLeft"
@@ -206,9 +206,10 @@
 {
     "key": "ctrl+j",
     "command": "workbench.action.navigateDown"
-}
+},
+// Move page up or down
 {
-    "key": "ctrl+d",
+    "key": "alt+ctrl+d",
     "command": "editorScroll",
     "args": {
       "to": "down",
@@ -216,9 +217,9 @@
       "revealCursor": true,
       "value": 1
     }
-}
+},
 {
-    "key": "ctrl+u",
+    "key": "alt+ctrl+u",
     "command": "editorScroll",
     "args": {
       "to": "up",
