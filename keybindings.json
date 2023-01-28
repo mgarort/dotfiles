@@ -258,6 +258,13 @@
     "when": "editorTextFocus && !editorHasSelection",
 },
 
+// Alt+'+Enter for starting a new Jupyter window 
+// (similar to how '<CR> starts a terminal in Vim)
+{
+    "key": "alt+[Backslash] alt+enter",
+    "command": "jupyter.createnewinteractive"
+},
+
 // Ctrl+r for starting replace (search and replace)
 {
     "key": "ctrl+r",
