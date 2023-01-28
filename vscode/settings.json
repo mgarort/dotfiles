@@ -1,0 +1,27 @@
+{
+    "workbench.colorTheme": "Default Dark+",
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": false,
+        "plaintext": false,
+        "markdown": false
+    },
+    "github.copilot.inlineSuggest.enable": false,
+    "jupyter.askForKernelRestart": false,
+    "terminal.integrated.inheritEnv": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "notebook.output.textLineLimit": 10000,
+    "remote.SSH.connectTimeout": 36000,
+    "editor.selectionClipboard": false,
+    "git.confirmSync": false,
+    "python.linting.enabled": false,
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.pyTestEnabled": true,
+    "python.pythonPath": "venv3/bin/python",
+    "window.zoomLevel": 1,
+    "window.titleBarStyle": "custom",
+    "window.customMenuBarAltFocus": false,
+    
+}
