@@ -1,3 +1,7 @@
+// VS Code custom settings
+//
+// To be symlinked at ~/.config/Code/User/settings.json
+//
 {
     "workbench.colorTheme": "Default Dark+",
     "editor.inlineSuggest.enabled": true,
