@@ -284,6 +284,14 @@
     "key": "ctrl+i",
     "command": "workbench.action.navigateForwardInNavigationLocations"
 },
-
-
+{
+    "key": "f12",
+    "command": "jupyter.runAndDebugCell",
+    "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+},
+{
+    "key": "ctrl+shift+alt+enter",
+    "command": "-jupyter.runAndDebugCell",
+    "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+},
 ]
