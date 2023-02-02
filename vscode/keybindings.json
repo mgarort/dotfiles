@@ -190,7 +190,7 @@
     "key": "shift+alt+right",
     "command": "workbench.action.increaseViewSize"
 },
-// Window motion and view
+// Move between windows
 {
     "key": "ctrl+h",
     "command": "workbench.action.navigateLeft"
@@ -206,9 +206,10 @@
 {
     "key": "ctrl+j",
     "command": "workbench.action.navigateDown"
-}
+},
+// Move page up or down
 {
-    "key": "ctrl+d",
+    "key": "alt+ctrl+d",
     "command": "editorScroll",
     "args": {
       "to": "down",
@@ -216,9 +217,9 @@
       "revealCursor": true,
       "value": 1
     }
-}
+},
 {
-    "key": "ctrl+u",
+    "key": "alt+ctrl+u",
     "command": "editorScroll",
     "args": {
       "to": "up",
@@ -226,5 +227,107 @@
       "revealCursor": true,
       "value": 1
     }
-}
+},
+// Avoid closing with <C-q>
+{
+    "key": "ctrl+q",
+    "command": "-workbench.action.quit",
+},
+
+// Controls if the editor should allow to move selections via drag and drop.
+{
+"editor.dragAndDrop": false,
+},
+
+
+// Cut only when selection
+{
+    "key": "ctrl+x",
+    "command": "-editor.action.clipboardCutAction"
+},
+{
+    "key": "ctrl+x",
+    "command": "editor.action.clipboardCutAction",
+    "when": "editorTextFocus && editorHasSelection",
+},
+
+// When not selection, Ctrl-X triggers autocomplete (as in Vim)
+{
+    "key": "ctrl+x",
+    "command": "editor.action.inlineSuggest.trigger",
+    "when": "editorTextFocus && !editorHasSelection",
+},
+
+// Alt+'+Enter for starting a new Jupyter window 
+// (similar to how '<CR> starts a terminal in Vim)
+{
+    "key": "alt+[Backslash] alt+enter",
+    "command": "jupyter.createnewinteractive"
+},
+
+// Ctrl+r for starting replace (search and replace)
+{
+    "key": "ctrl+r",
+    "command": "-workbench.action.openRecent"
+},
+{
+    "key": "ctrl+r",
+    "command": "editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
+},
+{
+    "key": "ctrl+h",
+    "command": "-editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
+},
+
+// F12 for starting debugging (F10 for stepping to next line and F11 for stepping into)
+{
+    "key": "f12",
+    "command": "jupyter.debugcurrentcell.palette"
+},
+{
+    "key": "f12",
+    "command": "-editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+},
+
+// Ctrl-] for entering function or class definition (similar to Vim)
+{
+    "key": "ctrl+]",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+},
+
+// Ctrl-O and Ctrl-I for going back/forward in buffers/windows (similar to Vim)
+{
+    "key": "ctrl+o",
+    "command": "workbench.action.navigateBackInNavigationLocations"
+},
+{
+    "key": "ctrl+i",
+    "command": "workbench.action.navigateForwardInNavigationLocations"
+},
+{
+    "key": "f12",
+    "command": "jupyter.runAndDebugCell",
+    "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+},
+{
+    "key": "ctrl+shift+alt+enter",
+    "command": "-jupyter.runAndDebugCell",
+    "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+},
+// Transform to uppercase with Alt+U (similar to Vim, where it is U)
+{
+    "key": "shift+alt+u",
+    "command": "editor.action.transformToUppercase",
+    "when": "editorTextFocus && editorHasSelection",
+},
+// Transform to lowercase with Alt+u (similar to Vim, where it is u)
+{
+    "key": "alt+u",
+    "command": "editor.action.transformToLowercase",
+    "when": "editorTextFocus && editorHasSelection",
+},
 ]
