@@ -318,4 +318,16 @@
     "command": "-jupyter.runAndDebugCell",
     "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
 },
+// Transform to uppercase with Alt+U (similar to Vim, where it is U)
+{
+    "key": "shift+alt+u",
+    "command": "editor.action.transformToUppercase",
+    "when": "editorTextFocus && editorHasSelection",
+},
+// Transform to lowercase with Alt+u (similar to Vim, where it is u)
+{
+    "key": "alt+u",
+    "command": "editor.action.transformToLowercase",
+    "when": "editorTextFocus && editorHasSelection",
+},
 ]
