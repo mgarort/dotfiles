@@ -84,3 +84,6 @@ alias mnp='cd ~/repos/molecular-neural-process'
 alias lg='ls --human-readable --size -1 -S --classify'
 alias count='find . -type f | wc -l'
 alias left='ls -t -1'
+
+alias vim='~/bin/bin/vim'
+alias gdu='~/bin/gdu_linux_amd64'
