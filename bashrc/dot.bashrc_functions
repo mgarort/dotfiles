@@ -1,0 +1,31 @@
+# To be placed at ~/.bashrc_functions
+
+# View every man command in Vim
+vimman() {
+     vim -c ":call ViewManFromCommandLine('$1')"
+}
+alias man=vimman
+
+# The next function is created to automatically git show with vim, rather
+# than in standard output. This allows easier navigation and visualization
+# (with syntax highlighting). Inspired from:
+# https://stackoverflow.com/questions/28048270/how-do-i-use-vim-as-git-show-editor
+vimgitshow() {
+    # $1 is the argument given, which should be a file
+    # ${1##*.} is what comes after the dot, i.e. the file extension
+    extension=${1##*.}
+    # Filetype is set to "python" if the extension is ".py". 
+    # Otherwise it is set to the extension
+    # 
+    case $extension in
+        'py')
+            filetype='python'
+            ;;
+        # TODO Add more file extensions as cases, when needed
+        *)
+            filetype=$extension
+            ;;
+    esac
+
+    git show "$1" | vim - "+set filetype=$filetype nowrite nomodifiable nomodified"; 
+}

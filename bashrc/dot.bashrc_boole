@@ -1,0 +1,41 @@
+# My bashrc config that is specific to Boole. To place on ~/.bashrc_boole
+# It will be sourced by ~/.bashrc
+
+
+# ---------------------------------
+# SECTION: Environment variables
+# ---------------------------------
+#
+export DEEPCHEM_DATA_DIR='/homes/mg770/scratch/deepchem_data_dir'
+
+
+
+# ---------------------------------
+# SECTION: Default bashrc configuration in the HPC cluster (TODO Check if we can remove this in Boole)
+# ---------------------------------
+#
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+export TERM=xterm-256color # So that we can spawn new terminals over ssh, for instance to open Vim or htop (before, I received the obscure error message "Error opening terminal: rxvt-unicode-256color"
+
+# This will avoid an annoying error message when pushing and pulling from Git
+unset SSH_ASKPASS
+
+
+# ---------------------------------
+# SECTION:  stty (set teletype) options
+# ---------------------------------
+#
+# So as not to be disturbed by freezing from Ctrl+s, and having to unfreeze with Ctrl+q
+stty -ixon
+# shopt -s expand_aliases

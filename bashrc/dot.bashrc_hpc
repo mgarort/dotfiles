@@ -1,6 +1,5 @@
 # My bashrc config that is specific to the cluster. To place on ~/.bashrc_cluster
 # only in the cluster. It will be sourced by .bashrc
-
 # ---------------------------------
 # SECTION: Default bashrc configuration in the cluster
 # ---------------------------------

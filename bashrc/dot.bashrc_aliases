@@ -51,9 +51,6 @@ alias activate_dc='source ~/repos/dotfiles/initialize_conda.sh; source activate 
 
 # temporary aliases
 alias play='cd ~/playground'
-alias house='cd ~/housekeeping/'
-alias u='cd ~/repos/utils'
-alias gua='cd ~/repos/guatask'
 alias gg='cd ~/repos/custom_graph_grammar/'
 alias ggt='cd ~/repos/custom_graph_grammar/tasks'
 alias ggs='cd ~/repos/custom_graph_grammar/submissions/'

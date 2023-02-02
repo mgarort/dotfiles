@@ -1,5 +1,6 @@
 # This script needs to be sourced to add git info to your prompt 
 # (see your wiki note 'PS1: Include Git info in your prompt')
+# To be symlinked at ~/.bashrc_git
 
 # bash/zsh git prompt support
 #
@@ -564,4 +565,37 @@ __git_ps1 ()
 	fi
 
 	return $exit
+}
+
+
+git_sha() {
+    # Outputs the git commit sha id
+    local branch=$(__git_ps1)
+    if [[ -n $branch  ]]; then
+        local sha="$(git rev-parse --short HEAD)"
+        output=" [$sha]"
+        echo $output
+    fi
+}
+
+git_status() {
+    # Outputs a series of indicators based on the status of the
+    # working directory:
+    # + changes are staged and ready to commit
+    # ! unstaged changes are present
+    # ? untracked files are present
+    # S changes have been stashed
+    # P local commits need to be pushed to the remote
+    local branch=$(__git_ps1)
+    if [[ -n $branch ]]; then
+        local status="$(git status --porcelain 2>/dev/null)"
+        local output=''
+        [[ -n $(egrep '^[MADRC]' <<<"$status") ]] && output="$output+"
+        [[ -n $(egrep '^.[MD]' <<<"$status") ]] && output="$output!"
+        [[ -n $(egrep '^\?\?' <<<"$status") ]] && output="$output?"
+        [[ -n $(git stash list) ]] && output="${output}S"
+        [[ -n $(git log --branches --not --remotes) ]] && output="${output}P"
+        [[ -n $output ]] && output="  ($output)  "  # separate from branch name
+        echo $output
+    fi
 }
