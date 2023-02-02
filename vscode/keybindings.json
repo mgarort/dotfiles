@@ -234,12 +234,6 @@
     "command": "-workbench.action.quit",
 },
 
-// Controls if the editor should allow to move selections via drag and drop.
-{
-"editor.dragAndDrop": false,
-},
-
-
 // Cut only when selection
 {
     "key": "ctrl+x",
