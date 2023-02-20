@@ -3,7 +3,10 @@
 // To be symlinked at ~/.config/Code/User/settings.json
 //
 {
+    // Colorscheme
     "workbench.colorTheme": "Default Dark+",
+
+    // Copilot
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
         "*": true,
@@ -24,6 +27,10 @@
     "python.unitTest.nosetestsEnabled": false,
     "python.unitTest.pyTestEnabled": true,
     "python.pythonPath": "venv3/bin/python",
+
+    // TODO Add comment annotations for each of the settings
+
+    // Control the zoom and size of text in the editor
     "window.zoomLevel": 2,
     
     // The following two commands disable Alt focusing on "File" menu
