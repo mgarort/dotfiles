@@ -90,7 +90,20 @@
     "key": "enter",
     "command": "acceptSelectedSuggestionOnEnter",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible"
-}
+},
+// Close autocomplete suggestions with Escape or CapsLock (by default, my system
+// maps CapsLock to Escape in the xkb keyboard, but for some reason CapsLock is
+// still recognized by VSCode as CapsLock sometimes)
+{
+    "key": "escape",
+    "command": "hideSuggestWidget",
+    "when": "suggestWidgetVisible"
+},
+{
+    "key": "capslock",
+    "command": "hideSuggestWidget",
+    "when": "suggestWidgetVisible"
+},
 // Vim-fugitive-like keybindings for Git
 // Open Git window with <leader>g
 {
