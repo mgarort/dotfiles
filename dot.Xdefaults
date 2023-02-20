@@ -73,3 +73,10 @@ URxvt.keysym.M-BackSpace : \033[18~
 URxvt*scrollTtyOutput:      false
 URxvt*scrollWithBuffer:     true
 URxvt*scrollTtyKeypress:    true
+
+! Correct the terminal key codes for <S-CR> (shift+enter) and <C-CR> (ctrl+enter)
+! to the key codes that Vim expects. This way we can map <S-CR> and <C-CR> in Vim!
+! From https://stackoverflow.com/questions/16359878/how-to-map-shift-enter
+! XXX Decided to remove it because it messed up other mappings, such as <C-j>
+! URxvt.keysym.S-Return:     \033[13;2u
+! URxvt.keysym.C-Return:     \033[13;5u
