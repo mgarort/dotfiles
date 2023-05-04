@@ -63,6 +63,10 @@ URxvt.keysym.M-BackSpace : \033[18~
 ! <Alt-Backspace>
 ! URxvt.keysym.M-BackSpace
 
+! Scroll bar but on the right
+URxvt*scrollBar:true
+URxvt*scrollBar_right:true
+
 ! Disable autoscroll on output if you are a bit up on your terminal:
 ! - When you are at the bottom of the output - the console scrolls down
 !   on new output.
