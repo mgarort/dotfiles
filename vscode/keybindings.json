@@ -25,7 +25,7 @@
     "key": "ctrl+'",
     "command": "workbench.action.togglePanel"
 },
-// Go to next and previous file with ,n and ,b like in Vim
+// Go to next and previous tab with ,n and ,b (like changing buffers in Vim)
 {
     "key": "alt+, alt+n",
     "command": "workbench.action.nextEditor"
@@ -42,6 +42,11 @@
     "key": "ctrl+pageup",
     "command": "-workbench.action.previousEditor"
 },
+// Close current tab with Alt-w instead of Ctrl-w
+{
+    "key": "alt+w",
+    "command": "workbench.action.closeActiveEditor"
+  },
 // Fuzzy search for file with <C-p>, like in Vim
 {
     "key": "alt+[Backslash] alt+p",
