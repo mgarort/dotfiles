@@ -337,6 +337,8 @@ mode "office"{
     bindsym $mod+d exec dropbox start; mode "default"
     bindsym $mod+p exec pcloud; mode "default"
     bindsym $mod+s workspace 9; exec slack; mode "default"
+    # TickTick
+    bindsym $mod+k workspace 9; exec firefox -new-window "https://ticktick.com" ; mode "default"
     # Create keybindings for:
     # - Office
     # - Dropbox
