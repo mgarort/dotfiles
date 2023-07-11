@@ -365,11 +365,13 @@
 // using Alt+j and Alt+k
 {
     "key": "alt+j",
-    "command": "workbench.action.quickOpenSelectNext"
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
 },
 {
     "key": "alt+k",
-    "command": "workbench.action.quickOpenSelectPrevious"
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
 },
 // select previous and next commands in the debug terminal with Alt+k and Alt+j
 {
