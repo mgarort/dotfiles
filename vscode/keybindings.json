@@ -371,10 +371,25 @@
     "key": "alt+k",
     "command": "workbench.action.quickOpenSelectPrevious"
 },
+// select previous and next commands in the debug terminal with Alt+k and Alt+j
+{
+    "key": "alt+j",
+    "command": "history.showNext",
+    "when": "historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"
 },
 {
-    "key": "down",
-    "command": "-interactive.history.next",
-    "when": "!suggestWidgetVisible && resourceScheme == 'vscode-interactive' && interactiveInputCursorAtBoundary != 'none' && interactiveInputCursorAtBoundary != 'top'"
+    "key": "alt+down",
+    "command": "-history.showNext",
+    "when": "historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"
+},
+{
+    "key": "alt+k",
+    "command": "history.showPrevious",
+    "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"
+},
+{
+    "key": "alt+up",
+    "command": "-history.showPrevious",
+    "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"
 },
 ]
