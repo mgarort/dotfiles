@@ -147,18 +147,18 @@
     "args": {
         "sequence": [
             "list.focusFirst",
-            "list.select",
+            "list.select"
         ]
-    },
+    }
 },
 // Readline-like actions
 {
     "key": "alt+backspace",
-    "command": "deleteWordPartLeft", 
+    "command": "deleteWordPartLeft"
 },
 {
     "key": "ctrl+w",
-    "command": "deleteWordLeft", 
+    "command": "deleteWordLeft" 
 },
 {
     "key": "ctrl+u",
@@ -256,7 +256,7 @@
 // Avoid closing with <C-q>
 {
     "key": "ctrl+q",
-    "command": "-workbench.action.quit",
+    "command": "-workbench.action.quit"
 },
 
 // Cut only when selection
@@ -267,14 +267,14 @@
 {
     "key": "ctrl+x",
     "command": "editor.action.clipboardCutAction",
-    "when": "editorTextFocus && editorHasSelection",
+    "when": "editorTextFocus && editorHasSelection"
 },
 
 // When not selection, Ctrl-X triggers autocomplete (as in Vim)
 {
     "key": "ctrl+x",
     "command": "editor.action.inlineSuggest.trigger",
-    "when": "editorTextFocus && !editorHasSelection",
+    "when": "editorTextFocus && !editorHasSelection"
 },
 
 // Alt+'+Enter for starting a new Jupyter window 
@@ -341,13 +341,13 @@
 {
     "key": "shift+alt+u",
     "command": "editor.action.transformToUppercase",
-    "when": "editorTextFocus && editorHasSelection",
+    "when": "editorTextFocus && editorHasSelection"
 },
 // Transform to lowercase with Alt+u (similar to Vim, where it is u)
 {
     "key": "alt+u",
     "command": "editor.action.transformToLowercase",
-    "when": "editorTextFocus && editorHasSelection",
+    "when": "editorTextFocus && editorHasSelection"
 },
 // Move up and down in the ipython history with Alt+k and Alt+j
 {
@@ -393,5 +393,5 @@
     "key": "alt+up",
     "command": "-history.showPrevious",
     "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"
-},
+}
 ]
