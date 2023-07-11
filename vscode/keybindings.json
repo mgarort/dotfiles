@@ -360,10 +360,17 @@
     "command": "interactive.history.next",
     "when": "!suggestWidgetVisible && resourceScheme == 'vscode-interactive' && interactiveInputCursorAtBoundary != 'none' && interactiveInputCursorAtBoundary != 'top'"
 },
+// Move up and down in the quick open file list
+// ( the one that opens with "Alt+\ Alt+p" )
+// using Alt+j and Alt+k
 {
     "key": "alt+j",
-    "command": "interactive.history.next",
-    "when": "!suggestWidgetVisible && resourceScheme == 'vscode-interactive' && interactiveInputCursorAtBoundary != 'none' && interactiveInputCursorAtBoundary != 'top'"
+    "command": "workbench.action.quickOpenSelectNext"
+},
+{
+    "key": "alt+k",
+    "command": "workbench.action.quickOpenSelectPrevious"
+},
 },
 {
     "key": "down",
