@@ -401,7 +401,7 @@
 {
     "key": "enter",
     "command": "interactive.execute",
-    "when": "!notebookKernel && resourceScheme == 'vscode-interactive' || resourceScheme == 'vscode-interactive' && notebookKernel =~ /^ms-toolsai.jupyter\\//"
+    "when": "!notebookKernel && resourceScheme == 'vscode-interactive' && !suggestWidgetVisible || resourceScheme == 'vscode-interactive' && !suggestWidgetVisible  && notebookKernel =~ /^ms-toolsai.jupyter\\//"
 },
 {
     "key": "shift+enter",
