@@ -393,5 +393,19 @@
     "key": "alt+up",
     "command": "-history.showPrevious",
     "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"
+},
+
+// In interactive REPL (i.e. in the command line of the window that pops up when
+// executing Python code), execute when pressing simply "Enter", as opposed to
+// "Shift + Enter"
+{
+    "key": "enter",
+    "command": "interactive.execute",
+    "when": "!notebookKernel && resourceScheme == 'vscode-interactive' || resourceScheme == 'vscode-interactive' && notebookKernel =~ /^ms-toolsai.jupyter\\//"
+},
+{
+    "key": "shift+enter",
+    "command": "-interactive.execute",
+    "when": "!notebookKernel && resourceScheme == 'vscode-interactive' || resourceScheme == 'vscode-interactive' && notebookKernel =~ /^ms-toolsai.jupyter\\//"
 }
 ]
