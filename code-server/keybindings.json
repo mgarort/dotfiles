@@ -1,0 +1,419 @@
+// VS Code custom keybindings
+//
+// To be symlinked at ~/.config/Code/User/keybindings.json
+//
+// Many keybindings are similar to your Vim configuration, with an
+// added Alt to get around the non-modality (i.e. we don't have normal mode
+// and we need to press keybindings without affecting the input in insert mode).
+//
+// <leader> in the comments refers to #, like in your Vim config
+
+[
+    // <leader>e to open the file explorer
+    {
+        "key": "alt+[Backslash] alt+e",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "-workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    // Use Ctrl+' to toggle the bottom panel (where terminal, debug console... are)
+    {
+        "key": "ctrl+'",
+        "command": "workbench.action.togglePanel"
+    },
+    // Go to next and previous tab with ,n and ,b (like changing buffers in Vim)
+    {
+        "key": "alt+, alt+n",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+pagedown",
+        "command": "-workbench.action.nextEditor"
+    },
+    {
+        "key": "alt+, alt+b",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "ctrl+pageup",
+        "command": "-workbench.action.previousEditor"
+    },
+    // Close current tab with Alt-w instead of Ctrl-w
+    {
+        "key": "alt+w",
+        "command": "workbench.action.closeActiveEditor"
+      },
+    // Fuzzy search for file with <C-p>, like in Vim
+    {
+        "key": "alt+[Backslash] alt+p",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-workbench.action.quickOpen"
+    },
+    // Indent and outdent (remove indent) with > and < respectively
+    {
+        "key": "shift+alt+.",
+        "command": "editor.action.indentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+,",
+        "command": "editor.action.outdentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    
+    // Iterate through autocomplete suggestions with <Tab> and <S-Tab>
+    // Adapted from https://thomasventurini.com/articles/move-through-suggestions-with-tab-in-vs-code/
+    // so that it works both in the normal editor and also in the debug console
+    {
+        "key": "tab",
+        "command": "selectNextQuickFix",
+        "when": "editorFocus && quickFixWidgetVisible"
+    },
+    {
+        "key": "shift+tab",
+        "command": "selectPrevQuickFix",
+        "when": "editorFocus && quickFixWidgetVisible"
+    },
+    {
+        "key": "tab",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "shift+tab",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "enter",
+        "command": "acceptSelectedSuggestionOnEnter",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    // Close autocomplete suggestions with Escape or CapsLock (by default, my system
+    // maps CapsLock to Escape in the xkb keyboard, but for some reason CapsLock is
+    // still recognized by VSCode as CapsLock sometimes)
+    {
+        "key": "escape",
+        "command": "hideSuggestWidget",
+        "when": "suggestWidgetVisible"
+    },
+    {
+        "key": "capslock",
+        "command": "hideSuggestWidget",
+        "when": "suggestWidgetVisible"
+    },
+    // Vim-fugitive-like keybindings for Git
+    // Open Git window with <leader>g
+    {
+        "key": "alt+[Backslash] alt+g",
+        "command": "workbench.view.scm",
+        "when": "workbench.scm.active"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "-workbench.view.scm",
+        "when": "workbench.scm.active"
+    },
+    // Stage with s
+    {
+        "key": "alt+s",
+        "command": "git.stage",
+        "when": "workbench.scm.active"
+    },
+    // Unstage with u
+    {
+        "key": "alt+u",
+        "command": "git.unstage",
+        "when": "workbench.scm.active"
+    },
+    // Unstage all with U
+    {
+        "key": "shift+alt+u",
+        "command": "git.unstageAll",
+        "when": "workbench.scm.active"
+    },
+    // Go to commit message text box with cc. Requires the multi-command extension by ryuta46
+    // From https://stackoverflow.com/questions/63491911/how-to-use-keyboard-to-focus-on-git-commit-message-input-in-vscode
+    {
+        "key": "alt+c alt+c",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+                "list.focusFirst",
+                "list.select"
+            ]
+        }
+    },
+    // Readline-like actions
+    {
+        "key": "alt+backspace",
+        "command": "deleteWordPartLeft"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "deleteWordLeft" 
+    },
+    {
+        "key": "ctrl+u",
+        "command": "deleteAllLeft"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "deleteAllRight"
+    },
+    {
+        "key": "alt+b",
+        "command": "cursorWordLeft",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+f",
+        "command": "cursorWordEndRight",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "cursorLineEnd"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "cursorLineStart"
+    },
+    {
+        "key": "alt+h",
+        "command": "cursorLeft",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+l",
+        "command": "cursorRight",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+k",
+        "command": "cursorUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "cursorDown",
+        "when": "textInputFocus"
+    },
+    // Increase or decrease split window size (same keybinding as in Vim)
+    {
+        "key": "shift+alt+left",
+        "command": "workbench.action.decreaseViewSize"
+    },
+    {
+        "key": "shift+alt+right",
+        "command": "workbench.action.increaseViewSize"
+    },
+    // Move between windows
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.navigateDown"
+    },
+    // Move page up or down
+    {
+        "key": "alt+ctrl+d",
+        "command": "editorScroll",
+        "args": {
+          "to": "down",
+          "by": "halfPage",
+          "revealCursor": true,
+          "value": 1
+        }
+    },
+    {
+        "key": "alt+ctrl+u",
+        "command": "editorScroll",
+        "args": {
+          "to": "up",
+          "by": "halfPage",
+          "revealCursor": true,
+          "value": 1
+        }
+    },
+    // Avoid closing with <C-q>
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
+    },
+    
+    // Cut only when selection
+    {
+        "key": "ctrl+x",
+        "command": "-editor.action.clipboardCutAction"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "editor.action.clipboardCutAction",
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    
+    // When not selection, Ctrl-X triggers autocomplete (as in Vim)
+    {
+        "key": "ctrl+x",
+        "command": "editor.action.inlineSuggest.trigger",
+        "when": "editorTextFocus && !editorHasSelection"
+    },
+    
+    // Alt+'+Enter for starting a new Jupyter window 
+    // (similar to how '<CR> starts a terminal in Vim)
+    {
+        "key": "alt+[Backslash] alt+enter",
+        "command": "jupyter.createnewinteractive"
+    },
+    
+    // Ctrl+r for starting replace (search and replace)
+    {
+        "key": "ctrl+r",
+        "command": "-workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "editor.action.startFindReplaceAction",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "-editor.action.startFindReplaceAction",
+        "when": "editorFocus || editorIsOpen"
+    },
+    
+    // F12 for starting debugging (F10 for stepping to next line and F11 for stepping into)
+    {
+        "key": "f12",
+        "command": "jupyter.debugcurrentcell.palette"
+    },
+    {
+        "key": "f12",
+        "command": "-editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    
+    // Ctrl-] for entering function or class definition (similar to Vim)
+    {
+        "key": "ctrl+]",
+        "command": "editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    
+    // Ctrl-O and Ctrl-I for going back/forward in buffers/windows (similar to Vim)
+    {
+        "key": "ctrl+o",
+        "command": "workbench.action.navigateBackInNavigationLocations"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "workbench.action.navigateForwardInNavigationLocations"
+    },
+    {
+        "key": "ctrl+o",
+        "command": "workbench.action.navigateBack"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "workbench.action.navigateForward"
+    },
+    {
+        "key": "f12",
+        "command": "jupyter.runAndDebugCell",
+        "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+    },
+    {
+        "key": "ctrl+shift+alt+enter",
+        "command": "-jupyter.runAndDebugCell",
+        "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+    },
+    // Transform to uppercase with Alt+U (similar to Vim, where it is U)
+    {
+        "key": "shift+alt+u",
+        "command": "editor.action.transformToUppercase",
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    // Transform to lowercase with Alt+u (similar to Vim, where it is u)
+    {
+        "key": "alt+u",
+        "command": "editor.action.transformToLowercase",
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    // Move up and down in the ipython history with Alt+k and Alt+j
+    {
+        "key": "alt+k",
+        "command": "interactive.history.previous",
+        "when": "!suggestWidgetVisible && resourceScheme == 'vscode-interactive' && interactiveInputCursorAtBoundary != 'bottom' && interactiveInputCursorAtBoundary != 'none'"
+    },
+    {
+        "key": "alt+j",
+        "command": "interactive.history.next",
+        "when": "!suggestWidgetVisible && resourceScheme == 'vscode-interactive' && interactiveInputCursorAtBoundary != 'none' && interactiveInputCursorAtBoundary != 'top'"
+    },
+    // Move up and down in the quick open file list
+    // ( the one that opens with "Alt+\ Alt+p" )
+    // using Alt+j and Alt+k
+    {
+        "key": "alt+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    // select previous and next commands in the debug terminal with Alt+k and Alt+j
+    {
+        "key": "alt+j",
+        "command": "history.showNext",
+        "when": "historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"
+    },
+    {
+        "key": "alt+down",
+        "command": "-history.showNext",
+        "when": "historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"
+    },
+    {
+        "key": "alt+k",
+        "command": "history.showPrevious",
+        "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"
+    },
+    {
+        "key": "alt+up",
+        "command": "-history.showPrevious",
+        "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"
+    },
+    
+    // In interactive REPL (i.e. in the command line of the window that pops up when
+    // executing Python code), execute when pressing simply "Enter", as opposed to
+    // "Shift + Enter"
+    {
+        "key": "enter",
+        "command": "interactive.execute",
+        "when": "!notebookKernel && resourceScheme == 'vscode-interactive' && !suggestWidgetVisible || resourceScheme == 'vscode-interactive' && !suggestWidgetVisible  && notebookKernel =~ /^ms-toolsai.jupyter\\//"
+    },
+    {
+        "key": "shift+enter",
+        "command": "-interactive.execute",
+        "when": "!notebookKernel && resourceScheme == 'vscode-interactive' || resourceScheme == 'vscode-interactive' && notebookKernel =~ /^ms-toolsai.jupyter\\//"
+    }
+    ]
